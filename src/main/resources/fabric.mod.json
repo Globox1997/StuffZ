@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "stuffz",
+  "version": "1.9.2",
+
+  "name": "StuffZ",
+  "description": "Just adds some stuff",
+  "authors": [
+    "Globox_Z"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/stuffz/zstuff.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.stuffz.main"
+    ],
+    "client": [
+      "net.stuffz.mainclient"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.2",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

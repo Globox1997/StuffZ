@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "stuffz:hops"
+    },
+    {
+      "item": "stuffz:malt"
+    }
+  ],
+  "result": {
+    "item": "stuffz:beer",
+    "count": 1
+  }
+}

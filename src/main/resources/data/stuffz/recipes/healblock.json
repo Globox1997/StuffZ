@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "cac",
+        "cbc",
+        "ccc"
+    ],
+    "key": {
+        "a": {
+            "item": "minecraft:enchanting_table"
+        },
+        "b": {
+            "item": "minecraft:nether_star"
+        },
+        "c": {
+            "item": "minecraft:red_nether_bricks"
+        }
+    },
+    "result": {
+        "item": "stuffz:healblock"
+    }
+}

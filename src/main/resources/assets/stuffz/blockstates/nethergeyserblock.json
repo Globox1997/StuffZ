@@ -1,0 +1,10 @@
+
+{
+    "variants": {
+        "": [
+            { "model": "stuffz:block/nethergeyserblock" },
+            { "model": "stuffz:block/nethergeyserblock", "y": 90 },
+            { "model": "stuffz:block/nethergeyserblock", "y": 180 },
+            { "model": "stuffz:block/nethergeyserblock", "y": 270 } ]
+        }
+    }

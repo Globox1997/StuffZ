@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "cac",
+        "aba",
+        "cac"
+    ],
+    "key": {
+        "a": {
+            "item": "stuffz:enderblock"
+        },
+        "b": {
+            "item": "minecraft:dragon_breath"
+        },
+        "c": {
+            "item": "minecraft:blaze_powder"
+        }
+    },
+    "result": {
+        "item": "stuffz:adenderblock",
+        "count": 4
+    }
+}

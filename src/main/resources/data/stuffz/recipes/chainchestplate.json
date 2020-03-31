@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "a a",
+        "aaa",
+        "aaa"
+    ],
+    "key": {
+        "a": {
+            "item": "stuffz:chainmailplate"
+        }
+    },
+    "result": {
+        "item": "minecraft:chainmail_chestplate"
+    }
+}

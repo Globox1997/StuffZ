@@ -1,0 +1,9 @@
+{
+    "variants": {
+      "age=0": { "model": "stuffz:block/nutsbush_state_0" },
+      "age=1": { "model": "stuffz:block/nutsbush_state_1" },
+      "age=2": { "model": "stuffz:block/nutsbush_state_2" },
+      "age=3": { "model": "stuffz:block/nutsbush_state_3" }
+    }
+  }
+
