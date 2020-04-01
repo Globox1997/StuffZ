@@ -18,8 +18,10 @@
     "block.stuffz.enderblock": "Block of Ender",
     "block.stuffz.adenderblock": "Infused Block of Ender",
     "block.stuffz.healblock": "§6Block of the Forgotten Alchemist",
-    "block.stuffz.geyserblock": "Geyser",
-    "item.stuffz.geyserblock": "Geyser",
+    "block.stuffz.nethergeyserblock": "Nether Geyser",
+    "block.stuffz.stonegeyserblock": "Geyser",
+    "item.stuffz.stonegeyserblock": "Geyser",
+    "item.stuffz.nethergeyserblock": "Nether Geyser",
     "item.stuffz.healblock": "§6Block of the Forgotten Alchemist",
     "item.stuffz.adenderblock": "Infused Block of Ender",
     "item.stuffz.enderblock": "Block of Ender",
@@ -37,5 +39,4 @@
     "item.stuffz.melonstew": "Melon Stew",
     "item.stuffz.velvet": "Red Velvet Cake Slice",
     "item.stuffz.chainmailplate": "Chainmail Plate"
-    
 }
