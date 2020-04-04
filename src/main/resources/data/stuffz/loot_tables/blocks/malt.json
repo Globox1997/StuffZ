@@ -1,23 +1,24 @@
 {
 	"type": "minecraft:block",
-	"pools": [{
-		"rolls": 1,
-		"entries": [{
-			"type": "minecraft:item",
-			"functions": [{
-					"function": "minecraft:set_count",
-					"count": {
-						"n": 2,
-                        "p": 0.8,
-                        "type": "minecraft:binomial"
-					}
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"n": 2,
+								"p": 0.8,
+								"type": "minecraft:binomial"
+							}
+						}
+					],
+					"name": "stuffz:malt"
 				}
-
-			],
-			"name": "stuffz:malt"
-
-		}]
-	}]
-	
-	
+			]
+		}
+	]
 }

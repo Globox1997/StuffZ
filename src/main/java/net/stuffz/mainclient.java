@@ -25,6 +25,7 @@ public class mainclient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(main.HEALBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(main.NETHERGEYSERBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(main.STONEGEYSERBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(main.SULFURBLOCK, RenderLayer.getSolid());
 
     }
 

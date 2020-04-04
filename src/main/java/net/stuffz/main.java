@@ -19,12 +19,14 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.GenerationStep;
 
 public class main implements ModInitializer {
@@ -38,6 +40,7 @@ public class main implements ModInitializer {
       public static final netherstew NETHERSTEW = new netherstew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
       public static final speltbread SPELTBREAD = new speltbread();
       public static final velvet VELVET = new velvet();
+      public static final sulfur SULFUR = new sulfur(new Item.Settings().group(ItemGroup.MISC));
 
       public static final hop HOP = new hop(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
                   .breakInstantly().sounds(BlockSoundGroup.CROP).build());
@@ -63,6 +66,8 @@ public class main implements ModInitializer {
                   FabricBlockSettings.copy(Blocks.STONE).build());
       public static final stonegeyserblock STONEGEYSERBLOCK = new stonegeyserblock(
                   FabricBlockSettings.copy(Blocks.STONE).build());
+      public static final sulfurblock SULFURBLOCK = new sulfurblock(
+                  FabricBlockSettings.copy(Blocks.DIAMOND_ORE).build());
 
       public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
       public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
@@ -100,6 +105,7 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "hops"), HOPS);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "beer"), BEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "darkbeer"), DARKBEER);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfur"), SULFUR);
 
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "spelt"), SPELT);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "spelt"),
@@ -130,10 +136,15 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "stonegeyserblock"),
                         new BlockItem(STONEGEYSERBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "stonegeyserblock"), STONEGEYSERBLOCK);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfurblock"),
+                        new BlockItem(SULFURBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "sulfurblock"), SULFURBLOCK);
 
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
             looter.init();
+
+            Registry.BIOME.forEach(this::handleBiome);
 
             Biomes.NETHER_WASTES.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         NETHERGEYSER.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
@@ -145,6 +156,16 @@ public class main implements ModInitializer {
                         STONEGEYSER.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
                                     Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(40, 50, 0, 200))));
 
+      }
+
+      public void handleBiome(Biome biome) {
+            if (biome.getCategory() == Biome.Category.EXTREME_HILLS || biome.getCategory() == Biome.Category.SWAMP) {
+                  biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
+                              .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
+                                          main.SULFURBLOCK.getDefaultState(), 5))
+                              .createDecoratedFeature(
+                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 12, 58))));
+            }
       }
 
 }
