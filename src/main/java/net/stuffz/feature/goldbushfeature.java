@@ -24,7 +24,7 @@ public class goldbushfeature extends Feature<DefaultFeatureConfig> {
   public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random,
       BlockPos pos, DefaultFeatureConfig config) {
     BlockPos bush1 = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
-    BlockPos bush2 = new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 2);
+    BlockPos bush2 = new BlockPos(bush1.getX() + 1, bush1.getY(), bush1.getZ() + 2);
     if (world.getBlockState(bush1).isAir() && world.getBlockState(bush2).isAir()
         && world.getBlockState(bush1.down()).getBlock().equals(Blocks.GRASS_BLOCK)
         && world.getBlockState(bush1.down().south()).getBlock().equals(Blocks.GRASS_BLOCK)

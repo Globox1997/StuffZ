@@ -166,16 +166,16 @@ public class main implements ModInitializer {
 
             Biomes.NETHER_WASTES.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         NETHERGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(100, 10, 0, 128))));
+                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 10, 0, 128))));
             Biomes.GRAVELLY_MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(40, 50, 0, 200))));
+                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 200))));
             Biomes.MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(40, 50, 0, 200))));
+                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 200))));
             Biomes.FLOWER_FOREST.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 50, 0, 80))));
+                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 80))));
 
       }
 
@@ -192,16 +192,18 @@ public class main implements ModInitializer {
       public void ironbushspawn(Biome biome) {
             if (biome.getCategory() == Biome.Category.FOREST) {
                   biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                              IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 50, 0, 80))));
+                              IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT)
+                                          .createDecoratedFeature(Decorator.COUNT_BIASED_RANGE
+                                                      .configure(new RangeDecoratorConfig(60, 8, 8, 256))));
             }
       }
 
       public void goldbushspawn(Biome biome) {
             if (biome.getCategory() == Biome.Category.FOREST) {
                   biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                              GOLDBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 50, 0, 80))));
+                              GOLDBUSH_FEATURE.configure(FeatureConfig.DEFAULT)
+                                          .createDecoratedFeature(Decorator.COUNT_BIASED_RANGE
+                                                      .configure(new RangeDecoratorConfig(60, 8, 8, 256))));
             }
       }
 
