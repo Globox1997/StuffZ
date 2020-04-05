@@ -7,10 +7,10 @@
       "model": "stuffz:block/bush_state_1"
     },
     "age=2": {
-      "model": "stuffz:block/nutsbush_state_2"
+      "model": "stuffz:block/gold_bush_state_2"
     },
     "age=3": {
-      "model": "stuffz:block/nutsbush_state_3"
+      "model": "stuffz:block/gold_bush_state_3"
     }
   }
 }

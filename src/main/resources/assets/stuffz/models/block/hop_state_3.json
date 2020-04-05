@@ -1,7 +1,6 @@
 {
-    "parent": "block/crop",
-    "textures": {
-      "crop": "stuffz:block/hop_state_3"
-    }
+  "parent": "block/crop",
+  "textures": {
+    "crop": "stuffz:block/hop_state_3"
   }
-
+}

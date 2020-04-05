@@ -1,10 +1,21 @@
-
 {
     "variants": {
         "": [
-            { "model": "stuffz:block/stonegeyserblock" },
-            { "model": "stuffz:block/stonegeyserblock", "y": 90 },
-            { "model": "stuffz:block/stonegeyserblock", "y": 180 },
-            { "model": "stuffz:block/stonegeyserblock", "y": 270 } ]
-        }
+            {
+                "model": "stuffz:block/stonegeyserblock"
+            },
+            {
+                "model": "stuffz:block/stonegeyserblock",
+                "y": 90
+            },
+            {
+                "model": "stuffz:block/stonegeyserblock",
+                "y": 180
+            },
+            {
+                "model": "stuffz:block/stonegeyserblock",
+                "y": 270
+            }
+        ]
     }
+}

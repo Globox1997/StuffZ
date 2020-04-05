@@ -2,7 +2,11 @@ package net.stuffz.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -81,5 +85,16 @@ public class nethergeyserblock extends Block {
             count2 = 0;
         }
 
+    }
+
+    public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
+        ItemStack geyserdrop = new ItemStack(main.NETHERGEYSERBLOCK);
+        ItemStack netherrackdrop = new ItemStack(Items.NETHERRACK);
+        super.onStacksDropped(state, world, pos, stack);
+        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
+            Block.dropStack(world, pos, geyserdrop);
+        } else {
+            Block.dropStack(world, pos, netherrackdrop);
+        }
     }
 }

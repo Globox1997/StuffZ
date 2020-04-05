@@ -4,7 +4,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -64,5 +68,16 @@ public class stonegeyserblock extends Block {
             entity.setVelocity(0, 1.1D, 0);
         }
 
+    }
+
+    public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
+        ItemStack geyserdrop = new ItemStack(main.STONEGEYSERBLOCK);
+        ItemStack netherrackdrop = new ItemStack(Items.STONE);
+        super.onStacksDropped(state, world, pos, stack);
+        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
+            Block.dropStack(world, pos, geyserdrop);
+        } else {
+            Block.dropStack(world, pos, netherrackdrop);
+        }
     }
 }

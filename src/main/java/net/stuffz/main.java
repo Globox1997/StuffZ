@@ -68,6 +68,10 @@ public class main implements ModInitializer {
                   FabricBlockSettings.copy(Blocks.STONE).build());
       public static final sulfurblock SULFURBLOCK = new sulfurblock(
                   FabricBlockSettings.copy(Blocks.DIAMOND_ORE).build());
+      public static final goldbush GOLDBUSH = new goldbush(FabricBlockSettings.of(Material.PLANT).noCollision()
+                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+      public static final ironbush IRONBUSH = new ironbush(FabricBlockSettings.of(Material.PLANT).noCollision()
+                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
       public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
       public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
@@ -77,10 +81,16 @@ public class main implements ModInitializer {
       public static final Identifier GEYSER = new Identifier("stuffz:geyser");
       public static SoundEvent GEYSEREVENT = new SoundEvent(GEYSER);
 
-      private static final Feature<DefaultFeatureConfig> NETHERGEYSER = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "nethergeyser"), new nethergeyserfeature(DefaultFeatureConfig::deserialize));
-      private static final Feature<DefaultFeatureConfig> STONEGEYSER = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "stonegeyser"), new stonegeyserfeature(DefaultFeatureConfig::deserialize));
+      private static final Feature<DefaultFeatureConfig> NETHERGEYSER_FEATURE = Registry.register(Registry.FEATURE,
+                  new Identifier("stuffz", "nethergeyserfeature"),
+                  new nethergeyserfeature(DefaultFeatureConfig::deserialize));
+      private static final Feature<DefaultFeatureConfig> STONEGEYSER_FEATURE = Registry.register(Registry.FEATURE,
+                  new Identifier("stuffz", "stonegeyserfeature"),
+                  new stonegeyserfeature(DefaultFeatureConfig::deserialize));
+      private static final Feature<DefaultFeatureConfig> IRONBUSH_FEATURE = Registry.register(Registry.FEATURE,
+                  new Identifier("stuffz", "ironbushfeature"), new ironbushfeature(DefaultFeatureConfig::deserialize));
+      private static final Feature<DefaultFeatureConfig> GOLDBUSH_FEATURE = Registry.register(Registry.FEATURE,
+                  new Identifier("stuffz", "goldbushfeature"), new goldbushfeature(DefaultFeatureConfig::deserialize));
 
       @Override
       public void onInitialize() {
@@ -98,15 +108,15 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "netherstew"), NETHERSTEW);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "velvet"), VELVET);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "chainmailplate"), CHAINMAILPLATE);
-            Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
-            Registry.register(Registry.ITEM, new Identifier("stuffz", "nutsbush"),
-                        new BlockItem(NUTSBUSH, new Item.Settings().group(ItemGroup.MISC).food(
-                                    (new FoodComponent.Builder()).hunger(2).saturationModifier(0.3F).meat().build())));
             Registry.register(Registry.ITEM, new Identifier("stuffz", "hops"), HOPS);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "beer"), BEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "darkbeer"), DARKBEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfur"), SULFUR);
 
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "nutsbush"),
+                        new BlockItem(NUTSBUSH, new Item.Settings().group(ItemGroup.MISC).food(
+                                    (new FoodComponent.Builder()).hunger(2).saturationModifier(0.3F).meat().build())));
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "spelt"), SPELT);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "spelt"),
                         new BlockItem(SPELT, new Item.Settings().group(ItemGroup.MISC)));
@@ -139,32 +149,59 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfurblock"),
                         new BlockItem(SULFURBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "sulfurblock"), SULFURBLOCK);
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "goldbush"), GOLDBUSH);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "goldbush"),
+                        new BlockItem(GOLDBUSH, new Item.Settings().group(ItemGroup.MISC)));
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "ironbush"), IRONBUSH);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "ironbush"),
+                        new BlockItem(IRONBUSH, new Item.Settings().group(ItemGroup.MISC)));
 
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
             looter.init();
 
-            Registry.BIOME.forEach(this::handleBiome);
+            Registry.BIOME.forEach(this::sulfurspawn);
+            Registry.BIOME.forEach(this::goldbushspawn);
+            Registry.BIOME.forEach(this::ironbushspawn);
 
             Biomes.NETHER_WASTES.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        NETHERGEYSER.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                        NETHERGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
                                     Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(100, 10, 0, 128))));
             Biomes.GRAVELLY_MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        STONEGEYSER.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
                                     Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(40, 50, 0, 200))));
             Biomes.MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        STONEGEYSER.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
                                     Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(40, 50, 0, 200))));
+            Biomes.FLOWER_FOREST.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                        IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 50, 0, 80))));
 
       }
 
-      public void handleBiome(Biome biome) {
+      public void sulfurspawn(Biome biome) {
             if (biome.getCategory() == Biome.Category.EXTREME_HILLS || biome.getCategory() == Biome.Category.SWAMP) {
                   biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
                               .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
                                           main.SULFURBLOCK.getDefaultState(), 5))
                               .createDecoratedFeature(
                                           Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 12, 58))));
+            }
+      }
+
+      public void ironbushspawn(Biome biome) {
+            if (biome.getCategory() == Biome.Category.FOREST) {
+                  biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                              IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 50, 0, 80))));
+            }
+      }
+
+      public void goldbushspawn(Biome biome) {
+            if (biome.getCategory() == Biome.Category.FOREST) {
+                  biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                              GOLDBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
+                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 50, 0, 80))));
             }
       }
 

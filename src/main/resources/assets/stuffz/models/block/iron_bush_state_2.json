@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "stuffz:block/nutsbush_state_3"
+    "cross": "stuffz:block/iron_bush_state_2"
   }
 }

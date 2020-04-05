@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "stuffz:block/adenderblock" }
+        "": {
+            "model": "stuffz:block/adenderblock"
+        }
     }
 }

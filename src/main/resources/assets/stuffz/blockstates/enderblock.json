@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "stuffz:block/enderblock" }
+        "": {
+            "model": "stuffz:block/enderblock"
+        }
     }
 }

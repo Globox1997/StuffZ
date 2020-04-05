@@ -1,7 +1,6 @@
 {
-    "parent": "block/crop",
-    "textures": {
-      "crop": "stuffz:block/spelt_state_1"
-    }
+  "parent": "block/crop",
+  "textures": {
+    "crop": "stuffz:block/spelt_state_1"
   }
-
+}

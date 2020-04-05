@@ -1,7 +1,6 @@
 {
-    "parent": "block/crop",
-    "textures": {
-      "crop": "stuffz:block/flax_4"
-    }
+  "parent": "block/crop",
+  "textures": {
+    "crop": "stuffz:block/flax_4"
   }
-
+}

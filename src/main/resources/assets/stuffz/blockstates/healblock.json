@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "stuffz:block/healblock" }
+        "": {
+            "model": "stuffz:block/healblock"
+        }
     }
 }

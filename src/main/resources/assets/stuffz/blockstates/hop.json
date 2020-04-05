@@ -1,13 +1,28 @@
 {
   "variants": {
-    "age=0": { "model": "stuffz:block/hop_state_0" },
-    "age=1": { "model": "stuffz:block/hop_state_1" },
-    "age=2": { "model": "stuffz:block/hop_state_2" },
-    "age=3": { "model": "stuffz:block/hop_state_3" },
-    "age=4": { "model": "stuffz:block/hop_state_4" },
-    "age=5": { "model": "stuffz:block/hop_state_5" },
-    "age=6": { "model": "stuffz:block/hop_state_6" },
-    "age=7": { "model": "stuffz:block/hop_state_7" }
+    "age=0": {
+      "model": "stuffz:block/hop_state_0"
+    },
+    "age=1": {
+      "model": "stuffz:block/hop_state_1"
+    },
+    "age=2": {
+      "model": "stuffz:block/hop_state_2"
+    },
+    "age=3": {
+      "model": "stuffz:block/hop_state_3"
+    },
+    "age=4": {
+      "model": "stuffz:block/hop_state_4"
+    },
+    "age=5": {
+      "model": "stuffz:block/hop_state_5"
+    },
+    "age=6": {
+      "model": "stuffz:block/hop_state_6"
+    },
+    "age=7": {
+      "model": "stuffz:block/hop_state_7"
+    }
   }
 }
-
