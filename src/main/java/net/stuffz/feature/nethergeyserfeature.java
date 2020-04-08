@@ -8,6 +8,7 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -21,8 +22,9 @@ public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
     }
 
     @Override
-    public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random,
-            BlockPos pos, DefaultFeatureConfig config) {
+    public boolean generate(IWorld world, StructureAccessor accessor,
+            ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos,
+            DefaultFeatureConfig config) {
         BlockPos test = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
         if (world.getBlockState(test).getBlock().equals(Blocks.NETHERRACK)
                 && world.getBlockState(test.down()).getBlock().equals(Blocks.NETHERRACK)
@@ -36,6 +38,5 @@ public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
         } else {
             return false;
         }
-
     }
 }

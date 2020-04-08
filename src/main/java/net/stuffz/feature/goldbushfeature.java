@@ -8,6 +8,7 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -21,8 +22,9 @@ public class goldbushfeature extends Feature<DefaultFeatureConfig> {
   }
 
   @Override
-  public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random,
-      BlockPos pos, DefaultFeatureConfig config) {
+  public boolean generate(IWorld world, StructureAccessor accessor,
+      ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos,
+      DefaultFeatureConfig config) {
     BlockPos bush1 = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
     BlockPos bush2 = new BlockPos(bush1.getX() + 1, bush1.getY(), bush1.getZ() + 2);
     if (world.getBlockState(bush1).isAir() && world.getBlockState(bush2).isAir()
@@ -42,6 +44,5 @@ public class goldbushfeature extends Feature<DefaultFeatureConfig> {
     } else {
       return false;
     }
-
   }
 }
