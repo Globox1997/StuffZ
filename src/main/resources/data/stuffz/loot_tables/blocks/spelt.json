@@ -2,7 +2,7 @@
 	"type": "minecraft:block",
 	"pools": [
 		{
-			"rolls": 1,
+			"rolls": 1.0,
 			"entries": [
 				{
 					"type": "minecraft:item",
@@ -10,34 +10,37 @@
 						{
 							"function": "minecraft:set_count",
 							"count": {
-								"n": 1,
-								"p": 1.0,
-								"type": "minecraft:binomial"
+								"min": 1,
+								"max": 1
 							}
 						}
 					],
 					"name": "stuffz:speltwheat"
 				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:block_state_property",
+					"block": "stuffz:spelt",
+					"properties": {
+						"age": "7"
+					}
+				}
 			]
 		},
 		{
-			"rolls": 1,
+			"rolls": 1.0,
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
-						{
-							"function": "minecraft:set_count",
-							"count": {
-								"n": 2,
-								"p": 0.8,
-								"type": "minecraft:binomial"
-							}
-						}
-					],
 					"name": "stuffz:spelt"
 				}
 			]
+		}
+	],
+	"functions": [
+		{
+			"function": "minecraft:explosion_decay"
 		}
 	]
 }

@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 import net.stuffz.main;
 
 public class sulfurblock extends Block {
+  public int a = 0;
+
   public sulfurblock(Settings settings) {
     super(settings);
   }
@@ -22,18 +24,21 @@ public class sulfurblock extends Block {
   }
 
   public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
-    ItemStack sulfurdrop = new ItemStack(main.SULFUR);
+    ItemStack sulfurdrop = new ItemStack(main.SULFUR, 2);
     ItemStack sulfurblockdrop = new ItemStack(main.SULFURBLOCK);
     super.onStacksDropped(state, world, pos, stack);
+
     if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
       int i = this.getExperienceWhenMined(world.random);
       if (i > 0) {
         this.dropExperience(world, pos, i);
         Block.dropStack(world, pos, sulfurdrop);
-        Block.dropStack(world, pos, sulfurdrop);
+
+        if (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) != 0) {
+          Block.dropStack(world, pos, sulfurdrop);
+        }
       }
-    }
-    if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
+    } else {
       Block.dropStack(world, pos, sulfurblockdrop);
     }
 
