@@ -72,6 +72,7 @@ public class main implements ModInitializer {
                   .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
       public static final ironbush IRONBUSH = new ironbush(FabricBlockSettings.of(Material.PLANT).noCollision()
                   .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+      public static final driedclay DRIEDCLAY = new driedclay(FabricBlockSettings.copy(Blocks.CLAY).build());
 
       public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
       public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
@@ -155,6 +156,10 @@ public class main implements ModInitializer {
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "ironbush"), IRONBUSH);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "ironbush"),
                         new BlockItem(IRONBUSH, new Item.Settings().group(ItemGroup.MISC)));
+
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "driedclay"), DRIEDCLAY);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "driedclay"),
+                        new BlockItem(DRIEDCLAY, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
