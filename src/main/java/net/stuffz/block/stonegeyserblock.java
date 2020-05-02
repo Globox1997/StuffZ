@@ -64,20 +64,22 @@ public class stonegeyserblock extends Block {
     }
 
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
-        if (z7 == 1) {
+        if (z7 == 1 && world.isClient) {
             entity.setVelocity(0, 1.1D, 0);
         }
 
     }
 
     public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
+        super.onStacksDropped(state, world, pos, stack);
         ItemStack geyserdrop = new ItemStack(main.STONEGEYSERBLOCK);
         ItemStack netherrackdrop = new ItemStack(Items.STONE);
-        super.onStacksDropped(state, world, pos, stack);
-        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
-            Block.dropStack(world, pos, geyserdrop);
-        } else {
-            Block.dropStack(world, pos, netherrackdrop);
+        if (!world.isClient) {
+            if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
+                Block.dropStack(world, pos, geyserdrop);
+            } else {
+                Block.dropStack(world, pos, netherrackdrop);
+            }
         }
     }
 }

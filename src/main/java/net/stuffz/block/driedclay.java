@@ -21,7 +21,7 @@ public class driedclay extends Block {
         || world.getBlockState(water.north().east()).getBlock().equals(Blocks.WATER)
         || world.getBlockState(water.north().west()).getBlock().equals(Blocks.WATER)
         || world.getBlockState(water.south().east()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.south().west()).getBlock().equals(Blocks.WATER)) {
+        || world.getBlockState(water.south().west()).getBlock().equals(Blocks.WATER) && !world.isClient) {
       world.removeBlock(pos, true);
       world.setBlockState(pos, Blocks.CLAY.getDefaultState(), 3);
     }
