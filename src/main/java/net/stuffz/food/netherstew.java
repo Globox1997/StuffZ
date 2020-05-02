@@ -24,8 +24,9 @@ public class netherstew extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
 
         StatusEffectInstance str = new StatusEffectInstance(StatusEffect.byRawId(5), 400, 0, false, false);
-        entity.addStatusEffect(str);
-
+        if (!world.isClient) {
+            entity.addStatusEffect(str);
+        }
         return new ItemStack(Items.BOWL);
     }
 
@@ -39,6 +40,6 @@ public class netherstew extends Item {
 
     public TypedActionResult<ItemStack> use(World world_1, PlayerEntity playerEntity_1, Hand hand_1) {
         playerEntity_1.setCurrentHand(hand_1);
-        return new TypedActionResult(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));
+        return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));
     }
 }
