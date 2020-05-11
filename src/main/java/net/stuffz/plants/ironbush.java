@@ -8,6 +8,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -17,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.stuffz.main;
 
@@ -31,6 +36,24 @@ public class ironbush extends SweetBerryBushBlock {
     return new ItemStack(main.IRONBUSH);
   }
 
+  @Override
+  public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+    if (entity instanceof LivingEntity) {
+      entity.slowMovement(state, new Vec3d(0.800000011920929D, 0.75D, 0.800000011920929D));
+      if (!world.isClient && (Integer) state.get(AGE) > 0
+          && (entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ())
+          && entity instanceof HostileEntity) {
+        double d = Math.abs(entity.getX() - entity.lastRenderX);
+        double e = Math.abs(entity.getZ() - entity.lastRenderZ);
+        if (d >= 0.003000000026077032D || e >= 0.003000000026077032D) {
+          entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0F);
+        }
+      }
+
+    }
+  }
+
+  @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
       BlockHitResult hit) {
     int i = (Integer) state.get(AGE);
@@ -49,6 +72,7 @@ public class ironbush extends SweetBerryBushBlock {
     }
   }
 
+  @Override
   public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
     ItemStack bush = new ItemStack(main.IRONBUSH);
     super.onStacksDropped(state, world, pos, stack);

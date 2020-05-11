@@ -21,6 +21,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.gen.decorator.CountChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -170,17 +171,17 @@ public class main implements ModInitializer {
             Registry.BIOME.forEach(this::ironbushspawn);
 
             Biomes.NETHER_WASTES.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        NETHERGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 10, 0, 128))));
+                        NETHERGEYSER_FEATURE.configure(FeatureConfig.DEFAULT)
+                                    .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
+                                                .configure(new CountChanceDecoratorConfig(3, 0.1F))));
             Biomes.GRAVELLY_MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 200))));
+                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT)
+                                    .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
+                                                .configure(new CountChanceDecoratorConfig(2, 0.1F))));
             Biomes.MOUNTAINS.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 200))));
-            Biomes.FLOWER_FOREST.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                        IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT).createDecoratedFeature(
-                                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(60, 50, 0, 80))));
+                        STONEGEYSER_FEATURE.configure(FeatureConfig.DEFAULT)
+                                    .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
+                                                .configure(new CountChanceDecoratorConfig(2, 0.05F))));
 
       }
 
@@ -198,8 +199,8 @@ public class main implements ModInitializer {
             if (biome.getCategory() == Biome.Category.FOREST) {
                   biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                               IRONBUSH_FEATURE.configure(FeatureConfig.DEFAULT)
-                                          .createDecoratedFeature(Decorator.COUNT_BIASED_RANGE
-                                                      .configure(new RangeDecoratorConfig(60, 8, 8, 256))));
+                                          .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
+                                                      .configure(new CountChanceDecoratorConfig(2, 0.1F))));
             }
       }
 
@@ -207,8 +208,8 @@ public class main implements ModInitializer {
             if (biome.getCategory() == Biome.Category.FOREST) {
                   biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                               GOLDBUSH_FEATURE.configure(FeatureConfig.DEFAULT)
-                                          .createDecoratedFeature(Decorator.COUNT_BIASED_RANGE
-                                                      .configure(new RangeDecoratorConfig(60, 8, 8, 256))));
+                                          .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
+                                                      .configure(new CountChanceDecoratorConfig(2, 0.05F))));
             }
       }
 
