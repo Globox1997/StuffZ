@@ -44,10 +44,9 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
   public void update() {
 
     if (!isEmpty()) {
-      ItemStack itemStack = this.getStack(0);
       if (this.isuncrafthit() && this instanceof uncraftblockentity) {
-        this.clear();
-        this.setStack(0, new ItemStack(Items.GOLD_INGOT));
+        ItemStack itemStack = this.getStack(0);
+        unCraft(itemStack);
         this.unCraftHit = 0;
         markDirty();
       }
@@ -136,5 +135,184 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
     super.toTag(tag);
     Inventories.toTag(tag, inventory);
     return tag;
+  }
+
+  private void unCraft(ItemStack itemStack) {
+    // Chain
+    if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_HELMET))) {
+      this.clear();
+      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_BOOTS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 4));
+    }
+    // Diamond
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_HORSE_ARMOR))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 6));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_HELMET))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_BOOTS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 4));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_AXE))
+        || itemStack.isItemEqual(new ItemStack(Items.DIAMOND_PICKAXE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 3));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_HOE))
+        || itemStack.isItemEqual(new ItemStack(Items.DIAMOND_SWORD))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 2));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_SHOVEL))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.DIAMOND, 1));
+    }
+    // Gold
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_HORSE_ARMOR))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 6));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_HELMET))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_BOOTS)) || itemStack.isItemEqual(new ItemStack(Items.CLOCK))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 4));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_AXE))
+        || itemStack.isItemEqual(new ItemStack(Items.GOLDEN_PICKAXE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 3));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_HOE))
+        || itemStack.isItemEqual(new ItemStack(Items.GOLDEN_SWORD))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 2));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.GOLDEN_SHOVEL))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.GOLD_INGOT, 1));
+    }
+    // Iron
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_HORSE_ARMOR))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 6));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_HELMET))
+        || itemStack.isItemEqual(new ItemStack(Items.MINECART))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_BOOTS)) || itemStack.isItemEqual(new ItemStack(Items.COMPASS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 4));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_AXE))
+        || itemStack.isItemEqual(new ItemStack(Items.IRON_PICKAXE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 3));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_HOE)) || itemStack.isItemEqual(new ItemStack(Items.IRON_SWORD))
+        || itemStack.isItemEqual(new ItemStack(Items.BUCKET)) || itemStack.isItemEqual(new ItemStack(Items.SHEARS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 2));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.IRON_SHOVEL))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.IRON_INGOT, 1));
+    }
+    // Leather
+    if (itemStack.isItemEqual(new ItemStack(Items.LEATHER_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.LEATHER, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.LEATHER_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.LEATHER, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.LEATHER_HELMET))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.LEATHER, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.LEATHER_BOOTS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.LEATHER, 4));
+    }
+    // Netherite
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_CHESTPLATE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 8));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_LEGGINGS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 7));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HELMET))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 5));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_BOOTS))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 4));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_AXE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_PICKAXE))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 3));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HOE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SWORD))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 2));
+    }
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SHOVEL))) {
+      this.clear();
+      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 1));
+    }
+    // Trident
+    if (itemStack.isItemEqual(new ItemStack(Items.TRIDENT))) {
+      this.clear();
+      this.setStack(0, new ItemStack(main.SHINYDIAMOND, 1));
+    }
   }
 }

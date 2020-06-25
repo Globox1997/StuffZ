@@ -3,13 +3,13 @@ package net.stuffz;
 import net.stuffz.food.*;
 import net.stuffz.item.*;
 import net.stuffz.plants.*;
-import net.stuffz.tag.itemtags;
 import net.stuffz.drink.*;
 import net.stuffz.feature.*;
 import net.stuffz.block.*;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -88,10 +89,6 @@ public class main implements ModInitializer {
       public static final Identifier GEYSER = new Identifier("stuffz:geyser");
       public static SoundEvent GEYSEREVENT = new SoundEvent(GEYSER);
 
-      public static Identifier id(String name) {
-            return new Identifier("stuffz", name);
-      }
-
       private static final Feature<DefaultFeatureConfig> NETHERGEYSER_FEATURE = Registry.register(Registry.FEATURE,
                   new Identifier("stuffz", "nethergeyserfeature"), new nethergeyserfeature(DefaultFeatureConfig.CODEC));
       private static final Feature<DefaultFeatureConfig> STONEGEYSER_FEATURE = Registry.register(Registry.FEATURE,
@@ -100,6 +97,8 @@ public class main implements ModInitializer {
                   new Identifier("stuffz", "ironbushfeature"), new ironbushfeature(DefaultFeatureConfig.CODEC));
       private static final Feature<DefaultFeatureConfig> GOLDBUSH_FEATURE = Registry.register(Registry.FEATURE,
                   new Identifier("stuffz", "goldbushfeature"), new goldbushfeature(DefaultFeatureConfig.CODEC));
+
+      public static final Tag<Item> UNCRAFT_ITEMS = TagRegistry.item(new Identifier("stuffz", "uncraft_items"));
 
       @Override
       public void onInitialize() {
@@ -175,8 +174,6 @@ public class main implements ModInitializer {
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
             looter.init();
-
-            itemtags.init();
 
             Registry.BIOME.forEach(this::sulfurspawn);
             Registry.BIOME.forEach(this::goldbushspawn);
