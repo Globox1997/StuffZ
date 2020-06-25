@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "stuffz:driedclay"
+          "name": "stuffz:uncraftblock"
         }
       ],
       "conditions": [

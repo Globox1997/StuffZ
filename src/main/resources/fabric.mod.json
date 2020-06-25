@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "stuffz",
-  "version": "${version}",
+  "version": "2.2.0",
   "name": "StuffZ",
   "description": "Just adds some stuff",
   "authors": [

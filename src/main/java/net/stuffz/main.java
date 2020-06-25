@@ -3,16 +3,18 @@ package net.stuffz;
 import net.stuffz.food.*;
 import net.stuffz.item.*;
 import net.stuffz.plants.*;
+import net.stuffz.tag.itemtags;
 import net.stuffz.drink.*;
 import net.stuffz.feature.*;
 import net.stuffz.block.*;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.FoodComponent;
+import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
@@ -44,55 +46,60 @@ public class main implements ModInitializer {
       public static final sulfur SULFUR = new sulfur(new Item.Settings().group(ItemGroup.MISC));
 
       public static final hop HOP = new hop(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
-                  .breakInstantly().sounds(BlockSoundGroup.CROP).build());
+                  .breakInstantly().sounds(BlockSoundGroup.CROP));
       public static final hops HOPS = new hops(new Item.Settings());
       public static final malt MALT = new malt(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
-                  .breakInstantly().sounds(BlockSoundGroup.CROP).build());
+                  .breakInstantly().sounds(BlockSoundGroup.CROP));
       public static final darkmalt DARKMALT = new darkmalt(new Item.Settings());
       public static final speltwheat SPELTWHEAT = new speltwheat(new Item.Settings().group(ItemGroup.MISC));
       public static final beer BEER = new beer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
       public static final darkbeer DARKBEER = new darkbeer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
       public static final spelt SPELT = new spelt(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
-                  .breakInstantly().sounds(BlockSoundGroup.CROP).build());
+                  .breakInstantly().sounds(BlockSoundGroup.CROP));
       public static final nutsbush NUTSBUSH = new nutsbush(FabricBlockSettings.of(Material.PLANT).noCollision()
-                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
       public static final flax FLAX = new flax(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
-                  .breakInstantly().sounds(BlockSoundGroup.CROP).build());
-      public static final enderblock ENDERBLOCK = new enderblock(
-                  FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK).build());
-      public static final adenderblock ADENDERBLOCK = new adenderblock(
-                  FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK).build());
-      public static final healblock HEALBLOCK = new healblock(FabricBlockSettings.copy(Blocks.OBSIDIAN).build());
+                  .breakInstantly().sounds(BlockSoundGroup.CROP));
+      public static final enderblock ENDERBLOCK = new enderblock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
+      public static final adenderblock ADENDERBLOCK = new adenderblock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
+      public static final healblock HEALBLOCK = new healblock(FabricBlockSettings.copy(Blocks.OBSIDIAN));
       public static final nethergeyserblock NETHERGEYSERBLOCK = new nethergeyserblock(
-                  FabricBlockSettings.copy(Blocks.STONE).build());
+                  FabricBlockSettings.copy(Blocks.STONE));
       public static final stonegeyserblock STONEGEYSERBLOCK = new stonegeyserblock(
-                  FabricBlockSettings.copy(Blocks.STONE).build());
-      public static final sulfurblock SULFURBLOCK = new sulfurblock(
-                  FabricBlockSettings.copy(Blocks.DIAMOND_ORE).build());
+                  FabricBlockSettings.copy(Blocks.STONE));
+      public static final sulfurblock SULFURBLOCK = new sulfurblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
       public static final goldbush GOLDBUSH = new goldbush(FabricBlockSettings.of(Material.PLANT).noCollision()
-                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
       public static final ironbush IRONBUSH = new ironbush(FabricBlockSettings.of(Material.PLANT).noCollision()
-                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
-      public static final driedclay DRIEDCLAY = new driedclay(FabricBlockSettings.copy(Blocks.CLAY).build());
+                  .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+      public static final driedclay DRIEDCLAY = new driedclay(FabricBlockSettings.copy(Blocks.CLAY));
+      public static final uncraftblock UNCRAFTBLOCK = new uncraftblock(FabricBlockSettings.copy(Blocks.CRAFTING_TABLE));
+      public static final BlockEntityType<uncraftblockentity> UNCRAFTBLOCKENTITY = BlockEntityType.Builder
+                  .create(uncraftblockentity::new, UNCRAFTBLOCK).build(null);
 
       public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
       public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
       public static final shinydiamond SHINYDIAMOND = new shinydiamond(new Item.Settings().group(ItemGroup.MISC));
       public static final chainmailplate CHAINMAILPLATE = new chainmailplate(new Item.Settings().group(ItemGroup.MISC));
 
+      public static final ironhammer IRONHAMMER = new ironhammer(
+                  new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
+
       public static final Identifier GEYSER = new Identifier("stuffz:geyser");
       public static SoundEvent GEYSEREVENT = new SoundEvent(GEYSER);
 
+      public static Identifier id(String name) {
+            return new Identifier("stuffz", name);
+      }
+
       private static final Feature<DefaultFeatureConfig> NETHERGEYSER_FEATURE = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "nethergeyserfeature"),
-                  new nethergeyserfeature(DefaultFeatureConfig::deserialize));
+                  new Identifier("stuffz", "nethergeyserfeature"), new nethergeyserfeature(DefaultFeatureConfig.CODEC));
       private static final Feature<DefaultFeatureConfig> STONEGEYSER_FEATURE = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "stonegeyserfeature"),
-                  new stonegeyserfeature(DefaultFeatureConfig::deserialize));
+                  new Identifier("stuffz", "stonegeyserfeature"), new stonegeyserfeature(DefaultFeatureConfig.CODEC));
       private static final Feature<DefaultFeatureConfig> IRONBUSH_FEATURE = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "ironbushfeature"), new ironbushfeature(DefaultFeatureConfig::deserialize));
+                  new Identifier("stuffz", "ironbushfeature"), new ironbushfeature(DefaultFeatureConfig.CODEC));
       private static final Feature<DefaultFeatureConfig> GOLDBUSH_FEATURE = Registry.register(Registry.FEATURE,
-                  new Identifier("stuffz", "goldbushfeature"), new goldbushfeature(DefaultFeatureConfig::deserialize));
+                  new Identifier("stuffz", "goldbushfeature"), new goldbushfeature(DefaultFeatureConfig.CODEC));
 
       @Override
       public void onInitialize() {
@@ -114,11 +121,11 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "beer"), BEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "darkbeer"), DARKBEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfur"), SULFUR);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "ironhammer"), IRONHAMMER);
 
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
-            Registry.register(Registry.ITEM, new Identifier("stuffz", "nutsbush"),
-                        new BlockItem(NUTSBUSH, new Item.Settings().group(ItemGroup.MISC).food(
-                                    (new FoodComponent.Builder()).hunger(2).saturationModifier(0.3F).meat().build())));
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "nutsbush"), new BlockItem(NUTSBUSH,
+                        new Item.Settings().group(ItemGroup.MISC).food(FoodComponents.SWEET_BERRIES)));
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "spelt"), SPELT);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "spelt"),
                         new BlockItem(SPELT, new Item.Settings().group(ItemGroup.MISC)));
@@ -157,14 +164,19 @@ public class main implements ModInitializer {
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "ironbush"), IRONBUSH);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "ironbush"),
                         new BlockItem(IRONBUSH, new Item.Settings().group(ItemGroup.MISC)));
-
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "driedclay"), DRIEDCLAY);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "driedclay"),
                         new BlockItem(DRIEDCLAY, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "uncraftblock"),
+                        new BlockItem(UNCRAFTBLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "uncraftblock"), UNCRAFTBLOCK);
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, "stuffz:uncraftblockentity", UNCRAFTBLOCKENTITY);
 
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
             looter.init();
+
+            itemtags.init();
 
             Registry.BIOME.forEach(this::sulfurspawn);
             Registry.BIOME.forEach(this::goldbushspawn);
@@ -186,7 +198,8 @@ public class main implements ModInitializer {
       }
 
       public void sulfurspawn(Biome biome) {
-            if (biome.getCategory() == Biome.Category.EXTREME_HILLS || biome.getCategory() == Biome.Category.SWAMP) {
+            if (biome.getCategory() == Biome.Category.EXTREME_HILLS || biome.getCategory() == Biome.Category.SWAMP
+                        || biome.getCategory() == Biome.Category.OCEAN) {
                   biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
                               .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
                                           main.SULFURBLOCK.getDefaultState(), 5))

@@ -1,12 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:leather_horse_armor"
-    }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  b",
+    "bbb",
+    "b b"
   ],
+  "key": {
+    "b": {
+      "item": "minecraft:leather"
+    }
+  },
   "result": {
-    "item": "minecraft:leather",
-    "count": 6
+    "item": "minecraft:leather_horse_armor",
+    "count": 1
   }
 }

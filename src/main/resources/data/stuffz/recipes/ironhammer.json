@@ -1,17 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "  b",
-    "bbb",
-    "b b"
+    "bb ",
+    " e ",
+    " b "
   ],
   "key": {
     "b": {
       "item": "minecraft:iron_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "minecraft:iron_horse_armor",
+    "item": "stuffz:ironhammer",
     "count": 1
   }
 }

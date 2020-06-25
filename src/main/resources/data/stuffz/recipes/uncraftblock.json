@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "stuffz:uncraftblock",
+    "count": 1
+  }
+}

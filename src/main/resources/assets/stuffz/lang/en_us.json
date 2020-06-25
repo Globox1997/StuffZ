@@ -8,13 +8,13 @@
     "item.stuffz.hop": "Hop",
     "item.stuffz.malt": "Malt",
     "item.stuffz.darkmalt": "Dark Malt",
-    "item.stuffz.flax": "Flax",
+    "item.stuffz.flax": "Cotton",
     "block.stuffz.darkmalt": "Dark Malt",
     "block.stuffz.spelt": "Spelt Seeds",
     "block.stuffz.nutsbush": "Nuts Bush",
     "block.stuffz.hop": "Hop Seeds",
     "block.stuffz.malt": "Malt Seeds",
-    "block.stuffz.flax": "Flax Seeds",
+    "block.stuffz.flax": "Cottonseeds",
     "block.stuffz.enderblock": "Block of Ender",
     "block.stuffz.adenderblock": "Infused Block of Ender",
     "block.stuffz.healblock": "§6Block of the Forgotten Alchemist",
@@ -24,6 +24,8 @@
     "block.stuffz.goldbush": "Gold Bush Seeds",
     "block.stuffz.ironbush": "Iron Bush Seeds",
     "block.stuffz.driedclay": "Dried Clay",
+    "block.stuffz.uncraftblock": "Uncraft Block",
+    "item.stuffz.uncraftblock": "Uncraft Block",
     "item.stuffz.driedclay": "Dried Clay",
     "item.stuffz.ironbush": "Iron Bush Seeds",
     "item.stuffz.goldbush": "Gold Bush Seeds",
@@ -47,5 +49,6 @@
     "item.stuffz.netherstew": "Nether Wart Stew",
     "item.stuffz.melonstew": "Melon Stew",
     "item.stuffz.velvet": "Red Velvet Cake Slice",
-    "item.stuffz.chainmailplate": "Chainmail Plate"
+    "item.stuffz.chainmailplate": "Chainmail Plate",
+    "item.stuffz.ironhammer": "Iron Hammer"
 }

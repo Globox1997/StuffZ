@@ -76,194 +76,189 @@ public class looter {
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/grass".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.01f)).withEntry(ItemEntry.builder(main.HOP));
+                        .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(main.HOP));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/grass".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.01f)).withEntry(ItemEntry.builder(main.MALT));
+                        .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(main.MALT));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/grass".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.01f)).withEntry(ItemEntry.builder(main.SPELT));
+                        .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(main.SPELT));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/sand".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.001f))
-                        .withEntry(ItemEntry.builder(Items.GOLD_NUGGET));
+                        .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/red_sand".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.001f))
-                        .withEntry(ItemEntry.builder(Items.GOLD_NUGGET));
+                        .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/gravel".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.001f))
-                        .withEntry(ItemEntry.builder(Items.IRON_NUGGET));
+                        .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.IRON_NUGGET));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/grass".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.01f)).withEntry(ItemEntry.builder(main.NUTSBUSH));
+                        .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(main.NUTSBUSH));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if ("minecraft:blocks/grass".equals(id.toString())) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(BinomialLootTableRange.create(1, 0.01f)).withEntry(ItemEntry.builder(main.FLAX));
+                        .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(main.FLAX));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isone(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(3, 0.3f)).withEntry(ItemEntry.builder(main.MALT));
+                        .rolls(new BinomialLootTableRange(3, 0.3f)).with(ItemEntry.builder(main.MALT));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isone(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(5, 0.3f)).withEntry(ItemEntry.builder(main.FLAX));
+                        .rolls(new BinomialLootTableRange(5, 0.3f)).with(ItemEntry.builder(main.FLAX));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isone(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(3, 0.3f)).withEntry(ItemEntry.builder(main.HOP));
+                        .rolls(new BinomialLootTableRange(3, 0.3f)).with(ItemEntry.builder(main.HOP));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isone(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(5, 0.5f)).withEntry(ItemEntry.builder(main.SPELT));
+                        .rolls(new BinomialLootTableRange(5, 0.5f)).with(ItemEntry.builder(main.SPELT));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (istwo(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.02f))
-                        .withEntry(ItemEntry.builder(main.SHINYDIAMOND));
+                        .rolls(new BinomialLootTableRange(1, 0.02f)).with(ItemEntry.builder(main.SHINYDIAMOND));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (istwo(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(5, 0.15f))
-                        .withEntry(ItemEntry.builder(main.CHAINMAILPLATE));
+                        .rolls(new BinomialLootTableRange(5, 0.15f)).with(ItemEntry.builder(main.CHAINMAILPLATE));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isthree(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(4, 0.4f)).withEntry(ItemEntry.builder(main.SPELTWHEAT));
+                        .rolls(new BinomialLootTableRange(4, 0.4f)).with(ItemEntry.builder(main.SPELTWHEAT));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfour(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.2f)).withEntry(ItemEntry.builder(main.CARROTPIE));
+                        .rolls(new BinomialLootTableRange(1, 0.2f)).with(ItemEntry.builder(main.CARROTPIE));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfour(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(4, 0.35f)).withEntry(ItemEntry.builder(main.SPELTBREAD));
+                        .rolls(new BinomialLootTableRange(4, 0.35f)).with(ItemEntry.builder(main.SPELTBREAD));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfour(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.1f)).withEntry(ItemEntry.builder(main.VELVET));
+                        .rolls(new BinomialLootTableRange(1, 0.1f)).with(ItemEntry.builder(main.VELVET));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfour(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.3f)).withEntry(ItemEntry.builder(main.MELONSTEW));
+                        .rolls(new BinomialLootTableRange(1, 0.3f)).with(ItemEntry.builder(main.MELONSTEW));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfive(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.2f)).withEntry(ItemEntry.builder(main.FIRESTEW));
+                        .rolls(new BinomialLootTableRange(1, 0.2f)).with(ItemEntry.builder(main.FIRESTEW));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (isfive(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .withRolls(new BinomialLootTableRange(1, 0.2f)).withEntry(ItemEntry.builder(main.NETHERSTEW));
+                        .rolls(new BinomialLootTableRange(1, 0.2f)).with(ItemEntry.builder(main.NETHERSTEW));
 
-                supplier.withPool(poolBuilder);
+                supplier.pool(poolBuilder);
             }
         });
     }

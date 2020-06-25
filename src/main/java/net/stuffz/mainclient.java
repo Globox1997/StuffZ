@@ -5,7 +5,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.stuffz.block.uncraftblockrenderer;
 
 @Environment(EnvType.CLIENT)
 
@@ -14,7 +16,6 @@ public class mainclient implements ClientModInitializer {
     @Override
 
     public void onInitializeClient() {
-
         BlockRenderLayerMap.INSTANCE.putBlock(main.SPELT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(main.HOP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(main.MALT, RenderLayer.getCutout());
@@ -29,6 +30,8 @@ public class mainclient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(main.IRONBUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(main.GOLDBUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(main.DRIEDCLAY, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(main.UNCRAFTBLOCK, RenderLayer.getCutout());
+        BlockEntityRendererRegistry.INSTANCE.register(main.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
     }
 
 }

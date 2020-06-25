@@ -4,6 +4,7 @@ import javax.swing.text.html.BlockView;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -32,7 +33,7 @@ public class goldbush extends SweetBerryBushBlock {
   }
 
   @Environment(EnvType.CLIENT)
-  public ItemStack getPickStack(BlockView blockView_1, BlockPos blockPos_1, BlockState blockState_1) {
+  public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
     return new ItemStack(main.GOLDBUSH);
   }
 
@@ -49,7 +50,6 @@ public class goldbush extends SweetBerryBushBlock {
           entity.damage(DamageSource.SWEET_BERRY_BUSH, 1.0F);
         }
       }
-
     }
   }
 
@@ -77,7 +77,7 @@ public class goldbush extends SweetBerryBushBlock {
     ItemStack bush = new ItemStack(main.GOLDBUSH);
     super.onStacksDropped(state, world, pos, stack);
     if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
-      SweetBerryBushBlock.dropStack(world, pos, bush);
+      Block.dropStack(world, pos, bush);
     }
 
   }
