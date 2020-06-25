@@ -4,6 +4,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.ToolItem;
+import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -12,10 +15,12 @@ import net.minecraft.world.World;
 import net.stuffz.block.uncraftblock;
 import net.stuffz.block.uncraftblockentity;
 
-public class ironhammer extends Item {
+import net.minecraft.item.AxeItem;
 
-  public ironhammer(Settings settings) {
-    super(settings);
+public class ironhammer extends ToolItem {
+
+  public ironhammer(ToolMaterial material, Settings settings) {
+    super(material, settings);
   }
 
   @Override
@@ -38,4 +43,5 @@ public class ironhammer extends Item {
       return ActionResult.PASS;
     }
   }
+
 }

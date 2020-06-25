@@ -17,6 +17,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.tag.Tag;
@@ -77,13 +78,19 @@ public class main implements ModInitializer {
       public static final uncraftblock UNCRAFTBLOCK = new uncraftblock(FabricBlockSettings.copy(Blocks.CRAFTING_TABLE));
       public static final BlockEntityType<uncraftblockentity> UNCRAFTBLOCKENTITY = BlockEntityType.Builder
                   .create(uncraftblockentity::new, UNCRAFTBLOCK).build(null);
+      public static final yellowrubyblock YELLOWRUBYBLOCK = new yellowrubyblock(
+                  FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
+      public static final fossilblock FOSSILBLOCK = new fossilblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
 
       public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
       public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
       public static final shinydiamond SHINYDIAMOND = new shinydiamond(new Item.Settings().group(ItemGroup.MISC));
       public static final chainmailplate CHAINMAILPLATE = new chainmailplate(new Item.Settings().group(ItemGroup.MISC));
+      public static final yellowruby YELLOWRUBY = new yellowruby(new Item.Settings().group(ItemGroup.MISC));
 
-      public static final ironhammer IRONHAMMER = new ironhammer(
+      // public static final ironhammer IRONHAMMER = new ironhammer(
+      // new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
+      public static final ironhammer IRONHAMMER = new ironhammer(ToolMaterials.IRON,
                   new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
 
       public static final Identifier GEYSER = new Identifier("stuffz:geyser");
@@ -121,6 +128,7 @@ public class main implements ModInitializer {
             Registry.register(Registry.ITEM, new Identifier("stuffz", "darkbeer"), DARKBEER);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfur"), SULFUR);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "ironhammer"), IRONHAMMER);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowruby"), YELLOWRUBY);
 
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
             Registry.register(Registry.ITEM, new Identifier("stuffz", "nutsbush"), new BlockItem(NUTSBUSH,
@@ -170,6 +178,12 @@ public class main implements ModInitializer {
                         new BlockItem(UNCRAFTBLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
             Registry.register(Registry.BLOCK, new Identifier("stuffz", "uncraftblock"), UNCRAFTBLOCK);
             Registry.register(Registry.BLOCK_ENTITY_TYPE, "stuffz:uncraftblockentity", UNCRAFTBLOCKENTITY);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowrubyblock"),
+                        new BlockItem(YELLOWRUBYBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "yellowrubyblock"), YELLOWRUBYBLOCK);
+            Registry.register(Registry.ITEM, new Identifier("stuffz", "fossilblock"),
+                        new BlockItem(FOSSILBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+            Registry.register(Registry.BLOCK, new Identifier("stuffz", "fossilblock"), FOSSILBLOCK);
 
             Registry.register(Registry.SOUND_EVENT, main.GEYSER, GEYSEREVENT);
 
@@ -178,6 +192,8 @@ public class main implements ModInitializer {
             Registry.BIOME.forEach(this::sulfurspawn);
             Registry.BIOME.forEach(this::goldbushspawn);
             Registry.BIOME.forEach(this::ironbushspawn);
+            Registry.BIOME.forEach(this::fossilblockspawn);
+            Registry.BIOME.forEach(this::yellowrubyblockspawn);
 
             Biomes.NETHER_WASTES.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                         NETHERGEYSER_FEATURE.configure(FeatureConfig.DEFAULT)
@@ -220,6 +236,26 @@ public class main implements ModInitializer {
                               GOLDBUSH_FEATURE.configure(FeatureConfig.DEFAULT)
                                           .createDecoratedFeature(Decorator.COUNT_CHANCE_HEIGHTMAP
                                                       .configure(new CountChanceDecoratorConfig(2, 0.05F))));
+            }
+      }
+
+      public void fossilblockspawn(Biome biome) {
+            if (biome.getCategory() == Biome.Category.OCEAN) {
+                  biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
+                              .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
+                                          main.FOSSILBLOCK.getDefaultState(), 1))
+                              .createDecoratedFeature(
+                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(5, 0, 18, 58))));
+            }
+      }
+
+      public void yellowrubyblockspawn(Biome biome) {
+            if (biome.getCategory() == Biome.Category.OCEAN || biome.getCategory() == Biome.Category.ICY) {
+                  biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
+                              .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
+                                          main.YELLOWRUBYBLOCK.getDefaultState(), 1))
+                              .createDecoratedFeature(
+                                          Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 12, 58))));
             }
       }
 
