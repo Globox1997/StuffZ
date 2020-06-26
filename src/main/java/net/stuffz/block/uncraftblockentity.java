@@ -10,7 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.collection.DefaultedList;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
+import net.stuffz.init.ItemInit;
 import net.minecraft.util.Tickable;
 
 public class uncraftblockentity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
@@ -18,7 +19,7 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
   public int unCraftHit;
 
   public uncraftblockentity() {
-    super(main.UNCRAFTBLOCKENTITY);
+    super(BlockInit.UNCRAFTBLOCKENTITY);
     this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
   }
 
@@ -141,19 +142,19 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
     // Chain
     if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_CHESTPLATE))) {
       this.clear();
-      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 8));
+      this.setStack(0, new ItemStack(ItemInit.CHAINMAILPLATE, 8));
     }
     if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_LEGGINGS))) {
       this.clear();
-      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 7));
+      this.setStack(0, new ItemStack(ItemInit.CHAINMAILPLATE, 7));
     }
     if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_HELMET))) {
       this.clear();
-      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 5));
+      this.setStack(0, new ItemStack(ItemInit.CHAINMAILPLATE, 5));
     }
     if (itemStack.isItemEqual(new ItemStack(Items.CHAINMAIL_BOOTS))) {
       this.clear();
-      this.setStack(0, new ItemStack(main.CHAINMAILPLATE, 4));
+      this.setStack(0, new ItemStack(ItemInit.CHAINMAILPLATE, 4));
     }
     // Diamond
     if (itemStack.isItemEqual(new ItemStack(Items.DIAMOND_CHESTPLATE))) {
@@ -312,7 +313,7 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
     // Trident
     if (itemStack.isItemEqual(new ItemStack(Items.TRIDENT))) {
       this.clear();
-      this.setStack(0, new ItemStack(main.SHINYDIAMOND, 1));
+      this.setStack(0, new ItemStack(ItemInit.SHINYDIAMOND, 1));
     }
   }
 }

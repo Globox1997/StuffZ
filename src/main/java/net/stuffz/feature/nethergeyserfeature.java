@@ -11,7 +11,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
 
 public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
 
@@ -30,7 +30,7 @@ public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
         && serverWorldAccess.getBlockState(test.north()).getBlock().equals(Blocks.NETHERRACK)
         && serverWorldAccess.getBlockState(test.west()).getBlock().equals(Blocks.NETHERRACK)
         && serverWorldAccess.getBlockState(test.up()).isAir()) {
-      serverWorldAccess.setBlockState(test, main.NETHERGEYSERBLOCK.getDefaultState(), 3);
+      serverWorldAccess.setBlockState(test, BlockInit.NETHERGEYSERBLOCK.getDefaultState(), 3);
       return true;
     } else {
       return false;

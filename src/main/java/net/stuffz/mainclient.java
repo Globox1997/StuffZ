@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.stuffz.block.uncraftblockrenderer;
+import net.stuffz.init.BlockInit;
 
 @Environment(EnvType.CLIENT)
 
@@ -16,22 +17,22 @@ public class mainclient implements ClientModInitializer {
     @Override
 
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(main.SPELT, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.HOP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.MALT, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.NUTSBUSH, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.FLAX, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.ENDERBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.ADENDERBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.HEALBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.NETHERGEYSERBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.STONEGEYSERBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.SULFURBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.IRONBUSH, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.GOLDBUSH, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.DRIEDCLAY, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(main.UNCRAFTBLOCK, RenderLayer.getCutout());
-        BlockEntityRendererRegistry.INSTANCE.register(main.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SPELT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.HOP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.MALT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.NUTSBUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.FLAX, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.ENDERBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.ADENDERBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.HEALBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.NETHERGEYSERBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.STONEGEYSERBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SULFURBLOCK, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.IRONBUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.GOLDBUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.DRIEDCLAY, RenderLayer.getSolid());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.UNCRAFTBLOCK, RenderLayer.getCutout());
+        BlockEntityRendererRegistry.INSTANCE.register(BlockInit.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
     }
 
 }

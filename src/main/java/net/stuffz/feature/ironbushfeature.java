@@ -11,7 +11,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
 import net.stuffz.plants.ironbush;
 
 public class ironbushfeature extends Feature<DefaultFeatureConfig> {
@@ -36,8 +36,8 @@ public class ironbushfeature extends Feature<DefaultFeatureConfig> {
         && serverWorldAccess.getBlockState(bush2.down()).getBlock().equals(Blocks.GRASS_BLOCK)
         && serverWorldAccess.getBlockState(bush2.north()).isAir() && serverWorldAccess.getBlockState(bush1.up()).isAir()
         && serverWorldAccess.getBlockState(bush2.up()).isAir()) {
-      serverWorldAccess.setBlockState(bush1, main.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
-      serverWorldAccess.setBlockState(bush2, main.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
+      serverWorldAccess.setBlockState(bush1, BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
+      serverWorldAccess.setBlockState(bush2, BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
       return true;
     } else {
       return false;

@@ -1,12 +1,16 @@
 package net.stuffz.item;
 
+import java.util.Set;
+
+import com.google.common.collect.ImmutableSet;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.ToolItem;
+import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -14,13 +18,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.stuffz.block.uncraftblock;
 import net.stuffz.block.uncraftblockentity;
+import net.stuffz.init.BlockInit;
 
-import net.minecraft.item.AxeItem;
+public class ironhammer extends MiningToolItem {
+  public static final Set<Block> EFFECTIVE_BLOCKS;
 
-public class ironhammer extends ToolItem {
-
-  public ironhammer(ToolMaterial material, Settings settings) {
-    super(material, settings);
+  public ironhammer(float attackDamage, float attackSpeed, ToolMaterial material, Set<Block> effectiveBlocks,
+      Settings settings) {
+    super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
   }
 
   @Override
@@ -42,6 +47,10 @@ public class ironhammer extends ToolItem {
     } else {
       return ActionResult.PASS;
     }
+  }
+
+  static {
+    EFFECTIVE_BLOCKS = ImmutableSet.of(Blocks.STONE, BlockInit.UNCRAFTBLOCK);
   }
 
 }

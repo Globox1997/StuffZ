@@ -11,7 +11,8 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
+import net.stuffz.init.SoundInit;
 
 import java.util.Random;
 
@@ -43,8 +44,8 @@ public class nethergeyserblock extends Block {
         if (entity.isAttackable()) {
             if (world.isClient) {
                 entity.setVelocity(0, 1.2D, 0);
-                world.playSound(pos.getX(), pos.getY(), pos.getZ(), main.GEYSEREVENT, SoundCategory.AMBIENT, 1F, 1F,
-                        true);
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSEREVENT, SoundCategory.AMBIENT, 1F,
+                        1F, true);
                 while (count2 < 60) {
                     Random random1 = new Random();
                     Random random2 = new Random();
@@ -92,7 +93,7 @@ public class nethergeyserblock extends Block {
     }
 
     public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
-        ItemStack geyserdrop = new ItemStack(main.NETHERGEYSERBLOCK);
+        ItemStack geyserdrop = new ItemStack(BlockInit.NETHERGEYSERBLOCK);
         ItemStack netherrackdrop = new ItemStack(Items.NETHERRACK);
         super.onStacksDropped(state, world, pos, stack);
         if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {

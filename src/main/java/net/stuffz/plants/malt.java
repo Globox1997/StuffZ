@@ -2,7 +2,7 @@ package net.stuffz.plants;
 
 import net.minecraft.block.CropBlock;
 import net.minecraft.item.ItemConvertible;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
 
 public class malt extends CropBlock {
 
@@ -12,7 +12,7 @@ public class malt extends CropBlock {
 
     @Override
     protected ItemConvertible getSeedsItem() {
-        return main.MALT;
+        return BlockInit.MALT;
     }
 
 }

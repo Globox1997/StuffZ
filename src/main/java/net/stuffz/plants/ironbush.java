@@ -24,7 +24,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.stuffz.main;
+import net.stuffz.init.BlockInit;
 
 public class ironbush extends SweetBerryBushBlock {
 
@@ -34,7 +34,7 @@ public class ironbush extends SweetBerryBushBlock {
 
   @Environment(EnvType.CLIENT)
   public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-    return new ItemStack(main.IRONBUSH);
+    return new ItemStack(BlockInit.IRONBUSH);
   }
 
   @Override
@@ -75,7 +75,7 @@ public class ironbush extends SweetBerryBushBlock {
 
   @Override
   public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
-    ItemStack bush = new ItemStack(main.IRONBUSH);
+    ItemStack bush = new ItemStack(BlockInit.IRONBUSH);
     super.onStacksDropped(state, world, pos, stack);
     if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
       Block.dropStack(world, pos, bush);

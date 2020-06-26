@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.stuffz.main;
+import net.stuffz.init.TagInit;
 
 public class uncraftblock extends Block implements BlockEntityProvider {
   protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
@@ -51,7 +51,7 @@ public class uncraftblock extends Block implements BlockEntityProvider {
       return ActionResult.PASS;
     } else {
       ItemStack heldItem = player.getMainHandStack();
-      if (heldItem.getItem().isIn(main.UNCRAFT_ITEMS) && !heldItem.isDamaged()) {
+      if (heldItem.getItem().isIn(TagInit.UNCRAFT_ITEMS) && !heldItem.isDamaged()) {
         if (!world.isClient) {
           blockEntity.setStack(0, heldItem.split(1));
           return ActionResult.SUCCESS;
