@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=south": {
       "model": "stuffz:block/uncraftblock"
+    },
+    "facing=west": {
+      "model": "stuffz:block/uncraftblock",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "stuffz:block/uncraftblock",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "stuffz:block/uncraftblock",
+      "y": 270
     }
   }
 }

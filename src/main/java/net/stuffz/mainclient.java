@@ -32,6 +32,7 @@ public class mainclient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.GOLDBUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.DRIEDCLAY, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.UNCRAFTBLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.IRONLADDER, RenderLayer.getCutout());
         BlockEntityRendererRegistry.INSTANCE.register(BlockInit.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
     }
 

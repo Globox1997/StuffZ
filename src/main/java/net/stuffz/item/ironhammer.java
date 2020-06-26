@@ -12,13 +12,13 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.stuffz.block.uncraftblock;
 import net.stuffz.block.uncraftblockentity;
 import net.stuffz.init.BlockInit;
+import net.stuffz.init.SoundInit;
 
 public class ironhammer extends MiningToolItem {
   public static final Set<Block> EFFECTIVE_BLOCKS;
@@ -41,7 +41,7 @@ public class ironhammer extends MiningToolItem {
       if (!player.isCreative()) {
         context.getStack().damage(1, player, (p) -> p.sendToolBreakStatus(p.getActiveHand()));
       }
-      world.playSound(player, pos, SoundEvents.BLOCK_ENDER_CHEST_CLOSE, SoundCategory.BLOCKS, 1F, 1F);
+      world.playSound(player, pos, SoundInit.HAMMERHIT_EVENT, SoundCategory.BLOCKS, 0.4F, 1F);
       uncraftBlockEntity.setuncrafthit(uncraftBlockEntity.getuncrafthit() + 1);
       return ActionResult.SUCCESS;
     } else {

@@ -1,7 +1,10 @@
 package net.stuffz.init;
 
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -57,6 +60,31 @@ public class ItemInit {
     Registry.register(Registry.ITEM, new Identifier("stuffz", "sulfur"), SULFUR);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "ironhammer"), IRONHAMMER);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowruby"), YELLOWRUBY);
+    Registry.register(Registry.ITEM, new Identifier("stuffz", "speltwheat"), SPELTWHEAT);
+    Registry.register(Registry.ITEM, new Identifier("stuffz", "darkmalt"), DARKMALT);
+
+    registerCompostableItem(BlockInit.FLAX, 0.3F);
+    registerCompostableItem(BlockInit.NUTSBUSH, 0.3F);
+    registerCompostableItem(BlockInit.SPELT, 0.3F);
+    registerCompostableItem(BlockInit.HOP, 0.3F);
+    registerCompostableItem(BlockInit.GOLDBUSH, 0.85F);
+    registerCompostableItem(BlockInit.IRONBUSH, 0.65F);
+    registerCompostableItem(ItemInit.DOUGH, 0.3F);
+    registerCompostableItem(ItemInit.HOPS, 0.3F);
+    registerCompostableItem(ItemInit.DOUGH, 0.3F);
+    registerCompostableItem(ItemInit.CACTUSFRUIT, 0.3F);
+    registerCompostableItem(ItemInit.SPELTWHEAT, 0.65F);
+    registerCompostableItem(ItemInit.DARKMALT, 0.65F);
+    registerCompostableItem(ItemInit.VELVET, 0.85F);
+    registerCompostableItem(ItemInit.SPELTBREAD, 0.85F);
+    registerCompostableItem(ItemInit.CARROTPIE, 0.85F);
+    registerCompostableItem(ItemInit.CHOCOLATEBAR, 0.85F);
+  }
+
+  public static void registerCompostableItem(ItemConvertible item, float chance) {
+    if (item.asItem() != Items.AIR) {
+      ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
+    }
   }
 
 }

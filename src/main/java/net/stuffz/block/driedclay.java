@@ -12,6 +12,7 @@ public class driedclay extends Block {
     super(settings);
   }
 
+  @Override
   public void onSteppedOn(World world, BlockPos pos, Entity entity) {
     BlockPos water = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
     if (world.getBlockState(water.north()).getBlock().equals(Blocks.WATER)

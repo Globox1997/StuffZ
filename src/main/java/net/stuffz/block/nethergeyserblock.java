@@ -25,6 +25,7 @@ public class nethergeyserblock extends Block {
         super(settings);
     }
 
+    @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         Random random1 = new Random();
         Random random3 = new Random();
@@ -40,11 +41,12 @@ public class nethergeyserblock extends Block {
 
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
         if (entity.isAttackable()) {
             if (world.isClient) {
                 entity.setVelocity(0, 1.2D, 0);
-                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSEREVENT, SoundCategory.AMBIENT, 1F,
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F,
                         1F, true);
                 while (count2 < 60) {
                     Random random1 = new Random();
@@ -92,6 +94,7 @@ public class nethergeyserblock extends Block {
         }
     }
 
+    @Override
     public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
         ItemStack geyserdrop = new ItemStack(BlockInit.NETHERGEYSERBLOCK);
         ItemStack netherrackdrop = new ItemStack(Items.NETHERRACK);

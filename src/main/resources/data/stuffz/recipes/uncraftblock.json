@@ -1,12 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "aa",
-    "aa"
+    "aaa",
+    " c ",
+    "bbb"
   ],
   "key": {
     "a": {
       "item": "minecraft:iron_block"
+    },
+    "b": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "minecraft:crafting_table"
     }
   },
   "result": {

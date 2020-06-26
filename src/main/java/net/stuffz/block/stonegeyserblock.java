@@ -30,6 +30,7 @@ public class stonegeyserblock extends Block {
         super(settings);
     }
 
+    @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
 
@@ -48,7 +49,7 @@ public class stonegeyserblock extends Block {
         }
 
         if (z7 == 1) {
-            world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSEREVENT, SoundCategory.AMBIENT, 1F, 1F,
+            world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F, 1F,
                     true);
             while (count4 < 50) {
                 count5 = count4 / 10D;
@@ -65,6 +66,7 @@ public class stonegeyserblock extends Block {
 
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
         if (z7 == 1 && world.isClient) {
             entity.setVelocity(0, 1.1D, 0);
@@ -72,6 +74,7 @@ public class stonegeyserblock extends Block {
 
     }
 
+    @Override
     public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
         super.onStacksDropped(state, world, pos, stack);
         ItemStack geyserdrop = new ItemStack(BlockInit.STONEGEYSERBLOCK);

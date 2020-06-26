@@ -21,6 +21,7 @@ public class sulfurblock extends Block {
     return MathHelper.nextInt(random, 2, 5);
   }
 
+  @Override
   public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
     super.onStacksDropped(state, world, pos, stack);
     if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {

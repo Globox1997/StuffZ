@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stuffz:block/ironladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "stuffz:block/ironladder"
+    },
+    "facing=south": {
+      "model": "stuffz:block/ironladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "stuffz:block/ironladder",
+      "y": 270
+    }
+  }
+}

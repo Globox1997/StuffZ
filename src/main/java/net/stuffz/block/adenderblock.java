@@ -16,6 +16,7 @@ public class adenderblock extends RedstoneBlock {
         super(settings);
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
         StatusEffectInstance spd = new StatusEffectInstance(StatusEffect.byRawId(1), 15, 0, false, false);
         LivingEntity bob = (LivingEntity) entity;
@@ -34,10 +35,6 @@ public class adenderblock extends RedstoneBlock {
             world.addParticle(ParticleTypes.DRAGON_BREATH, entity.getX() + z2, entity.getY() + z4, entity.getZ() + z6,
                     0.0D, 0.0D, 0.0D);
         }
-    }
-
-    public boolean isClimmable() {
-        return true;
     }
 
 }

@@ -3,5 +3,14 @@
         "sounds": [
             "stuffz:geyser"
         ]
+    },
+    "hammerhit": {
+        "sounds": [
+            "stuffz:hammerhit1",
+            "stuffz:hammerhit2",
+            "stuffz:hammerhit3",
+            "stuffz:hammerhit4",
+            "stuffz:hammerhit5"
+        ]
     }
 }

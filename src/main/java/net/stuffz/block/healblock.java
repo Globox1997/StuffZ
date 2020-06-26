@@ -17,6 +17,7 @@ public class healblock extends Block {
         super(settings);
     }
 
+    @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         Random random1 = new Random();
         Random random3 = new Random();
@@ -30,6 +31,7 @@ public class healblock extends Block {
 
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
         StatusEffectInstance reg = new StatusEffectInstance(StatusEffect.byRawId(10), 20, 0, false, false);
         LivingEntity bob = (LivingEntity) entity;

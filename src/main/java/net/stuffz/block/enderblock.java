@@ -13,6 +13,7 @@ public class enderblock extends RedstoneBlock {
         super(settings);
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, Entity entity) {
         if (world.isClient) {
             Random random1 = new Random();
