@@ -20,14 +20,13 @@ public class darkbeer extends Item {
     super(settings);
   }
 
+  @Override
   public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
-
     StatusEffectInstance nausea = new StatusEffectInstance(StatusEffect.byRawId(9), 400, 0, true, false);
     StatusEffectInstance slowness = new StatusEffectInstance(StatusEffect.byRawId(2), 400, 0, true, false);
     StatusEffectInstance blindness = new StatusEffectInstance(StatusEffect.byRawId(15), 160, 0, true, false);
     StatusEffectInstance luck = new StatusEffectInstance(StatusEffect.byRawId(26), 400, 1, true, false);
     StatusEffectInstance badluck = new StatusEffectInstance(StatusEffect.byRawId(27), 800, 0, true, false);
-
     Random random = new Random();
     int randomNumber = random.nextInt() % 5;
     if (randomNumber < 0) {
@@ -48,21 +47,22 @@ public class darkbeer extends Item {
         case 4:
           entity.addStatusEffect(nausea);
           entity.addStatusEffect(badluck);
-
       }
-
     }
     return new ItemStack(Items.GLASS_BOTTLE);
   }
 
+  @Override
   public int getMaxUseTime(ItemStack itemStack_1) {
     return 32;
   }
 
+  @Override
   public UseAction getUseAction(ItemStack itemStack_1) {
     return UseAction.DRINK;
   }
 
+  @Override
   public TypedActionResult<ItemStack> use(World world_1, PlayerEntity playerEntity_1, Hand hand_1) {
     playerEntity_1.setCurrentHand(hand_1);
     return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));

@@ -21,6 +21,7 @@ public class beer extends Item {
     super(settings);
   }
 
+  @Override
   public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
 
     StatusEffectInstance nausea = new StatusEffectInstance(StatusEffect.byRawId(9), 200, 0, true, false);
@@ -47,21 +48,22 @@ public class beer extends Item {
           entity.addStatusEffect(blindness);
         case 4:
           entity.addStatusEffect(nausea);
-
       }
-
     }
     return new ItemStack(Items.GLASS_BOTTLE);
   }
 
+  @Override
   public int getMaxUseTime(ItemStack itemStack_1) {
     return 32;
   }
 
+  @Override
   public UseAction getUseAction(ItemStack itemStack_1) {
     return UseAction.DRINK;
   }
 
+  @Override
   public TypedActionResult<ItemStack> use(World world_1, PlayerEntity playerEntity_1, Hand hand_1) {
     playerEntity_1.setCurrentHand(hand_1);
     return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));

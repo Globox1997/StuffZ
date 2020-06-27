@@ -29,6 +29,7 @@ public class nutsbush extends SweetBerryBushBlock {
       return new ItemStack(BlockInit.NUTSBUSH);
    }
 
+   @Override
    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
          BlockHitResult hit) {
       int i = (Integer) state.get(AGE);
