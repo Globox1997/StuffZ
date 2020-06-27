@@ -36,6 +36,7 @@ public class ItemInit {
   public static final shinydiamond SHINYDIAMOND = new shinydiamond(new Item.Settings().group(ItemGroup.MISC));
   public static final chainmailplate CHAINMAILPLATE = new chainmailplate(new Item.Settings().group(ItemGroup.MISC));
   public static final yellowruby YELLOWRUBY = new yellowruby(new Item.Settings().group(ItemGroup.MISC));
+  public static final bedrockremover BEDROCKREMOVER = new bedrockremover(new Item.Settings().group(ItemGroup.TOOLS));
 
   public static final ironhammer IRONHAMMER = new ironhammer(1F, -2.8F, ToolMaterials.IRON, ironhammer.EFFECTIVE_BLOCKS,
       new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
@@ -62,6 +63,7 @@ public class ItemInit {
     Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowruby"), YELLOWRUBY);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "speltwheat"), SPELTWHEAT);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "darkmalt"), DARKMALT);
+    Registry.register(Registry.ITEM, new Identifier("stuffz", "bedrockremover"), BEDROCKREMOVER);
 
     registerCompostableItem(BlockInit.FLAX, 0.3F);
     registerCompostableItem(BlockInit.NUTSBUSH, 0.3F);

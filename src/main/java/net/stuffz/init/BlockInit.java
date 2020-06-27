@@ -48,6 +48,10 @@ public class BlockInit {
         public static final fossilblock FOSSILBLOCK = new fossilblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
         public static final ironladder IRONLADDER = new ironladder(FabricBlockSettings.of(Material.SUPPORTED)
                         .strength(0.6F).sounds(BlockSoundGroup.LADDER).nonOpaque());
+        public static final brewingbarrel BREWINGBARREL = new brewingbarrel(
+                        FabricBlockSettings.copy(Blocks.SPRUCE_PLANKS));
+        public static final BlockEntityType<brewingbarrelentity> BREWINGBARRELENTITY = BlockEntityType.Builder
+                        .create(brewingbarrelentity::new, BREWINGBARREL).build(null);
 
         public static void init() {
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
@@ -107,6 +111,10 @@ public class BlockInit {
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "ironladder"),
                                 new BlockItem(IRONLADDER, new Item.Settings().group(ItemGroup.DECORATIONS)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "ironladder"), IRONLADDER);
+                Registry.register(Registry.ITEM, new Identifier("stuffz", "brewingbarrel"),
+                                new BlockItem(BREWINGBARREL, new Item.Settings().group(ItemGroup.DECORATIONS)));
+                Registry.register(Registry.BLOCK, new Identifier("stuffz", "brewingbarrel"), BREWINGBARREL);
+                Registry.register(Registry.BLOCK_ENTITY_TYPE, "stuffz:brewingbarrelentity", BREWINGBARRELENTITY);
         }
 
 }

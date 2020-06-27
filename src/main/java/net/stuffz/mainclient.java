@@ -7,6 +7,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.stuffz.block.brewingbarrelrenderer;
 import net.stuffz.block.uncraftblockrenderer;
 import net.stuffz.init.BlockInit;
 
@@ -33,7 +34,9 @@ public class mainclient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.DRIEDCLAY, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.UNCRAFTBLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.IRONLADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.BREWINGBARREL, RenderLayer.getCutout());
         BlockEntityRendererRegistry.INSTANCE.register(BlockInit.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(BlockInit.BREWINGBARRELENTITY, brewingbarrelrenderer::new);
     }
 
 }

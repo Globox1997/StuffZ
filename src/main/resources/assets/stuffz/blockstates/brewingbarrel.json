@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "stuffz:block/brewingbarrel"
+    },
+    "facing=west": {
+      "model": "stuffz:block/brewingbarrel",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "stuffz:block/brewingbarrel",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "stuffz:block/brewingbarrel",
+      "y": 270
+    }
+  }
+}

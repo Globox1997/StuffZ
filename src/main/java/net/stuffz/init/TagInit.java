@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 public class TagInit {
 
   public static final Tag<Item> UNCRAFT_ITEMS = TagRegistry.item(new Identifier("stuffz", "uncraft_items"));
+  public static final Tag<Item> AXE_ITEMS = TagRegistry.item(new Identifier("stuffz", "axe_items"));
 
   public static void init() {
   }

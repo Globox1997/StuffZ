@@ -27,6 +27,8 @@
     "block.stuffz.uncraftblock": "Uncraft Anvil",
     "block.stuffz.fossilblock": "Fossil Block",
     "block.stuffz.yellowrubyblock": "Ruby Ore",
+    "block.stuffz.brewingbarrel": "Brewing Barrel",
+    "item.stuffz.brewingbarrel": "Brewing Barrel",
     "item.stuffz.yellowrubyblock": "Ruby Ore",
     "item.stuffz.yellowruby": "Yellow Ruby",
     "item.stuffz.fossilblock": "Fossil Block",
@@ -55,5 +57,6 @@
     "item.stuffz.melonstew": "Melon Stew",
     "item.stuffz.velvet": "Red Velvet Cake Slice",
     "item.stuffz.chainmailplate": "Chainmail Plate",
-    "item.stuffz.ironhammer": "Iron Hammer"
+    "item.stuffz.ironhammer": "Iron Hammer",
+    "item.stuffz.bedrockremover": "Trident Staff"
 }
