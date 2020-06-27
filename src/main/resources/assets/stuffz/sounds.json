@@ -12,5 +12,12 @@
             "stuffz:hammerhit4",
             "stuffz:hammerhit5"
         ]
+    },
+    "barrelhit": {
+        "sounds": [
+            "stuffz:barrelhit1",
+            "stuffz:barrelhit2",
+            "stuffz:barrelhit3"
+        ]
     }
 }
