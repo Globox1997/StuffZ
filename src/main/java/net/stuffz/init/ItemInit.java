@@ -25,8 +25,8 @@ public class ItemInit {
   public static final velvet VELVET = new velvet();
   public static final sulfur SULFUR = new sulfur(new Item.Settings().group(ItemGroup.MISC));
 
-  public static final hops HOPS = new hops(new Item.Settings());
-  public static final darkmalt DARKMALT = new darkmalt(new Item.Settings());
+  public static final hops HOPS = new hops(new Item.Settings().group(ItemGroup.MISC));
+  public static final darkmalt DARKMALT = new darkmalt(new Item.Settings().group(ItemGroup.MISC));
   public static final speltwheat SPELTWHEAT = new speltwheat(new Item.Settings().group(ItemGroup.MISC));
   public static final beer BEER = new beer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
   public static final darkbeer DARKBEER = new darkbeer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));

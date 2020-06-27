@@ -10,10 +10,13 @@ public class SoundInit {
   public static SoundEvent GEYSER_EVENT = new SoundEvent(GEYSER);
   public static final Identifier HAMMERHIT = new Identifier("stuffz:hammerhit");
   public static SoundEvent HAMMERHIT_EVENT = new SoundEvent(HAMMERHIT);
+  public static final Identifier BARRELHIT = new Identifier("stuffz:barrelhit");
+  public static SoundEvent BARRELHIT_EVENT = new SoundEvent(BARRELHIT);
 
   public static void init() {
     Registry.register(Registry.SOUND_EVENT, GEYSER, GEYSER_EVENT);
     Registry.register(Registry.SOUND_EVENT, HAMMERHIT, HAMMERHIT_EVENT);
+    Registry.register(Registry.SOUND_EVENT, BARRELHIT, BARRELHIT_EVENT);
   }
 
 }

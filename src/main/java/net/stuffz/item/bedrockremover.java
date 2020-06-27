@@ -16,17 +16,21 @@ import net.minecraft.world.World;
 import net.stuffz.init.ItemInit;
 
 public class bedrockremover extends Item {
-  // public boolean rubyactive = false;
+  public boolean rubyactive = false;
 
   public bedrockremover(Settings settings) {
     super(settings);
 
-    FabricModelPredicateProviderRegistry.register(new Identifier("active"), (stack, world, entity) -> {
-      CompoundTag tags = stack.getTag();
+    FabricModelPredicateProviderRegistry.register(new Identifier("stuffz", "active"), (stack, world, entity) -> {
+      // CompoundTag tags = stack.getTag();
+
       // if (tags.getBoolean("active")) {
-      if (tags.contains("active")) {
-        if (tags.getBoolean("active")) {
+      // if (tags.contains("active")) {
+      if (stack.hasTag()) {
+        if (stack.getTag().contains("active")) {
+          // if (rubyactive == false) {
           return 1F;
+          // }
         }
       }
       return 0F;

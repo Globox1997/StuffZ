@@ -11,6 +11,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
@@ -26,23 +27,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
+import net.stuffz.init.SoundInit;
 import net.stuffz.init.TagInit;
 import net.minecraft.block.Block;
 
 public class brewingbarrel extends Block implements BlockEntityProvider {
   public static final DirectionProperty FACING;
-  private static final VoxelShape X_SHAPE1;
-  private static final VoxelShape X_SHAPE2;
-  private static final VoxelShape X_SHAPE3;
-  private static final VoxelShape X_SHAPE4;
-  private static final VoxelShape X_SHAPE5;
-  private static final VoxelShape X_SHAPE6;
-  private static final VoxelShape Z_SHAPE1;
-  private static final VoxelShape Z_SHAPE2;
-  private static final VoxelShape Z_SHAPE3;
-  private static final VoxelShape Z_SHAPE4;
-  private static final VoxelShape Z_SHAPE5;
-  private static final VoxelShape Z_SHAPE6;
   private static final VoxelShape X_AXIS_SHAPE;
   private static final VoxelShape Z_AXIS_SHAPE;
 
@@ -59,7 +49,7 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
   @Override
   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
     Direction direction = (Direction) state.get(FACING);
-    return direction.getAxis() == Direction.Axis.X ? Z_AXIS_SHAPE : X_AXIS_SHAPE;
+    return direction.getAxis() == Direction.Axis.X ? X_AXIS_SHAPE : Z_AXIS_SHAPE;
   }
 
   @Override
@@ -87,9 +77,6 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
       BlockHitResult hit) {
     Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
     ItemStack stackaxe = blockEntity.getStack(0);
-    ItemStack stackwater = blockEntity.getStack(1);
-    ItemStack stackmalt = blockEntity.getStack(2);
-    ItemStack stackhops = blockEntity.getStack(3);
     ItemStack stackbeer = blockEntity.getStack(4);
 
     if (!blockEntity.isEmpty()) {
@@ -106,58 +93,46 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
           }
           blockEntity.getStack(0).decrement(1);
           return ActionResult.SUCCESS;
-        } else if (!stackmalt.isEmpty() || !stackhops.isEmpty()) {
-          if (!world.isClient) {
-            player.giveItemStack(stackmalt);
-            player.giveItemStack(stackhops);
-          }
-          blockEntity.getStack(2).decrement(1);
-          blockEntity.getStack(3).decrement(1);
-          return ActionResult.SUCCESS;
-        } else if (!stackwater.isEmpty()) {
-          if (!world.isClient) {
-            player.giveItemStack(stackwater); // Only Water remove
-          }
-          blockEntity.getStack(1).decrement(1);
-          return ActionResult.SUCCESS;
         }
       }
       return ActionResult.PASS;
     } else {
       ItemStack heldItem = player.getMainHandStack();
-      if (heldItem.getItem().isIn(TagInit.AXE_ITEMS)) {
+      if (heldItem.getItem().isIn(TagInit.AXE_ITEMS) && blockEntity.getStack(0).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(0, heldItem.split(1));
           } else {
-            blockEntity.setStack(0, heldItem.copy());
+            blockEntity.setStack(0, heldItem.copy().split(1));
           }
+          world.playSound(null, pos, SoundInit.BARRELHIT_EVENT, SoundCategory.BLOCKS, 0.3F, 1F);
           return ActionResult.SUCCESS;
         }
-      } else if (heldItem.getItem().equals(ItemInit.DARKMALT) || heldItem.isItemEqual(new ItemStack(BlockInit.MALT))) {
+      } else if ((heldItem.getItem().equals(ItemInit.DARKMALT) || heldItem.isItemEqual(new ItemStack(BlockInit.MALT)))
+          && blockEntity.getStack(2).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(2, heldItem.split(1));
           } else {
-            blockEntity.setStack(2, heldItem.copy());
+            blockEntity.setStack(2, heldItem.copy().split(1));
           }
           return ActionResult.SUCCESS;
         }
-      } else if (heldItem.getItem().equals(ItemInit.HOPS)) {
+      } else if (heldItem.getItem().equals(ItemInit.HOPS) && blockEntity.getStack(3).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(3, heldItem.split(1));
           } else {
-            blockEntity.setStack(3, heldItem.copy());
+            blockEntity.setStack(3, heldItem.copy().split(1));
           }
           return ActionResult.SUCCESS;
         }
-      } else if (heldItem.getItem().equals(Items.WATER_BUCKET)) {
+      } else if (heldItem.getItem().equals(Items.GLASS_BOTTLE) && blockEntity.getStack(1).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(1, heldItem.split(1));
           } else {
-            blockEntity.setStack(1, heldItem.copy());
+            blockEntity.setStack(1, heldItem.copy().split(1));
           }
           return ActionResult.SUCCESS;
         }
@@ -174,26 +149,53 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
         ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
         world.updateComparators(pos, this);
       }
-
       super.onStateReplaced(state, world, pos, newState, moved);
     }
   }
 
   static {
     FACING = HorizontalFacingBlock.FACING;
-    X_SHAPE1 = Block.createCuboidShape(5D, 12D, 0D, 11D, 13D, 16D);
-    X_SHAPE2 = Block.createCuboidShape(3D, 11D, 0D, 13D, 12D, 16D);
-    X_SHAPE3 = Block.createCuboidShape(2D, 9D, 0D, 14D, 11D, 16D);
-    X_SHAPE4 = Block.createCuboidShape(1D, 3D, 0D, 15D, 9D, 16D);
-    X_SHAPE5 = Block.createCuboidShape(2D, 1D, 0D, 14D, 3D, 16D);
-    X_SHAPE6 = Block.createCuboidShape(3D, 0D, 0D, 13D, 1D, 16D);
-    Z_SHAPE1 = Block.createCuboidShape(0D, 12D, 5D, 16D, 13D, 11D);
-    Z_SHAPE2 = Block.createCuboidShape(0D, 11D, 3D, 16D, 12D, 13D);
-    Z_SHAPE3 = Block.createCuboidShape(0D, 9D, 2D, 16D, 11D, 14D);
-    Z_SHAPE4 = Block.createCuboidShape(0D, 3D, 1D, 16D, 9D, 15D);
-    Z_SHAPE5 = Block.createCuboidShape(0D, 1D, 2D, 16D, 3D, 14D);
-    Z_SHAPE6 = Block.createCuboidShape(0D, 0D, 3D, 16D, 1D, 13D);
-    X_AXIS_SHAPE = VoxelShapes.union(X_SHAPE1, X_SHAPE2, X_SHAPE3, X_SHAPE4, X_SHAPE5, X_SHAPE6);
-    Z_AXIS_SHAPE = VoxelShapes.union(Z_SHAPE1, Z_SHAPE2, Z_SHAPE3, Z_SHAPE4, Z_SHAPE5, Z_SHAPE6);
+    X_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(5D, 0, 1D, 11D, 1D, 15D),
+        createCuboidShape(5D, 0D, 0D, 11D, 1D, 1D), createCuboidShape(5D, 0D, 15D, 11D, 1D, 16D),
+        createCuboidShape(3D, 1D, 1D, 13D, 3D, 15D), createCuboidShape(3D, 1D, 0D, 4D, 3D, 1D),
+        createCuboidShape(3D, 1D, 15D, 4D, 3D, 16D), createCuboidShape(12D, 1D, 0D, 13D, 3D, 1D),
+        createCuboidShape(12D, 1D, 15D, 13D, 3D, 1D), createCuboidShape(2D, 3D, 1D, 14D, 9D, 15D),
+        createCuboidShape(2D, 3D, 0D, 3D, 9D, 1D), createCuboidShape(2D, 3D, 15D, 3D, 9D, 16D),
+        createCuboidShape(13D, 3D, 0D, 14D, 9D, 1D), createCuboidShape(13D, 3D, 15D, 14D, 9D, 16D),
+        createCuboidShape(3D, 9D, 1D, 13D, 11D, 15D), createCuboidShape(3D, 9D, 0D, 4D, 11D, 1D),
+        createCuboidShape(3D, 9D, 15D, 4D, 11D, 16D), createCuboidShape(12D, 9D, 0D, 13D, 11D, 1D),
+        createCuboidShape(12D, 9D, 15D, 13D, 11D, 16D), createCuboidShape(11D, 10D, 0D, 12D, 11D, 1D),
+        createCuboidShape(11D, 10D, 15D, 12D, 11D, 16D), createCuboidShape(11D, 1D, 0D, 12D, 2D, 1D),
+        createCuboidShape(11D, 1D, 15D, 12D, 2D, 16D), createCuboidShape(4D, 10D, 0D, 5D, 11D, 1D),
+        createCuboidShape(4D, 10D, 15D, 5D, 11D, 16D), createCuboidShape(4D, 1D, 0D, 5D, 2D, 1D),
+        createCuboidShape(4D, 1D, 15D, 5D, 2D, 16D), createCuboidShape(5D, 11D, 1D, 11D, 12D, 15D),
+        createCuboidShape(5D, 11D, 0D, 11D, 12D, 1D), createCuboidShape(5D, 11D, 15D, 11D, 12D, 16D),
+        createCuboidShape(14D, 3D, 3D, 15D, 9D, 13D), createCuboidShape(1D, 3D, 3D, 2D, 9D, 13D),
+        createCuboidShape(2D, 9D, 3D, 3D, 11D, 13D), createCuboidShape(13D, 9D, 3D, 14D, 11D, 13D),
+        createCuboidShape(13D, 1D, 3D, 14D, 3D, 13D), createCuboidShape(2D, 1D, 3D, 3D, 3D, 13D),
+        createCuboidShape(11D, 0D, 3D, 13D, 1D, 13D), createCuboidShape(3D, 0D, 3D, 5D, 1D, 13D),
+        createCuboidShape(3D, 11D, 3D, 5D, 12D, 13D), createCuboidShape(11D, 11D, 3D, 13D, 12D, 13D),
+        createCuboidShape(5D, 12D, 3D, 11D, 13D, 13D), createCuboidShape(6D, 2D, 0D, 10D, 3D, 1D));
+    Z_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(1D, 0D, 5D, 15D, 1D, 11D),
+        createCuboidShape(15D, 0D, 5D, 16D, 1D, 11D), createCuboidShape(0D, 0D, 5D, 1D, 1D, 11D),
+        createCuboidShape(1D, 1D, 3D, 15D, 3D, 13D), createCuboidShape(15D, 1D, 3D, 16D, 3D, 4D),
+        createCuboidShape(0D, 1D, 3D, 1D, 3D, 4D), createCuboidShape(15D, 1D, 12D, 16D, 3D, 13D),
+        createCuboidShape(0D, 1D, 12D, 1D, 3D, 13D), createCuboidShape(1D, 3D, 2D, 15D, 9D, 14D),
+        createCuboidShape(15D, 3D, 2D, 16D, 9D, 3D), createCuboidShape(0D, 3D, 2D, 1D, 9D, 3D),
+        createCuboidShape(15D, 3D, 13D, 16D, 9D, 14D), createCuboidShape(0D, 3D, 13D, 1D, 9D, 14D),
+        createCuboidShape(1D, 9D, 3D, 15D, 11D, 13D), createCuboidShape(15D, 9D, 3D, 16D, 11D, 4D),
+        createCuboidShape(0D, 9D, 3D, 1D, 11D, 4D), createCuboidShape(15D, 9D, 12D, 16D, 11D, 13D),
+        createCuboidShape(0D, 9D, 12D, 1D, 11D, 13D), createCuboidShape(15D, 10D, 11D, 16D, 11D, 12D),
+        createCuboidShape(0D, 10D, 11D, 1D, 11D, 12D), createCuboidShape(15D, 1D, 11D, 16D, 2D, 12D),
+        createCuboidShape(0D, 1D, 11D, 1D, 2D, 12D), createCuboidShape(15D, 10D, 4D, 16D, 11D, 5D),
+        createCuboidShape(0D, 10D, 4D, 1D, 11D, 5D), createCuboidShape(15D, 1D, 4D, 16D, 2D, 5D),
+        createCuboidShape(0D, 1D, 4D, 1D, 2D, 5D), createCuboidShape(1D, 11D, 5D, 15D, 12D, 11D),
+        createCuboidShape(15D, 11D, 5D, 16D, 12D, 11D), createCuboidShape(0D, 11D, 5D, 1D, 12D, 11D),
+        createCuboidShape(3D, 3D, 14D, 13D, 9D, 15D), createCuboidShape(3D, 3D, 1D, 13D, 9D, 2D),
+        createCuboidShape(3D, 9D, 2D, 13D, 11D, 3D), createCuboidShape(3D, 9D, 13D, 13D, 11D, 14D),
+        createCuboidShape(3D, 1D, 13D, 13D, 3D, 14D), createCuboidShape(3D, 1D, 2D, 13D, 3D, 3D),
+        createCuboidShape(3D, 0D, 11D, 13D, 1D, 13D), createCuboidShape(3D, 0D, 3D, 13D, 1D, 5D),
+        createCuboidShape(3D, 11D, 3D, 13D, 12D, 5D), createCuboidShape(3D, 11D, 11D, 13D, 12D, 13D),
+        createCuboidShape(3D, 12D, 5D, 13D, 13D, 11D), createCuboidShape(15D, 2D, 6D, 16D, 3D, 10D));
   }
 }
