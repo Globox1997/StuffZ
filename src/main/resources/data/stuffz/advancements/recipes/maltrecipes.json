@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:darkmalt",
+      "stuffz:darkmalt2"
+    ]
+  },
+  "criteria": {
+    "got_the_malt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stuffz:malt"
+          }
+        ]
+      }
+    }
+  }
+}

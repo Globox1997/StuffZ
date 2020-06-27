@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:diamondhorsearmor",
+      "stuffz:shinydiamond",
+      "stuffz:trident",
+      "stuffz:tridenttop"
+    ]
+  },
+  "criteria": {
+    "got_the_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:diamond"
+          }
+        ]
+      }
+    }
+  }
+}

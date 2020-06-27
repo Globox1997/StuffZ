@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:breado",
+      "stuffz:breado2",
+      "stuffz:carrotpie",
+      "stuffz:dough",
+      "stuffz:velvet"
+    ]
+  },
+  "criteria": {
+    "got_the_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  }
+}

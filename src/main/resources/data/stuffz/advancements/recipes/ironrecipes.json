@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:brewingbarrel",
+      "stuffz:chainboots",
+      "stuffz:chainchestplate",
+      "stuffz:chainhelmet",
+      "stuffz:chainleggings",
+      "stuffz:chainmailplate",
+      "stuffz:ironhammer",
+      "stuffz:ironladder",
+      "stuffz:ironhorsearmor",
+      "stuffz:uncraftblock"
+    ]
+  },
+  "criteria": {
+    "got_the_iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

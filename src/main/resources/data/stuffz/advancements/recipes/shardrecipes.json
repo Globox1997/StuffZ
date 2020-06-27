@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:bedrockremover",
+      "stuffz:tridentstick"
+    ]
+  },
+  "criteria": {
+    "got_the_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:prismarine_shard"
+          }
+        ]
+      }
+    }
+  }
+}
