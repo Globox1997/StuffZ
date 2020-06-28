@@ -26,10 +26,12 @@
     "block.stuffz.driedclay": "Dried Clay",
     "block.stuffz.uncraftblock": "Uncraft Anvil",
     "block.stuffz.fossilblock": "Fossil Block",
-    "block.stuffz.yellowrubyblock": "Ruby Ore",
+    "block.stuffz.yellowrubyblock": "Ruby Block",
     "block.stuffz.brewingbarrel": "Brewing Barrel",
+    "block.stuffz.yellowrubyore": "Ruby Ore",
+    "item.stuffz.yellowrubyore": "Ruby Ore",
     "item.stuffz.brewingbarrel": "Brewing Barrel",
-    "item.stuffz.yellowrubyblock": "Ruby Ore",
+    "item.stuffz.yellowrubyblock": "Ruby Block",
     "item.stuffz.yellowruby": "Yellow Ruby",
     "item.stuffz.fossilblock": "Fossil Block",
     "item.stuffz.uncraftblock": "Uncraft Anvil",
@@ -58,5 +60,6 @@
     "item.stuffz.velvet": "Red Velvet Cake Slice",
     "item.stuffz.chainmailplate": "Chainmail Plate",
     "item.stuffz.ironhammer": "Iron Hammer",
-    "item.stuffz.bedrockremover": "Trident Staff"
+    "item.stuffz.bedrockremover": "Trident Staff",
+    "item.stuffz.bedrockremover.tooltip": "Nether Bedrock Breaker"
 }

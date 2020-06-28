@@ -79,7 +79,7 @@ public class FeatureInit {
                 if (category == Biome.Category.OCEAN || category == Biome.Category.ICY) {
                         biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE
                                         .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE,
-                                                        BlockInit.YELLOWRUBYBLOCK.getDefaultState(), 1))
+                                                        BlockInit.YELLOWRUBYORE.getDefaultState(), 1))
                                         .createDecoratedFeature(Decorator.COUNT_RANGE
                                                         .configure(new RangeDecoratorConfig(1, 0, 7, 58))));
                 }

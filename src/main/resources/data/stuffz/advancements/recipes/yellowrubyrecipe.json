@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "stuffz:yellowrubyblock",
+      "stuffz:yellowrubyblock2"
+    ]
+  },
+  "criteria": {
+    "got_the_ruby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "stuffz:yellowruby"
+          }
+        ]
+      }
+    }
+  }
+}

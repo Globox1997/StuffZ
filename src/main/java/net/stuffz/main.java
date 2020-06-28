@@ -19,5 +19,7 @@ public class main implements ModInitializer {
 
 }
 
+// System.out.println("hastag" + stack.hasTag());
+
 // You are LOVED!!!
 // Jesus loves you unconditionaly!

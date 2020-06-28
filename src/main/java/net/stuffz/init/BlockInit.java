@@ -52,6 +52,8 @@ public class BlockInit {
                         FabricBlockSettings.copy(Blocks.SPRUCE_PLANKS));
         public static final BlockEntityType<brewingbarrelentity> BREWINGBARRELENTITY = BlockEntityType.Builder
                         .create(brewingbarrelentity::new, BREWINGBARREL).build(null);
+        public static final yellowrubyore YELLOWRUBYORE = new yellowrubyore(
+                        FabricBlockSettings.copy(Blocks.DIAMOND_BLOCK));
 
         public static void init() {
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
@@ -115,6 +117,9 @@ public class BlockInit {
                                 new BlockItem(BREWINGBARREL, new Item.Settings().group(ItemGroup.DECORATIONS)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "brewingbarrel"), BREWINGBARREL);
                 Registry.register(Registry.BLOCK_ENTITY_TYPE, "stuffz:brewingbarrelentity", BREWINGBARRELENTITY);
+                Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowrubyore"),
+                                new BlockItem(YELLOWRUBYORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+                Registry.register(Registry.BLOCK, new Identifier("stuffz", "yellowrubyore"), YELLOWRUBYORE);
         }
 
 }
