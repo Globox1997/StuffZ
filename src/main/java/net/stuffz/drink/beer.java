@@ -25,12 +25,13 @@ public class beer extends Item {
   public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
 
     StatusEffectInstance nausea = new StatusEffectInstance(StatusEffect.byRawId(9), 200, 0, true, false);
+    StatusEffectInstance nauseastrong = new StatusEffectInstance(StatusEffect.byRawId(9), 600, 2, true, false);
     StatusEffectInstance slowness = new StatusEffectInstance(StatusEffect.byRawId(2), 200, 0, true, false);
     StatusEffectInstance blindness = new StatusEffectInstance(StatusEffect.byRawId(15), 80, 0, true, false);
     StatusEffectInstance luck = new StatusEffectInstance(StatusEffect.byRawId(26), 400, 0, true, false);
 
     Random random = new Random();
-    int randomNumber = random.nextInt() % 5;
+    int randomNumber = random.nextInt() % 6;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -47,6 +48,10 @@ public class beer extends Item {
         case 3:
           entity.addStatusEffect(blindness);
         case 4:
+          entity.addStatusEffect(nausea);
+        case 5:
+          entity.addStatusEffect(nauseastrong);
+        default:
           entity.addStatusEffect(nausea);
       }
     }

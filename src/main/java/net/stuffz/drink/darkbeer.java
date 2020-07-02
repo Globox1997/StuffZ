@@ -27,8 +27,10 @@ public class darkbeer extends Item {
     StatusEffectInstance blindness = new StatusEffectInstance(StatusEffect.byRawId(15), 160, 0, true, false);
     StatusEffectInstance luck = new StatusEffectInstance(StatusEffect.byRawId(26), 400, 1, true, false);
     StatusEffectInstance badluck = new StatusEffectInstance(StatusEffect.byRawId(27), 800, 0, true, false);
+    StatusEffectInstance badomen = new StatusEffectInstance(StatusEffect.byRawId(31), 800, 0, true, false);
+    StatusEffectInstance hero = new StatusEffectInstance(StatusEffect.byRawId(32), 1200, 0, true, false);
     Random random = new Random();
-    int randomNumber = random.nextInt() % 5;
+    int randomNumber = random.nextInt() % 7;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -46,6 +48,14 @@ public class darkbeer extends Item {
           entity.addStatusEffect(blindness);
         case 4:
           entity.addStatusEffect(nausea);
+          entity.addStatusEffect(badluck);
+        case 5:
+          entity.addStatusEffect(nausea);
+          entity.addStatusEffect(badomen);
+        case 6:
+          entity.addStatusEffect(hero);
+          entity.addStatusEffect(luck);
+        default:
           entity.addStatusEffect(badluck);
       }
     }
