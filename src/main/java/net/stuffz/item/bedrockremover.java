@@ -71,7 +71,7 @@ public class bedrockremover extends Item {
 
   @Override
   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-    ItemStack stack = user.getMainHandStack();
+    ItemStack stack = user.getStackInHand(hand);
     CompoundTag tags = stack.getTag();
     ItemStack ruby = new ItemStack(ItemInit.YELLOWRUBY);
     int rubyslot = user.inventory.getSlotWithStack(ruby);

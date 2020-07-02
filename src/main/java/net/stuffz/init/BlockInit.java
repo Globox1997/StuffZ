@@ -47,7 +47,7 @@ public class BlockInit {
                         FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
         public static final fossilblock FOSSILBLOCK = new fossilblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
         public static final ironladder IRONLADDER = new ironladder(FabricBlockSettings.of(Material.SUPPORTED)
-                        .strength(0.6F).sounds(BlockSoundGroup.LADDER).nonOpaque());
+                        .strength(0.6F).sounds(SoundInit.IRONLADDER_GROUP).nonOpaque());
         public static final brewingbarrel BREWINGBARREL = new brewingbarrel(
                         FabricBlockSettings.copy(Blocks.SPRUCE_PLANKS));
         public static final BlockEntityType<brewingbarrelentity> BREWINGBARRELENTITY = BlockEntityType.Builder

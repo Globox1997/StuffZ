@@ -19,5 +19,15 @@
             "stuffz:barrelhit2",
             "stuffz:barrelhit3"
         ]
+    },
+    "ironladder": {
+        "sounds": [
+            "stuffz:ladderclimb1",
+            "stuffz:ladderclimb2",
+            "stuffz:ladderclimb3",
+            "stuffz:ladderclimb4",
+            "stuffz:ladderclimb5",
+            "stuffz:ladderclimb6"
+        ]
     }
 }
