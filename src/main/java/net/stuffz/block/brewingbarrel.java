@@ -12,6 +12,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
@@ -142,15 +143,15 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
   }
 
   @Override
-  public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-    if (!state.isOf(newState.getBlock())) {
-      BlockEntity blockEntity = world.getBlockEntity(pos);
-      if (blockEntity instanceof Inventory) {
-        ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
-        world.updateComparators(pos, this);
-      }
-      super.onStateReplaced(state, world, pos, newState, moved);
+  public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state,
+      @Nullable BlockEntity blockEntity, ItemStack stack) {
+    player.incrementStat(Stats.MINED.getOrCreateStat(this));
+    player.addExhaustion(0.005F);
+    if (blockEntity instanceof Inventory) {
+      ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
+      world.updateComparators(pos, this);
     }
+    dropStacks(state, world, pos, blockEntity, player, stack);
   }
 
   static {
