@@ -280,33 +280,15 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
       this.setStack(0, new ItemStack(Items.LEATHER, 4));
     }
     // Netherite
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_CHESTPLATE))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 8));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_LEGGINGS))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 7));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HELMET))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 5));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_BOOTS))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 4));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_AXE))
-        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_PICKAXE))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 3));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HOE))
-        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SWORD))) {
-      this.clear();
-      this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 2));
-    }
-    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SHOVEL))) {
+    if (itemStack.isItemEqual(new ItemStack(Items.NETHERITE_CHESTPLATE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_LEGGINGS))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HELMET))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_BOOTS))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_AXE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_PICKAXE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_HOE))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SWORD))
+        || itemStack.isItemEqual(new ItemStack(Items.NETHERITE_SHOVEL))) {
       this.clear();
       this.setStack(0, new ItemStack(Items.NETHERITE_INGOT, 1));
     }
