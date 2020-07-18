@@ -2,7 +2,6 @@ package net.stuffz.item;
 
 import java.util.List;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;
@@ -15,7 +14,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.stuffz.init.ItemInit;
@@ -25,14 +23,6 @@ public class bedrockremover extends Item {
   public bedrockremover(Settings settings) {
     super(settings);
 
-    FabricModelPredicateProviderRegistry.register(new Identifier("active"), (stack, world, entity) -> {
-      if (stack.hasTag()) {
-        if (stack.getTag().getBoolean("activeruby")) {
-          return 1F;
-        }
-      }
-      return 0F;
-    });
   }
 
   @Override
