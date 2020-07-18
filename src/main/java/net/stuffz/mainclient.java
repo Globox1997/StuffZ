@@ -16,7 +16,6 @@ import net.stuffz.init.BlockInit;
 public class mainclient implements ClientModInitializer {
 
     @Override
-
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SPELT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.HOP, RenderLayer.getCutout());

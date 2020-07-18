@@ -54,6 +54,10 @@ public class BlockInit {
                         .create(brewingbarrelentity::new, BREWINGBARREL).build(null);
         public static final yellowrubyore YELLOWRUBYORE = new yellowrubyore(
                         FabricBlockSettings.copy(Blocks.DIAMOND_BLOCK));
+        public static final lavaspongeblock LAVASPONGEBLOCK = new lavaspongeblock(
+                        FabricBlockSettings.copy(Blocks.STONE));
+        public static final fulllavaspongeblock FULLLAVASPONGEBLOCK = new fulllavaspongeblock(
+                        FabricBlockSettings.copy(Blocks.STONE));
 
         public static void init() {
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "nutsbush"), NUTSBUSH);
@@ -62,14 +66,12 @@ public class BlockInit {
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "spelt"), SPELT);
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "spelt"),
                                 new BlockItem(SPELT, new Item.Settings().group(ItemGroup.MISC)));
-
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "hop"),
                                 new BlockItem(HOP, new Item.Settings().group(ItemGroup.MISC)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "hop"), HOP);
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "malt"),
                                 new BlockItem(MALT, new Item.Settings().group(ItemGroup.MISC)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "malt"), MALT);
-
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "flax"),
                                 new BlockItem(FLAX, new Item.Settings().group(ItemGroup.MISC)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "flax"), FLAX);
@@ -120,6 +122,12 @@ public class BlockInit {
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "yellowrubyore"),
                                 new BlockItem(YELLOWRUBYORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "yellowrubyore"), YELLOWRUBYORE);
+                Registry.register(Registry.ITEM, new Identifier("stuffz", "lavaspongeblock"),
+                                new BlockItem(LAVASPONGEBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+                Registry.register(Registry.BLOCK, new Identifier("stuffz", "lavaspongeblock"), LAVASPONGEBLOCK);
+                Registry.register(Registry.ITEM, new Identifier("stuffz", "fulllavaspongeblock"), new BlockItem(
+                                FULLLAVASPONGEBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+                Registry.register(Registry.BLOCK, new Identifier("stuffz", "fulllavaspongeblock"), FULLLAVASPONGEBLOCK);
         }
 
 }

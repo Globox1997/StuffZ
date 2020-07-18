@@ -24,7 +24,8 @@ public class LootInit {
       LootTables.IGLOO_CHEST_CHEST, LootTables.VILLAGE_SNOWY_HOUSE_CHEST, LootTables.SHIPWRECK_SUPPLY_CHEST,
       LootTables.VILLAGE_TAIGA_HOUSE_CHEST, LootTables.VILLAGE_WEAPONSMITH_CHEST };
 
-  public static final Identifier[] LFIVE = new Identifier[] { LootTables.NETHER_BRIDGE_CHEST };
+  public static final Identifier[] LFIVE = new Identifier[] { LootTables.NETHER_BRIDGE_CHEST,
+      LootTables.BASTION_BRIDGE_CHEST, LootTables.BASTION_OTHER_CHEST };
 
   private static boolean isone(Identifier lootTable) {
     for (Identifier id : LONE) {
@@ -257,6 +258,14 @@ public class LootInit {
       if (isfive(id)) {
         FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(1, 0.2f))
             .with(ItemEntry.builder(ItemInit.NETHERSTEW));
+
+        supplier.pool(poolBuilder);
+      }
+    });
+    LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
+      if (isfive(id)) {
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(1, 0.1f))
+            .with(ItemEntry.builder(BlockInit.LAVASPONGEBLOCK));
 
         supplier.pool(poolBuilder);
       }
