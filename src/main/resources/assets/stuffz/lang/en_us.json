@@ -24,10 +24,16 @@
     "block.stuffz.goldbush": "Gold Bush Seeds",
     "block.stuffz.ironbush": "Iron Bush Seeds",
     "block.stuffz.driedclay": "Dried Clay",
+    "block.stuffz.driedclay.tooltip": "Place around water + step on it",
     "block.stuffz.uncraftblock": "Uncraft Anvil",
+    "block.stuffz.uncraftblock.tooltip": "Place tool or armor on anvil",
+    "block.stuffz.uncraftblock.tooltip2": "3xRight click with iron hammer",
     "block.stuffz.fossilblock": "Fossil Block",
     "block.stuffz.yellowrubyblock": "Ruby Block",
     "block.stuffz.brewingbarrel": "Brewing Barrel",
+    "block.stuffz.brewingbarrel.tooltip": "Put empty bottle + malt + hops inside",
+    "block.stuffz.brewingbarrel.tooltip2": "Shift + right click with axe",
+    "block.stuffz.brewingbarrel.tooltip3": "Wait until bottle is filled",
     "block.stuffz.yellowrubyore": "Ruby Ore",
     "block.stuffz.ironladder": "Iron Ladder",
     "block.stuffz.lavaspongeblock": "Pumice",
@@ -67,5 +73,7 @@
     "item.stuffz.chainmailplate": "Chainmail Plate",
     "item.stuffz.ironhammer": "Iron Hammer",
     "item.stuffz.bedrockremover": "Trident Staff",
-    "item.stuffz.bedrockremover.tooltip": "Nether Bedrock Breaker"
+    "item.stuffz.bedrockremover.tooltip": "§7Nether Bedrock Breaker",
+    "item.stuffz.bedrockremover.tooltip2": "Combine with yellow ruby to unveil power",
+    "item.stuffz.moreinfo.tooltip": "§8Hold §6Shift §8For More Info"
 }
