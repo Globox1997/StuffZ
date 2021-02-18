@@ -12,8 +12,7 @@ public class main implements ModInitializer {
             LootInit.init();
             SoundInit.init();
             TagInit.init();
-            FeatureInit features = new FeatureInit();
-            features.init();
+            FeatureInit.init();
 
       }
 
