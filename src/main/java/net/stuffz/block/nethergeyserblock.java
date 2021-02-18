@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -95,10 +96,10 @@ public class nethergeyserblock extends Block {
     }
 
     @Override
-    public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
+    public void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
+        super.onStacksDropped(state, world, pos, stack);
         ItemStack geyserdrop = new ItemStack(BlockInit.NETHERGEYSERBLOCK);
         ItemStack netherrackdrop = new ItemStack(Items.NETHERRACK);
-        super.onStacksDropped(state, world, pos, stack);
         if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
             Block.dropStack(world, pos, geyserdrop);
         } else {
