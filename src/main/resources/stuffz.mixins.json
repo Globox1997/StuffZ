@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "net.stuffz.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "AnvilBlockMixin"
+    ],
+    "client": [],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
