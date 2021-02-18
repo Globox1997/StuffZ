@@ -22,29 +22,30 @@ public class uncraftblockrenderer extends BlockEntityRenderer<uncraftblockentity
   public void render(uncraftblockentity blockEntity, float tickDelta, MatrixStack matrices,
       VertexConsumerProvider vertexConsumers, int light, int overlay) {
     BlockState state = blockEntity.getWorld().getBlockState(blockEntity.getPos());
-    Direction blockDirection = state.get(HorizontalFacingBlock.FACING);
-    if (!blockEntity.isEmpty()) {
-      if (blockDirection.equals(Direction.NORTH) || blockDirection.equals(Direction.SOUTH)) {
-        matrices.push();
-        matrices.translate(0.5D, 1.02D, 0.4D);
-        matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
-        int lightAbove = WorldRenderer.getLightmapCoordinates(blockEntity.getWorld(), blockEntity.getPos().up());
-        MinecraftClient.getInstance().getItemRenderer().renderItem(blockEntity.getStack(0),
-            ModelTransformation.Mode.GROUND, lightAbove, overlay, matrices, vertexConsumers);
-        matrices.pop();
-      }
-      if (blockDirection.equals(Direction.WEST) || blockDirection.equals(Direction.EAST)) {
-        matrices.push();
-        matrices.translate(0.6D, 1.02D, 0.5D);
-        matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
-        matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(90));
-        int lightAbove = WorldRenderer.getLightmapCoordinates(blockEntity.getWorld(), blockEntity.getPos().up());
-        MinecraftClient.getInstance().getItemRenderer().renderItem(blockEntity.getStack(0),
-            ModelTransformation.Mode.GROUND, lightAbove, overlay, matrices, vertexConsumers);
-        matrices.pop();
-      }
+    if (!state.isAir()) {
+      Direction blockDirection = state.get(HorizontalFacingBlock.FACING);
+      if (!blockEntity.isEmpty()) {
+        if (blockDirection.equals(Direction.NORTH) || blockDirection.equals(Direction.SOUTH)) {
+          matrices.push();
+          matrices.translate(0.5D, 1.02D, 0.4D);
+          matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
+          int lightAbove = WorldRenderer.getLightmapCoordinates(blockEntity.getWorld(), blockEntity.getPos().up());
+          MinecraftClient.getInstance().getItemRenderer().renderItem(blockEntity.getStack(0),
+              ModelTransformation.Mode.GROUND, lightAbove, overlay, matrices, vertexConsumers);
+          matrices.pop();
+        }
+        if (blockDirection.equals(Direction.WEST) || blockDirection.equals(Direction.EAST)) {
+          matrices.push();
+          matrices.translate(0.6D, 1.02D, 0.5D);
+          matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
+          matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(90));
+          int lightAbove = WorldRenderer.getLightmapCoordinates(blockEntity.getWorld(), blockEntity.getPos().up());
+          MinecraftClient.getInstance().getItemRenderer().renderItem(blockEntity.getStack(0),
+              ModelTransformation.Mode.GROUND, lightAbove, overlay, matrices, vertexConsumers);
+          matrices.pop();
+        }
 
+      }
     }
-
   }
 }
