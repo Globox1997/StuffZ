@@ -3,9 +3,14 @@ package net.stuffz.block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
@@ -15,6 +20,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stuffz.init.TagInit;
 
+import java.util.List;
+
+import org.jetbrains.annotations.Nullable;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.AnvilBlock;
 
 public class uncraftblock extends AnvilBlock implements BlockEntityProvider {
@@ -26,6 +37,17 @@ public class uncraftblock extends AnvilBlock implements BlockEntityProvider {
   @Override
   public BlockEntity createBlockEntity(BlockView view) {
     return new uncraftblockentity();
+  }
+
+  @Override
+  @Environment(EnvType.CLIENT)
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+    tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+    if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
+      tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+      tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip"));
+      tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip2"));
+    }
   }
 
   @Override

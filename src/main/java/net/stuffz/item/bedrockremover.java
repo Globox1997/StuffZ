@@ -4,7 +4,9 @@ import java.util.List;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,6 +49,11 @@ public class bedrockremover extends Item {
   @Override
   public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
     tooltip.add(new TranslatableText("item.stuffz.bedrockremover.tooltip"));
+    tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+    if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
+      tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+      tooltip.add(new TranslatableText("item.stuffz.bedrockremover.tooltip2"));
+    }
   }
 
   @Override

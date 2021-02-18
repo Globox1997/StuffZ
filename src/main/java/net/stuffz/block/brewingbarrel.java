@@ -5,6 +5,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -15,6 +18,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
@@ -30,6 +35,13 @@ import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
 import net.stuffz.init.SoundInit;
 import net.stuffz.init.TagInit;
+
+import java.util.List;
+
+import org.jetbrains.annotations.Nullable;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 
 public class brewingbarrel extends Block implements BlockEntityProvider {
@@ -40,6 +52,23 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
   public brewingbarrel(Settings settings) {
     super(settings);
     this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH));
+  }
+
+  @Override
+  public BlockEntity createBlockEntity(BlockView view) {
+    return new brewingbarrelentity();
+  }
+
+  @Override
+  @Environment(EnvType.CLIENT)
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+    tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+    if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
+      tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+      tooltip.add(new TranslatableText("block.stuffz.brewingbarrel.tooltip"));
+      tooltip.add(new TranslatableText("block.stuffz.brewingbarrel.tooltip2"));
+      tooltip.add(new TranslatableText("block.stuffz.brewingbarrel.tooltip3"));
+    }
   }
 
   @Override
@@ -66,11 +95,6 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
   @Override
   public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
     return false;
-  }
-
-  @Override
-  public BlockEntity createBlockEntity(BlockView view) {
-    return new brewingbarrelentity();
   }
 
   @Override
