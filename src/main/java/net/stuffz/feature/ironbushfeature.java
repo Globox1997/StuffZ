@@ -6,11 +6,11 @@ import com.mojang.serialization.Codec;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.gen.StructureAccessor;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
 import net.stuffz.plants.ironbush;
 
@@ -21,26 +21,32 @@ public class ironbushfeature extends Feature<DefaultFeatureConfig> {
   }
 
   @Override
-  public boolean generate(ServerWorldAccess serverWorldAccess, StructureAccessor accessor, ChunkGenerator generator,
-      Random random, BlockPos pos, DefaultFeatureConfig config) {
-    BlockPos bush1 = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
-    BlockPos bush2 = new BlockPos(pos.getX() + 2, pos.getY(), pos.getZ() - 1);
-    if (serverWorldAccess.getBlockState(bush1).isAir() && serverWorldAccess.getBlockState(bush2).isAir()
-        && serverWorldAccess.getBlockState(bush1.down()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush1.down().south()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush1.down().east()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush1.down().north()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush1.down().west()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush1.south()).isAir()
-        && serverWorldAccess.getBlockState(bush2.down().north(2)).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush2.down()).getBlock().equals(Blocks.GRASS_BLOCK)
-        && serverWorldAccess.getBlockState(bush2.north()).isAir() && serverWorldAccess.getBlockState(bush1.up()).isAir()
-        && serverWorldAccess.getBlockState(bush2.up()).isAir()) {
-      serverWorldAccess.setBlockState(bush1, BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
-      serverWorldAccess.setBlockState(bush2, BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
-      return true;
-    } else {
-      return false;
+  public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
+      DefaultFeatureConfig config) {
+    BlockPos topPos = world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos);
+    Boolean isAirOrGrass;
+    Boolean isGrassBlock;
+    int booleanCount = 0;
+    for (int i = -1; i < 2; i++) {
+      for (int u = -1; u < 2; u++) {
+        isGrassBlock = world.getBlockState(topPos.north(i).east(u).down()).getBlock().equals(Blocks.GRASS_BLOCK);
+        isAirOrGrass = world.getBlockState(topPos.north(i).east(u)).isAir()
+            || world.getBlockState(topPos.north(i).east(u)).getBlock().equals(Blocks.GRASS);
+        if (isGrassBlock && isAirOrGrass) {
+          booleanCount++;
+        }
+        if (booleanCount == 9) {
+          int randomInt = world.getRandom().nextInt(4) + 1;
+          for (int k = 0; k < randomInt; k++) {
+            int randomIntEast = world.getRandom().nextInt(3) - 1;
+            int randomIntSouth = world.getRandom().nextInt(3) - 1;
+            world.setBlockState(topPos.east(randomIntEast).south(randomIntSouth),
+                BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
+          }
+          return true;
+        }
+      }
     }
+    return false;
   }
 }
