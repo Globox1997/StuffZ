@@ -16,6 +16,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -74,10 +75,11 @@ public class ironbush extends SweetBerryBushBlock {
   }
 
   @Override
-  public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
-    ItemStack bush = new ItemStack(BlockInit.IRONBUSH);
+  public void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
     super.onStacksDropped(state, world, pos, stack);
-    if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1) {
+    ItemStack bush = new ItemStack(BlockInit.IRONBUSH);
+    if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 1
+        || stack.isItemEqualIgnoreDamage(new ItemStack(Items.SHEARS))) {
       Block.dropStack(world, pos, bush);
     }
 
