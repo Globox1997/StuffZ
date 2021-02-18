@@ -24,7 +24,7 @@ public class fulllavaspongeblock extends Block {
 
   @Override
   public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-    if (world.getBiome(pos).getTemperatureGroup().equals(Biome.TemperatureGroup.COLD)) {
+    if (world.getBiome(pos).getCategory().equals(Biome.Category.ICY)) {
       if (!world.isClient) {
         world.setBlockState(pos, BlockInit.LAVASPONGEBLOCK.getDefaultState(), 3);
       }
