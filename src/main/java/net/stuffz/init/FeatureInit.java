@@ -44,22 +44,22 @@ public class FeatureInit {
         // Bushes
         private static final Feature<DefaultFeatureConfig> GOLD_BUSH = new goldbushfeature(DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> GOLD_BUSH_CONFIGURED = GOLD_BUSH.configure(FeatureConfig.DEFAULT)
-                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(1)));
+                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(20)));
         private static final Feature<DefaultFeatureConfig> IRON_BUSH = new ironbushfeature(DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> IRON_BUSH_CONFIGURED = IRON_BUSH.configure(FeatureConfig.DEFAULT)
-                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(1)));
+                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(10)));
 
         // Geysers
         private static final Feature<DefaultFeatureConfig> STONE_GEYSER = new stonegeyserfeature(
                         DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> STONE_GEYSER_CONFIGURED = STONE_GEYSER
                         .configure(FeatureConfig.DEFAULT)
-                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(1)));
+                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(8)));
         private static final Feature<DefaultFeatureConfig> NETHER_GEYSER = new nethergeyserfeature(
                         DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> NETHER_GEYSER_CONFIGURED = NETHER_GEYSER
                         .configure(FeatureConfig.DEFAULT)
-                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(1)));
+                        .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(16)));
 
         public static void init() {
                 // Bushes
