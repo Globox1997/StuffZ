@@ -22,20 +22,6 @@ public class stonegeyserfeature extends Feature<DefaultFeatureConfig> {
   @Override
   public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
       DefaultFeatureConfig config) {
-    // BlockPos test = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
-    // if (world.getBlockState(test).getBlock().equals(Blocks.STONE)
-    // && world.getBlockState(test.down()).getBlock().equals(Blocks.STONE)
-    // && world.getBlockState(test.south()).getBlock().equals(Blocks.STONE)
-    // && world.getBlockState(test.east()).getBlock().equals(Blocks.STONE)
-    // && world.getBlockState(test.north()).getBlock().equals(Blocks.STONE)
-    // && world.getBlockState(test.west()).getBlock().equals(Blocks.STONE) &&
-    // world.getBlockState(test.up()).isAir()) {
-    // world.setBlockState(test, BlockInit.STONEGEYSERBLOCK.getDefaultState(), 3);
-    // return true;
-    // } else {
-    // return false;
-    // }
-
     BlockPos topPos = world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos);
     Boolean isAir;
     Boolean isGrassBlock;
