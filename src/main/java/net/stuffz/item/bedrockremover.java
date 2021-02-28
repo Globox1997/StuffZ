@@ -63,7 +63,7 @@ public class bedrockremover extends Item {
       stack.setTag(new CompoundTag());
       tags = stack.getTag();
     }
-    tags.putBoolean("activeruby", true);
+    tags.putBoolean("activeruby", false);
   }
 
   @Override
