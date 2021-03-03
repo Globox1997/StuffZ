@@ -20,6 +20,9 @@
     ],
     "client": [
       "net.stuffz.mainclient"
+    ],
+    "modmenu": [
+      "net.stuffz.config.ModMenuIntegration"
     ]
   },
   "mixins": [

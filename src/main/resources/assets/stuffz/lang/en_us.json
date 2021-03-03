@@ -75,5 +75,9 @@
     "item.stuffz.bedrockremover": "Trident Staff",
     "item.stuffz.bedrockremover.tooltip": "§7Nether Bedrock Breaker",
     "item.stuffz.bedrockremover.tooltip2": "Combine with yellow ruby to unveil power",
-    "item.stuffz.moreinfo.tooltip": "§8Hold §6Shift §8For More Info"
+    "item.stuffz.moreinfo.tooltip": "§8Hold §6Shift §8For More Info",
+    "text.autoconfig.stuffz.title": "StuffZ Config",
+    "text.autoconfig.stuffz.option.generate_bushes": "Allow Bush Generation",
+    "text.autoconfig.stuffz.option.generate_geysers": "Allow Geyser Generation",
+    "text.autoconfig.stuffz.option.generate_ores": "Allow Ore Generation"
 }

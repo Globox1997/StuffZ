@@ -76,7 +76,6 @@ public class FeatureInit {
                 Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, ironBush.getValue(), IRON_BUSH_CONFIGURED);
                 BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.FOREST),
                                 GenerationStep.Feature.RAW_GENERATION, ironBush);
-
                 // Geysers
                 Registry.register(Registry.FEATURE, new Identifier("stuffz", "stone_geyser"), STONE_GEYSER);
                 RegistryKey<ConfiguredFeature<?, ?>> stoneGeyser = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
@@ -94,20 +93,22 @@ public class FeatureInit {
                                 GenerationStep.Feature.VEGETAL_DECORATION, netherGeyser);
 
                 // Ore Gen
-                RegistryKey<ConfiguredFeature<?, ?>> fossilOre = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
-                                new Identifier("stuffz", "fossil_ore"));
-                Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, fossilOre.getValue(), FOSSIL_ORE);
-                BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
-                                GenerationStep.Feature.UNDERGROUND_ORES, fossilOre);
-                RegistryKey<ConfiguredFeature<?, ?>> sulfurOre = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
-                                new Identifier("stuffz", "sulfur_ore"));
-                Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, sulfurOre.getValue(), SULFUR_ORE);
-                BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP),
-                                GenerationStep.Feature.UNDERGROUND_ORES, sulfurOre);
-                RegistryKey<ConfiguredFeature<?, ?>> rubyOre = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
-                                new Identifier("stuffz", "ruby_ore"));
-                Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, rubyOre.getValue(), RUBY_ORE);
-                BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
-                                GenerationStep.Feature.UNDERGROUND_ORES, rubyOre);
+                if (ConfigInit.CONFIG.generate_ores) {
+                        RegistryKey<ConfiguredFeature<?, ?>> fossilOre = RegistryKey.of(
+                                        Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "fossil_ore"));
+                        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, fossilOre.getValue(), FOSSIL_ORE);
+                        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
+                                        GenerationStep.Feature.UNDERGROUND_ORES, fossilOre);
+                        RegistryKey<ConfiguredFeature<?, ?>> sulfurOre = RegistryKey.of(
+                                        Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "sulfur_ore"));
+                        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, sulfurOre.getValue(), SULFUR_ORE);
+                        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP),
+                                        GenerationStep.Feature.UNDERGROUND_ORES, sulfurOre);
+                        RegistryKey<ConfiguredFeature<?, ?>> rubyOre = RegistryKey
+                                        .of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "ruby_ore"));
+                        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, rubyOre.getValue(), RUBY_ORE);
+                        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
+                                        GenerationStep.Feature.UNDERGROUND_ORES, rubyOre);
+                }
         }
 }

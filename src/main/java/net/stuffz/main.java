@@ -7,6 +7,7 @@ public class main implements ModInitializer {
 
       @Override
       public void onInitialize() {
+            ConfigInit.init();
             BlockInit.init();
             ItemInit.init();
             LootInit.init();

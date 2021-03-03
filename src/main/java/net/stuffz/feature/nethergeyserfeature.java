@@ -11,6 +11,7 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.stuffz.init.BlockInit;
+import net.stuffz.init.ConfigInit;
 
 public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
 
@@ -21,6 +22,9 @@ public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
   @Override
   public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
       DefaultFeatureConfig config) {
+    if (!ConfigInit.CONFIG.generate_geysers) {
+      return false;
+    }
     Boolean isNetherrack;
     Boolean isAir;
     for (int k = 0; k < 254; k++) {

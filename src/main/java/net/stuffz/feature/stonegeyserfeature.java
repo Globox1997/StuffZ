@@ -12,6 +12,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
+import net.stuffz.init.ConfigInit;
 
 public class stonegeyserfeature extends Feature<DefaultFeatureConfig> {
 
@@ -22,6 +23,9 @@ public class stonegeyserfeature extends Feature<DefaultFeatureConfig> {
   @Override
   public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
       DefaultFeatureConfig config) {
+    if (!ConfigInit.CONFIG.generate_geysers) {
+      return false;
+    }
     BlockPos topPos = world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos);
     Boolean isAir;
     Boolean isGrassBlock;

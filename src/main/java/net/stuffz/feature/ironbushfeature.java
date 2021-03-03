@@ -12,6 +12,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
+import net.stuffz.init.ConfigInit;
 import net.stuffz.plants.ironbush;
 
 public class ironbushfeature extends Feature<DefaultFeatureConfig> {
@@ -23,6 +24,9 @@ public class ironbushfeature extends Feature<DefaultFeatureConfig> {
   @Override
   public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
       DefaultFeatureConfig config) {
+    if (!ConfigInit.CONFIG.generate_bushes) {
+      return false;
+    }
     BlockPos topPos = world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos);
     Boolean isAirOrGrass;
     Boolean isGrassBlock;
