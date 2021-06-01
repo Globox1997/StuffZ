@@ -71,16 +71,19 @@ public class BedrockRemover extends Item {
     ItemStack stack = user.getStackInHand(hand);
     CompoundTag tags = stack.getTag();
     ItemStack ruby = new ItemStack(ItemInit.YELLOWRUBY);
-    int rubyslot = user.inventory.getSlotWithStack(ruby);
-
-    if (user.inventory.contains(ruby) && stack.hasTag() && tags.getBoolean("activeruby") == false) {
-      tags.putBoolean("activeruby", true);
-      if (!world.isClient) {
-        user.inventory.removeStack(rubyslot, 1);
+    if (stack.hasTag()) {
+      if (user.inventory.contains(ruby) && tags.getBoolean("activeruby") == false) {
+        tags.putBoolean("activeruby", true);
+        if (!world.isClient && !user.isCreative()) {
+          int rubyslot = user.inventory.getSlotWithStack(ruby);
+          user.inventory.removeStack(rubyslot, 1);
+        }
+        return TypedActionResult.success(user.getStackInHand(hand));
       }
-      return TypedActionResult.success(user.getStackInHand(hand));
     } else {
-      return TypedActionResult.pass(user.getStackInHand(hand));
+      tags.putBoolean("activeruby", false);
     }
+    return TypedActionResult.pass(user.getStackInHand(hand));
   }
+
 }
