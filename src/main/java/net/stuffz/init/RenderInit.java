@@ -3,7 +3,7 @@ package net.stuffz.init;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.stuffz.block.*;
+import net.stuffz.block.renderer.*;
 
 public class RenderInit {
 

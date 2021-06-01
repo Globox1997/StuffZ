@@ -12,6 +12,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.stuffz.block.*;
+import net.stuffz.block.entity.*;
 import net.stuffz.plants.*;
 
 public class BlockInit {

@@ -1,4 +1,4 @@
-package net.stuffz.block;
+package net.stuffz.block.renderer;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -11,6 +11,7 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.math.Direction;
+import net.stuffz.block.entity.BrewingBarrelEntity;
 
 public class BrewingBarrelRenderer extends BlockEntityRenderer<BrewingBarrelEntity> {
 

@@ -31,6 +31,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.stuffz.block.entity.BrewingBarrelEntity;
 import net.stuffz.init.ItemInit;
 import net.stuffz.init.SoundInit;
 import net.stuffz.init.TagInit;

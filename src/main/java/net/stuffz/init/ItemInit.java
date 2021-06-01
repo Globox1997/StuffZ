@@ -42,6 +42,12 @@ public class ItemInit {
   public static final IronHammer IRONHAMMER = new IronHammer(1F, -2.8F, ToolMaterials.IRON, IronHammer.EFFECTIVE_BLOCKS,
       new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
 
+  public static void registerCompostableItem(ItemConvertible item, float chance) {
+    if (item.asItem() != Items.AIR) {
+      ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
+    }
+  }
+
   public static void init() {
     Registry.register(Registry.ITEM, new Identifier("stuffz", "tridentstick"), TRIDENTSTICK);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "tridenttop"), TRIDENTTOP);
@@ -83,12 +89,7 @@ public class ItemInit {
     registerCompostableItem(ItemInit.SPELTBREAD, 0.85F);
     registerCompostableItem(ItemInit.CARROTPIE, 0.85F);
     registerCompostableItem(ItemInit.CHOCOLATEBAR, 0.85F);
-  }
-
-  public static void registerCompostableItem(ItemConvertible item, float chance) {
-    if (item.asItem() != Items.AIR) {
-      ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
-    }
+    registerCompostableItem(ItemInit.MALT, 0.3F);
   }
 
 }

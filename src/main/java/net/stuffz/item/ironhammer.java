@@ -16,7 +16,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.stuffz.block.UncraftBlock;
-import net.stuffz.block.UncraftBlockEntity;
+import net.stuffz.block.entity.UncraftBlockEntity;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.SoundInit;
 

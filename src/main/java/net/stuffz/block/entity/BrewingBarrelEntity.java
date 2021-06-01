@@ -1,4 +1,4 @@
-package net.stuffz.block;
+package net.stuffz.block.entity;
 
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;

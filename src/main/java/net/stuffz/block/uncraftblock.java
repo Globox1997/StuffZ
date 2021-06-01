@@ -18,7 +18,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.stuffz.init.TagInit;
+import net.stuffz.block.entity.UncraftBlockEntity;
+import net.stuffz.init.RecipeInit;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
     ItemStack stack = blockEntity.getStack(0);
 
     if (!stack.isEmpty()) {
-      if (player.isSneaking()) {
+      if (!RecipeInit.UNCRAFT_ITEM_LIST.contains(stack.getItem())) {
         if (!world.isClient) {
           player.giveItemStack(stack);
         }
@@ -67,7 +68,7 @@ public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
       return ActionResult.PASS;
     } else {
       ItemStack heldItem = player.getMainHandStack();
-      if (heldItem.getItem().isIn(TagInit.UNCRAFT_ITEMS) && !heldItem.isDamaged()) {
+      if (RecipeInit.UNCRAFT_ITEM_LIST.contains(heldItem.getItem()) && !heldItem.isDamaged()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(0, heldItem.split(1));
