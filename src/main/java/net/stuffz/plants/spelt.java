@@ -4,8 +4,8 @@ import net.minecraft.block.CropBlock;
 import net.minecraft.item.ItemConvertible;
 import net.stuffz.init.BlockInit;
 
-public class spelt extends CropBlock {
-    public spelt(Settings block$Settings_1) {
+public class Spelt extends CropBlock {
+    public Spelt(Settings block$Settings_1) {
         super(block$Settings_1);
     }
 

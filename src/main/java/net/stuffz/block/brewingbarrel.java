@@ -31,7 +31,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
 import net.stuffz.init.SoundInit;
 import net.stuffz.init.TagInit;
@@ -44,19 +43,19 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 
-public class brewingbarrel extends Block implements BlockEntityProvider {
+public class BrewingBarrel extends Block implements BlockEntityProvider {
   public static final DirectionProperty FACING;
   private static final VoxelShape X_AXIS_SHAPE;
   private static final VoxelShape Z_AXIS_SHAPE;
 
-  public brewingbarrel(Settings settings) {
+  public BrewingBarrel(Settings settings) {
     super(settings);
     this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH));
   }
 
   @Override
   public BlockEntity createBlockEntity(BlockView view) {
-    return new brewingbarrelentity();
+    return new BrewingBarrelEntity();
   }
 
   @Override
@@ -133,7 +132,7 @@ public class brewingbarrel extends Block implements BlockEntityProvider {
           world.playSound(null, pos, SoundInit.BARRELHIT_EVENT, SoundCategory.BLOCKS, 0.3F, 1F);
           return ActionResult.SUCCESS;
         }
-      } else if ((heldItem.getItem().equals(ItemInit.DARKMALT) || heldItem.isItemEqual(new ItemStack(BlockInit.MALT)))
+      } else if ((heldItem.getItem().equals(ItemInit.DARKMALT) || heldItem.isItemEqual(new ItemStack(ItemInit.MALT)))
           && blockEntity.getStack(2).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {

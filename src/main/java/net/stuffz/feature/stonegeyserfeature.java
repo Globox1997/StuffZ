@@ -14,9 +14,9 @@ import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ConfigInit;
 
-public class stonegeyserfeature extends Feature<DefaultFeatureConfig> {
+public class StoneGeyserFeature extends Feature<DefaultFeatureConfig> {
 
-  public stonegeyserfeature(Codec<DefaultFeatureConfig> codec) {
+  public StoneGeyserFeature(Codec<DefaultFeatureConfig> codec) {
     super(codec);
   }
 

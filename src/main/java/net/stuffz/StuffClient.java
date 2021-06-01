@@ -9,7 +9,7 @@ import net.stuffz.init.RenderInit;
 
 @Environment(EnvType.CLIENT)
 
-public class mainclient implements ClientModInitializer {
+public class StuffClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {

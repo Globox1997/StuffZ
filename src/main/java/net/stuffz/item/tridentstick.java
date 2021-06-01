@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class tridentstick extends Item {
+public class TridentStick extends Item {
 
-    public tridentstick(Settings settings) {
+    public TridentStick(Settings settings) {
         super(settings);
     }
 }

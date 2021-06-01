@@ -18,9 +18,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 
-public class nutsbush extends SweetBerryBushBlock {
+public class NutsBush extends SweetBerryBushBlock {
 
-   public nutsbush(Settings settings) {
+   public NutsBush(Settings settings) {
       super(settings);
    }
 

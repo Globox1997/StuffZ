@@ -15,8 +15,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class darkbeer extends Item {
-  public darkbeer(Settings settings) {
+public class DarkBeer extends Item {
+  public DarkBeer(Settings settings) {
     super(settings);
   }
 

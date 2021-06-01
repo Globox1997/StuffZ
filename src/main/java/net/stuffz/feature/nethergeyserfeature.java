@@ -13,9 +13,9 @@ import net.minecraft.world.gen.feature.Feature;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ConfigInit;
 
-public class nethergeyserfeature extends Feature<DefaultFeatureConfig> {
+public class NetherGeyserFeature extends Feature<DefaultFeatureConfig> {
 
-  public nethergeyserfeature(Codec<DefaultFeatureConfig> codec) {
+  public NetherGeyserFeature(Codec<DefaultFeatureConfig> codec) {
     super(codec);
   }
 

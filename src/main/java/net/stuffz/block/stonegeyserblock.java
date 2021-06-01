@@ -19,7 +19,7 @@ import net.stuffz.init.SoundInit;
 
 import java.util.Random;
 
-public class stonegeyserblock extends Block {
+public class StoneGeyserBlock extends Block {
     int count = 0;
     int count2 = 0;
     double count3 = 0;
@@ -27,7 +27,7 @@ public class stonegeyserblock extends Block {
     double count5 = 0;
     int z7;
 
-    public stonegeyserblock(Settings settings) {
+    public StoneGeyserBlock(Settings settings) {
         super(settings);
     }
 

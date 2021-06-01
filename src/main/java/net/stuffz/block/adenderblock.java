@@ -10,9 +10,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import java.util.Random;
 
-public class adenderblock extends RedstoneBlock {
+public class AdenderBlock extends RedstoneBlock {
 
-    public adenderblock(Settings settings) {
+    public AdenderBlock(Settings settings) {
         super(settings);
     }
 

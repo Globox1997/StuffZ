@@ -27,9 +27,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 
-public class goldbush extends SweetBerryBushBlock {
+public class GoldBush extends SweetBerryBushBlock {
 
-  public goldbush(Settings settings) {
+  public GoldBush(Settings settings) {
     super(settings);
   }
 

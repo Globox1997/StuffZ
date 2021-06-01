@@ -4,9 +4,9 @@ import net.minecraft.block.CropBlock;
 import net.minecraft.item.ItemConvertible;
 import net.stuffz.init.BlockInit;
 
-public class hop extends CropBlock {
+public class Hop extends CropBlock {
 
-    public hop(Settings settings) {
+    public Hop(Settings settings) {
         super(settings);
     }
 

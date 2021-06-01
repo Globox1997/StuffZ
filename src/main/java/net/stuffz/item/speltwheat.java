@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class speltwheat extends Item {
+public class SpeltWheat extends Item {
 
-    public speltwheat(Settings settings) {
+    public SpeltWheat(Settings settings) {
         super(settings);
     }
 }

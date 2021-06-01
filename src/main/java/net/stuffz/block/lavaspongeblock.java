@@ -18,9 +18,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 
-public class lavaspongeblock extends Block {
+public class LavaSpongeBlock extends Block {
 
-  public lavaspongeblock(Settings settings) {
+  public LavaSpongeBlock(Settings settings) {
     super(settings);
   }
 

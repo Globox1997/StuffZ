@@ -12,14 +12,14 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.math.Direction;
 
-public class brewingbarrelrenderer extends BlockEntityRenderer<brewingbarrelentity> {
+public class BrewingBarrelRenderer extends BlockEntityRenderer<BrewingBarrelEntity> {
 
-  public brewingbarrelrenderer(BlockEntityRenderDispatcher dispatcher) {
+  public BrewingBarrelRenderer(BlockEntityRenderDispatcher dispatcher) {
     super(dispatcher);
   }
 
   @Override
-  public void render(brewingbarrelentity blockEntity, float tickDelta, MatrixStack matrices,
+  public void render(BrewingBarrelEntity blockEntity, float tickDelta, MatrixStack matrices,
       VertexConsumerProvider vertexConsumers, int light, int overlay) {
     BlockState state = blockEntity.getWorld().getBlockState(blockEntity.getPos());
     if (!state.isAir()) {

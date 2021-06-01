@@ -28,15 +28,15 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.AnvilBlock;
 
-public class uncraftblock extends AnvilBlock implements BlockEntityProvider {
+public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
 
-  public uncraftblock(Settings settings) {
+  public UncraftBlock(Settings settings) {
     super(settings);
   }
 
   @Override
   public BlockEntity createBlockEntity(BlockView view) {
-    return new uncraftblockentity();
+    return new UncraftBlockEntity();
   }
 
   @Override

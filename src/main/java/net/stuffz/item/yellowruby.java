@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class yellowruby extends Item {
+public class YellowRuby extends Item {
 
-  public yellowruby(Settings settings) {
+  public YellowRuby(Settings settings) {
     super(settings);
   }
 

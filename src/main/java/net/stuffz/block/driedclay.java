@@ -19,9 +19,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class driedclay extends Block {
+public class DriedClay extends Block {
 
-  public driedclay(Settings settings) {
+  public DriedClay(Settings settings) {
     super(settings);
   }
 

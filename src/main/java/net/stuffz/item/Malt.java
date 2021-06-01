@@ -2,9 +2,10 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class TridentTop extends Item {
+public class Malt extends Item {
 
-    public TridentTop(Settings settings) {
+    public Malt(Settings settings) {
         super(settings);
     }
+
 }

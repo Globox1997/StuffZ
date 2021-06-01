@@ -20,9 +20,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.stuffz.init.ItemInit;
 
-public class bedrockremover extends Item {
+public class BedrockRemover extends Item {
 
-  public bedrockremover(Settings settings) {
+  public BedrockRemover(Settings settings) {
     super(settings);
 
   }

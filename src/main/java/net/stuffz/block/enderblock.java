@@ -7,9 +7,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import java.util.Random;
 
-public class enderblock extends RedstoneBlock {
+public class EnderBlock extends RedstoneBlock {
 
-    public enderblock(Settings settings) {
+    public EnderBlock(Settings settings) {
         super(settings);
     }
 

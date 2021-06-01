@@ -14,11 +14,11 @@ import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
 import net.minecraft.util.Tickable;
 
-public class uncraftblockentity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
+public class UncraftBlockEntity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
   private DefaultedList<ItemStack> inventory;
   public int unCraftHit;
 
-  public uncraftblockentity() {
+  public UncraftBlockEntity() {
     super(BlockInit.UNCRAFTBLOCKENTITY);
     this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
   }
@@ -45,7 +45,7 @@ public class uncraftblockentity extends BlockEntity implements Tickable, Invento
   public void update() {
 
     if (!isEmpty()) {
-      if (this.isuncrafthit() && this instanceof uncraftblockentity) {
+      if (this.isuncrafthit() && this instanceof UncraftBlockEntity) {
         ItemStack itemStack = this.getStack(0);
         unCraft(itemStack);
         this.unCraftHit = 0;

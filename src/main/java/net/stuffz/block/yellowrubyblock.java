@@ -2,9 +2,9 @@ package net.stuffz.block;
 
 import net.minecraft.block.Block;
 
-public class yellowrubyblock extends Block {
+public class YellowRubyBlock extends Block {
 
-  public yellowrubyblock(Settings settings) {
+  public YellowRubyBlock(Settings settings) {
     super(settings);
   }
 

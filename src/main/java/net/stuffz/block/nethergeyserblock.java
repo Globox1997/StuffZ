@@ -17,12 +17,12 @@ import net.stuffz.init.SoundInit;
 
 import java.util.Random;
 
-public class nethergeyserblock extends Block {
+public class NetherGeyserBlock extends Block {
     int count = 0;
     int count2 = 0;
     double count3 = 0;
 
-    public nethergeyserblock(Settings settings) {
+    public NetherGeyserBlock(Settings settings) {
         super(settings);
     }
 

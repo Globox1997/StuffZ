@@ -12,14 +12,14 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.math.Direction;
 
-public class uncraftblockrenderer extends BlockEntityRenderer<uncraftblockentity> {
+public class UncraftBlockRenderer extends BlockEntityRenderer<UncraftBlockEntity> {
 
-  public uncraftblockrenderer(BlockEntityRenderDispatcher dispatcher) {
+  public UncraftBlockRenderer(BlockEntityRenderDispatcher dispatcher) {
     super(dispatcher);
   }
 
   @Override
-  public void render(uncraftblockentity blockEntity, float tickDelta, MatrixStack matrices,
+  public void render(UncraftBlockEntity blockEntity, float tickDelta, MatrixStack matrices,
       VertexConsumerProvider vertexConsumers, int light, int overlay) {
     BlockState state = blockEntity.getWorld().getBlockState(blockEntity.getPos());
     if (!state.isAir()) {

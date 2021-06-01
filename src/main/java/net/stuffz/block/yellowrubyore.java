@@ -11,9 +11,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 
-public class yellowrubyore extends Block {
+public class YellowRubyOre extends Block {
 
-  public yellowrubyore(Settings settings) {
+  public YellowRubyOre(Settings settings) {
     super(settings);
   }
 

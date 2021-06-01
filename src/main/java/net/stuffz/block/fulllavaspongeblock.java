@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.stuffz.init.BlockInit;
 
-public class fulllavaspongeblock extends Block {
+public class FullLavaSpongeBlock extends Block {
 
-  public fulllavaspongeblock(Settings settings) {
+  public FullLavaSpongeBlock(Settings settings) {
     super(settings);
   }
 

@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.stuffz.main"
+      "net.stuffz.StuffMain"
     ],
     "client": [
-      "net.stuffz.mainclient"
+      "net.stuffz.StuffClient"
     ],
     "modmenu": [
       "net.stuffz.config.ModMenuIntegration"

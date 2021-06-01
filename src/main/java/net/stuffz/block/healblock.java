@@ -11,9 +11,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import java.util.Random;
 
-public class healblock extends Block {
+public class HealBlock extends Block {
 
-    public healblock(Settings settings) {
+    public HealBlock(Settings settings) {
         super(settings);
     }
 

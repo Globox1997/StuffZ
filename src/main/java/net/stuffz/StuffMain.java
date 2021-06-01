@@ -3,7 +3,7 @@ package net.stuffz;
 import net.stuffz.init.*;
 import net.fabricmc.api.ModInitializer;
 
-public class main implements ModInitializer {
+public class StuffMain implements ModInitializer {
 
       @Override
       public void onInitialize() {
@@ -18,8 +18,6 @@ public class main implements ModInitializer {
       }
 
 }
-
-// System.out.println("hastag" + stack.hasTag());
 
 // You are LOVED!!!
 // Jesus loves you unconditionaly!

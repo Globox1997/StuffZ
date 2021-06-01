@@ -4,9 +4,9 @@ import net.minecraft.block.CropBlock;
 import net.minecraft.item.ItemConvertible;
 import net.stuffz.init.BlockInit;
 
-public class flax extends CropBlock {
+public class Flax extends CropBlock {
 
-    public flax(Settings settings) {
+    public Flax(Settings settings) {
         super(settings);
     }
 

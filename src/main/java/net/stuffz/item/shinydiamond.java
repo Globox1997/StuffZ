@@ -3,9 +3,9 @@ package net.stuffz.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class shinydiamond extends Item {
+public class ShinyDiamond extends Item {
 
-    public shinydiamond(Settings settings) {
+    public ShinyDiamond(Settings settings) {
         super(settings);
     }
 

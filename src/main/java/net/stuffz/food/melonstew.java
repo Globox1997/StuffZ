@@ -14,10 +14,10 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class melonstew extends Item {
+public class MelonStew extends Item {
     public static final SuspiciousStewItem STEW_ITEM = new SuspiciousStewItem(new Item.Settings());
 
-    public melonstew(Settings settings) {
+    public MelonStew(Settings settings) {
         super(settings);
     }
 

@@ -11,9 +11,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 
-public class sulfurblock extends Block {
+public class SulfurBlock extends Block {
 
-  public sulfurblock(Settings settings) {
+  public SulfurBlock(Settings settings) {
     super(settings);
   }
 

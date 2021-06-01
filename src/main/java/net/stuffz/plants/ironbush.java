@@ -27,9 +27,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 
-public class ironbush extends SweetBerryBushBlock {
+public class IronBush extends SweetBerryBushBlock {
 
-  public ironbush(Settings settings) {
+  public IronBush(Settings settings) {
     super(settings);
   }
 

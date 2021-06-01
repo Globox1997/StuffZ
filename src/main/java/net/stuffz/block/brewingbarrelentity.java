@@ -18,12 +18,12 @@ import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
 import net.minecraft.util.Tickable;
 
-public class brewingbarrelentity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
+public class BrewingBarrelEntity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
   private DefaultedList<ItemStack> inventory;
   private int brewing = 120;
   private int waterdrip = 0;
 
-  public brewingbarrelentity() {
+  public BrewingBarrelEntity() {
     super(BlockInit.BREWINGBARRELENTITY);
     this.inventory = DefaultedList.ofSize(5, ItemStack.EMPTY);
   }
@@ -54,8 +54,8 @@ public class brewingbarrelentity extends BlockEntity implements Tickable, Invent
   }
 
   public void update() {
-    if (!this.getStack(0).isEmpty() && !this.getStack(1).isEmpty() && !this.getStack(2).isEmpty() && !this.getStack(3).isEmpty()
-        && this.getStack(4).isEmpty()) {
+    if (!this.getStack(0).isEmpty() && !this.getStack(1).isEmpty() && !this.getStack(2).isEmpty()
+        && !this.getStack(3).isEmpty() && this.getStack(4).isEmpty()) {
       if (this.brewing > 0) {
         this.brewing--;
       }

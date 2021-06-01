@@ -16,47 +16,45 @@ import net.stuffz.plants.*;
 
 public class BlockInit {
 
-        public static final hop HOP = new hop(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
+        public static final Hop HOP = new Hop(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
                         .breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final malt MALT = new malt(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
+        public static final Spelt SPELT = new Spelt(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
                         .breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final spelt SPELT = new spelt(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
-                        .breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final nutsbush NUTSBUSH = new nutsbush(FabricBlockSettings.of(Material.PLANT).noCollision()
+        public static final NutsBush NUTSBUSH = new NutsBush(FabricBlockSettings.of(Material.PLANT).noCollision()
                         .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final flax FLAX = new flax(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
+        public static final Flax FLAX = new Flax(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly()
                         .breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final enderblock ENDERBLOCK = new enderblock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
-        public static final adenderblock ADENDERBLOCK = new adenderblock(
+        public static final EnderBlock ENDERBLOCK = new EnderBlock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
+        public static final AdenderBlock ADENDERBLOCK = new AdenderBlock(
                         FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
-        public static final healblock HEALBLOCK = new healblock(FabricBlockSettings.copy(Blocks.OBSIDIAN));
-        public static final nethergeyserblock NETHERGEYSERBLOCK = new nethergeyserblock(
+        public static final HealBlock HEALBLOCK = new HealBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN));
+        public static final NetherGeyserBlock NETHERGEYSERBLOCK = new NetherGeyserBlock(
                         FabricBlockSettings.copy(Blocks.STONE));
-        public static final stonegeyserblock STONEGEYSERBLOCK = new stonegeyserblock(
+        public static final StoneGeyserBlock STONEGEYSERBLOCK = new StoneGeyserBlock(
                         FabricBlockSettings.copy(Blocks.STONE));
-        public static final sulfurblock SULFURBLOCK = new sulfurblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
-        public static final goldbush GOLDBUSH = new goldbush(FabricBlockSettings.of(Material.PLANT).noCollision()
+        public static final SulfurBlock SULFURBLOCK = new SulfurBlock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
+        public static final GoldBush GOLDBUSH = new GoldBush(FabricBlockSettings.of(Material.PLANT).noCollision()
                         .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final ironbush IRONBUSH = new ironbush(FabricBlockSettings.of(Material.PLANT).noCollision()
+        public static final IronBush IRONBUSH = new IronBush(FabricBlockSettings.of(Material.PLANT).noCollision()
                         .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
-        public static final driedclay DRIEDCLAY = new driedclay(FabricBlockSettings.copy(Blocks.CLAY));
-        public static final uncraftblock UNCRAFTBLOCK = new uncraftblock(FabricBlockSettings.copy(Blocks.ANVIL));
-        public static final BlockEntityType<uncraftblockentity> UNCRAFTBLOCKENTITY = BlockEntityType.Builder
-                        .create(uncraftblockentity::new, UNCRAFTBLOCK).build(null);
-        public static final yellowrubyblock YELLOWRUBYBLOCK = new yellowrubyblock(
+        public static final DriedClay DRIEDCLAY = new DriedClay(FabricBlockSettings.copy(Blocks.CLAY));
+        public static final UncraftBlock UNCRAFTBLOCK = new UncraftBlock(FabricBlockSettings.copy(Blocks.ANVIL));
+        public static final BlockEntityType<UncraftBlockEntity> UNCRAFTBLOCKENTITY = BlockEntityType.Builder
+                        .create(UncraftBlockEntity::new, UNCRAFTBLOCK).build(null);
+        public static final YellowRubyBlock YELLOWRUBYBLOCK = new YellowRubyBlock(
                         FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
-        public static final fossilblock FOSSILBLOCK = new fossilblock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
-        public static final ironladder IRONLADDER = new ironladder(FabricBlockSettings.of(Material.SUPPORTED)
+        public static final FossilBlock FOSSILBLOCK = new FossilBlock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
+        public static final IronLadder IRONLADDER = new IronLadder(FabricBlockSettings.of(Material.SUPPORTED)
                         .strength(0.6F).sounds(SoundInit.IRONLADDER_GROUP).nonOpaque());
-        public static final brewingbarrel BREWINGBARREL = new brewingbarrel(
+        public static final BrewingBarrel BREWINGBARREL = new BrewingBarrel(
                         FabricBlockSettings.copy(Blocks.SPRUCE_PLANKS));
-        public static final BlockEntityType<brewingbarrelentity> BREWINGBARRELENTITY = BlockEntityType.Builder
-                        .create(brewingbarrelentity::new, BREWINGBARREL).build(null);
-        public static final yellowrubyore YELLOWRUBYORE = new yellowrubyore(
+        public static final BlockEntityType<BrewingBarrelEntity> BREWINGBARRELENTITY = BlockEntityType.Builder
+                        .create(BrewingBarrelEntity::new, BREWINGBARREL).build(null);
+        public static final YellowRubyOre YELLOWRUBYORE = new YellowRubyOre(
                         FabricBlockSettings.copy(Blocks.DIAMOND_BLOCK));
-        public static final lavaspongeblock LAVASPONGEBLOCK = new lavaspongeblock(
+        public static final LavaSpongeBlock LAVASPONGEBLOCK = new LavaSpongeBlock(
                         FabricBlockSettings.copy(Blocks.STONE));
-        public static final fulllavaspongeblock FULLLAVASPONGEBLOCK = new fulllavaspongeblock(
+        public static final FullLavaSpongeBlock FULLLAVASPONGEBLOCK = new FullLavaSpongeBlock(
                         FabricBlockSettings.copy(Blocks.STONE));
 
         public static void init() {
@@ -69,9 +67,7 @@ public class BlockInit {
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "hop"),
                                 new BlockItem(HOP, new Item.Settings().group(ItemGroup.MISC)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "hop"), HOP);
-                Registry.register(Registry.ITEM, new Identifier("stuffz", "malt"),
-                                new BlockItem(MALT, new Item.Settings().group(ItemGroup.MISC)));
-                Registry.register(Registry.BLOCK, new Identifier("stuffz", "malt"), MALT);
+
                 Registry.register(Registry.ITEM, new Identifier("stuffz", "flax"),
                                 new BlockItem(FLAX, new Item.Settings().group(ItemGroup.MISC)));
                 Registry.register(Registry.BLOCK, new Identifier("stuffz", "flax"), FLAX);

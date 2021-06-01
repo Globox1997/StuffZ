@@ -14,31 +14,32 @@ import net.stuffz.item.*;
 
 public class ItemInit {
 
-  public static final cactusfruit CACTUSFRUIT = new cactusfruit();
-  public static final carrotpie CARROTPIE = new carrotpie();
-  public static final chocolatebar CHOCOLATEBAR = new chocolatebar();
-  public static final dough DOUGH = new dough(new Item.Settings().group(ItemGroup.MISC));
-  public static final firestew FIRESTEW = new firestew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
-  public static final melonstew MELONSTEW = new melonstew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
-  public static final netherstew NETHERSTEW = new netherstew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
-  public static final speltbread SPELTBREAD = new speltbread();
-  public static final velvet VELVET = new velvet();
-  public static final sulfur SULFUR = new sulfur(new Item.Settings().group(ItemGroup.MISC));
+  public static final CactusFruit CACTUSFRUIT = new CactusFruit();
+  public static final CarrotPie CARROTPIE = new CarrotPie();
+  public static final ChocolateBar CHOCOLATEBAR = new ChocolateBar();
+  public static final Dough DOUGH = new Dough(new Item.Settings().group(ItemGroup.MISC));
+  public static final FireStew FIRESTEW = new FireStew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
+  public static final MelonStew MELONSTEW = new MelonStew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
+  public static final NetherStew NETHERSTEW = new NetherStew(new Item.Settings().maxCount(1).group(ItemGroup.FOOD));
+  public static final SpeltBread SPELTBREAD = new SpeltBread();
+  public static final Velvet VELVET = new Velvet();
+  public static final Sulfur SULFUR = new Sulfur(new Item.Settings().group(ItemGroup.MISC));
 
-  public static final hops HOPS = new hops(new Item.Settings().group(ItemGroup.MISC));
-  public static final darkmalt DARKMALT = new darkmalt(new Item.Settings().group(ItemGroup.MISC));
-  public static final speltwheat SPELTWHEAT = new speltwheat(new Item.Settings().group(ItemGroup.MISC));
-  public static final beer BEER = new beer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
-  public static final darkbeer DARKBEER = new darkbeer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
+  public static final Hops HOPS = new Hops(new Item.Settings().group(ItemGroup.MISC));
+  public static final DarkMalt DARKMALT = new DarkMalt(new Item.Settings().group(ItemGroup.MISC));
+  public static final Malt MALT = new Malt(new Item.Settings().group(ItemGroup.MISC));
+  public static final SpeltWheat SPELTWHEAT = new SpeltWheat(new Item.Settings().group(ItemGroup.MISC));
+  public static final Beer BEER = new Beer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
+  public static final DarkBeer DARKBEER = new DarkBeer(new Item.Settings().maxCount(1).group(ItemGroup.BREWING));
 
-  public static final tridentstick TRIDENTSTICK = new tridentstick(new Item.Settings().group(ItemGroup.MISC));
-  public static final tridenttop TRIDENTTOP = new tridenttop(new Item.Settings().group(ItemGroup.MISC));
-  public static final shinydiamond SHINYDIAMOND = new shinydiamond(new Item.Settings().group(ItemGroup.MISC));
-  public static final chainmailplate CHAINMAILPLATE = new chainmailplate(new Item.Settings().group(ItemGroup.MISC));
-  public static final yellowruby YELLOWRUBY = new yellowruby(new Item.Settings().group(ItemGroup.MISC));
-  public static final bedrockremover BEDROCKREMOVER = new bedrockremover(new Item.Settings().group(ItemGroup.TOOLS));
+  public static final TridentStick TRIDENTSTICK = new TridentStick(new Item.Settings().group(ItemGroup.MISC));
+  public static final TridentTop TRIDENTTOP = new TridentTop(new Item.Settings().group(ItemGroup.MISC));
+  public static final ShinyDiamond SHINYDIAMOND = new ShinyDiamond(new Item.Settings().group(ItemGroup.MISC));
+  public static final ChainmailPlate CHAINMAILPLATE = new ChainmailPlate(new Item.Settings().group(ItemGroup.MISC));
+  public static final YellowRuby YELLOWRUBY = new YellowRuby(new Item.Settings().group(ItemGroup.MISC));
+  public static final BedrockRemover BEDROCKREMOVER = new BedrockRemover(new Item.Settings().group(ItemGroup.TOOLS));
 
-  public static final ironhammer IRONHAMMER = new ironhammer(1F, -2.8F, ToolMaterials.IRON, ironhammer.EFFECTIVE_BLOCKS,
+  public static final IronHammer IRONHAMMER = new IronHammer(1F, -2.8F, ToolMaterials.IRON, IronHammer.EFFECTIVE_BLOCKS,
       new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
 
   public static void init() {
@@ -64,6 +65,7 @@ public class ItemInit {
     Registry.register(Registry.ITEM, new Identifier("stuffz", "speltwheat"), SPELTWHEAT);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "darkmalt"), DARKMALT);
     Registry.register(Registry.ITEM, new Identifier("stuffz", "bedrockremover"), BEDROCKREMOVER);
+    Registry.register(Registry.ITEM, new Identifier("stuffz", "malt"), MALT);
 
     registerCompostableItem(BlockInit.FLAX, 0.3F);
     registerCompostableItem(BlockInit.NUTSBUSH, 0.3F);

@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class hops extends Item {
+public class Hops extends Item {
 
-    public hops(Settings settings) {
+    public Hops(Settings settings) {
         super(settings);
     }
 }

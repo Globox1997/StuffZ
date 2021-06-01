@@ -13,11 +13,11 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ConfigInit;
-import net.stuffz.plants.ironbush;
+import net.stuffz.plants.IronBush;
 
-public class ironbushfeature extends Feature<DefaultFeatureConfig> {
+public class IronBushFeature extends Feature<DefaultFeatureConfig> {
 
-  public ironbushfeature(Codec<DefaultFeatureConfig> codec) {
+  public IronBushFeature(Codec<DefaultFeatureConfig> codec) {
     super(codec);
   }
 
@@ -45,7 +45,7 @@ public class ironbushfeature extends Feature<DefaultFeatureConfig> {
             int randomIntEast = world.getRandom().nextInt(3) - 1;
             int randomIntSouth = world.getRandom().nextInt(3) - 1;
             world.setBlockState(topPos.east(randomIntEast).south(randomIntSouth),
-                BlockInit.IRONBUSH.getDefaultState().with(ironbush.AGE, 3), 3);
+                BlockInit.IRONBUSH.getDefaultState().with(IronBush.AGE, 3), 3);
           }
           return true;
         }

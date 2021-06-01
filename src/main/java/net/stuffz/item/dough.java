@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class dough extends Item {
+public class Dough extends Item {
 
-    public dough(Settings settings) {
+    public Dough(Settings settings) {
         super(settings);
     }
 }

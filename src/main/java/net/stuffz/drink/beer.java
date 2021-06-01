@@ -15,9 +15,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class beer extends Item {
+public class Beer extends Item {
 
-  public beer(Settings settings) {
+  public Beer(Settings settings) {
     super(settings);
   }
 

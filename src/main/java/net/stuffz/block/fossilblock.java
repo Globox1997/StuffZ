@@ -11,9 +11,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 
-public class fossilblock extends Block {
+public class FossilBlock extends Block {
 
-  public fossilblock(Settings settings) {
+  public FossilBlock(Settings settings) {
     super(settings);
   }
 

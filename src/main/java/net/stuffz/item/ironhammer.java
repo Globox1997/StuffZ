@@ -15,15 +15,15 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.stuffz.block.uncraftblock;
-import net.stuffz.block.uncraftblockentity;
+import net.stuffz.block.UncraftBlock;
+import net.stuffz.block.UncraftBlockEntity;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.SoundInit;
 
-public class ironhammer extends MiningToolItem {
+public class IronHammer extends MiningToolItem {
   public static final Set<Block> EFFECTIVE_BLOCKS;
 
-  public ironhammer(float attackDamage, float attackSpeed, ToolMaterial material, Set<Block> effectiveBlocks,
+  public IronHammer(float attackDamage, float attackSpeed, ToolMaterial material, Set<Block> effectiveBlocks,
       Settings settings) {
     super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
   }
@@ -34,9 +34,9 @@ public class ironhammer extends MiningToolItem {
     BlockPos pos = context.getBlockPos();
     PlayerEntity player = context.getPlayer();
     BlockState state = context.getWorld().getBlockState(pos);
-    uncraftblockentity uncraftBlockEntity = (uncraftblockentity) world.getBlockEntity(pos);
+    UncraftBlockEntity uncraftBlockEntity = (UncraftBlockEntity) world.getBlockEntity(pos);
 
-    if (state.getBlock() instanceof uncraftblock && uncraftBlockEntity instanceof uncraftblockentity
+    if (state.getBlock() instanceof UncraftBlock && uncraftBlockEntity instanceof UncraftBlockEntity
         && !uncraftBlockEntity.isEmpty()) {
       if (!player.isCreative()) {
         context.getStack().damage(1, player, (p) -> p.sendToolBreakStatus(p.getActiveHand()));

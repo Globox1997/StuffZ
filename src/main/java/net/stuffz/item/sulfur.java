@@ -2,9 +2,9 @@ package net.stuffz.item;
 
 import net.minecraft.item.Item;
 
-public class sulfur extends Item {
+public class Sulfur extends Item {
 
-  public sulfur(Settings settings) {
+  public Sulfur(Settings settings) {
     super(settings);
   }
 }

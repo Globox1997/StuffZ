@@ -13,11 +13,11 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.Heightmap;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ConfigInit;
-import net.stuffz.plants.goldbush;
+import net.stuffz.plants.GoldBush;
 
-public class goldbushfeature extends Feature<DefaultFeatureConfig> {
+public class GoldBushFeature extends Feature<DefaultFeatureConfig> {
 
-  public goldbushfeature(Codec<DefaultFeatureConfig> codec) {
+  public GoldBushFeature(Codec<DefaultFeatureConfig> codec) {
     super(codec);
   }
 
@@ -45,7 +45,7 @@ public class goldbushfeature extends Feature<DefaultFeatureConfig> {
             int randomIntEast = world.getRandom().nextInt(3) - 1;
             int randomIntSouth = world.getRandom().nextInt(3) - 1;
             world.setBlockState(topPos.east(randomIntEast).south(randomIntSouth),
-                BlockInit.GOLDBUSH.getDefaultState().with(goldbush.AGE, 3), 3);
+                BlockInit.GOLDBUSH.getDefaultState().with(GoldBush.AGE, 3), 3);
           }
           return true;
         }

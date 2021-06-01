@@ -10,7 +10,6 @@ public class RenderInit {
   public static void init() {
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SPELT, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.HOP, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.MALT, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.NUTSBUSH, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.FLAX, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.ENDERBLOCK, RenderLayer.getSolid());
@@ -29,8 +28,8 @@ public class RenderInit {
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.YELLOWRUBYBLOCK, RenderLayer.getSolid());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.FOSSILBLOCK, RenderLayer.getSolid());
     BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SULFURBLOCK, RenderLayer.getSolid());
-    BlockEntityRendererRegistry.INSTANCE.register(BlockInit.UNCRAFTBLOCKENTITY, uncraftblockrenderer::new);
-    BlockEntityRendererRegistry.INSTANCE.register(BlockInit.BREWINGBARRELENTITY, brewingbarrelrenderer::new);
+    BlockEntityRendererRegistry.INSTANCE.register(BlockInit.UNCRAFTBLOCKENTITY, UncraftBlockRenderer::new);
+    BlockEntityRendererRegistry.INSTANCE.register(BlockInit.BREWINGBARRELENTITY, BrewingBarrelRenderer::new);
   }
 
 }

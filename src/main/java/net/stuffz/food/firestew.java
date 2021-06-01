@@ -14,10 +14,10 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class firestew extends Item {
+public class FireStew extends Item {
     public static final SuspiciousStewItem STEW_ITEM = new SuspiciousStewItem(new Item.Settings());
 
-    public firestew(Settings settings) {
+    public FireStew(Settings settings) {
         super(settings);
     }
 

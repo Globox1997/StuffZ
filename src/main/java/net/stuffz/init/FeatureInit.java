@@ -16,10 +16,10 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import net.stuffz.feature.goldbushfeature;
-import net.stuffz.feature.ironbushfeature;
-import net.stuffz.feature.nethergeyserfeature;
-import net.stuffz.feature.stonegeyserfeature;
+import net.stuffz.feature.GoldBushFeature;
+import net.stuffz.feature.IronBushFeature;
+import net.stuffz.feature.NetherGeyserFeature;
+import net.stuffz.feature.StoneGeyserFeature;
 
 public class FeatureInit {
         // Ore Gen
@@ -42,20 +42,20 @@ public class FeatureInit {
                         .repeat(2);
 
         // Bushes
-        private static final Feature<DefaultFeatureConfig> GOLD_BUSH = new goldbushfeature(DefaultFeatureConfig.CODEC);
+        private static final Feature<DefaultFeatureConfig> GOLD_BUSH = new GoldBushFeature(DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> GOLD_BUSH_CONFIGURED = GOLD_BUSH.configure(FeatureConfig.DEFAULT)
                         .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(20)));
-        private static final Feature<DefaultFeatureConfig> IRON_BUSH = new ironbushfeature(DefaultFeatureConfig.CODEC);
+        private static final Feature<DefaultFeatureConfig> IRON_BUSH = new IronBushFeature(DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> IRON_BUSH_CONFIGURED = IRON_BUSH.configure(FeatureConfig.DEFAULT)
                         .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(10)));
 
         // Geysers
-        private static final Feature<DefaultFeatureConfig> STONE_GEYSER = new stonegeyserfeature(
+        private static final Feature<DefaultFeatureConfig> STONE_GEYSER = new StoneGeyserFeature(
                         DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> STONE_GEYSER_CONFIGURED = STONE_GEYSER
                         .configure(FeatureConfig.DEFAULT)
                         .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(8)));
-        private static final Feature<DefaultFeatureConfig> NETHER_GEYSER = new nethergeyserfeature(
+        private static final Feature<DefaultFeatureConfig> NETHER_GEYSER = new NetherGeyserFeature(
                         DefaultFeatureConfig.CODEC);
         public static final ConfiguredFeature<?, ?> NETHER_GEYSER_CONFIGURED = NETHER_GEYSER
                         .configure(FeatureConfig.DEFAULT)

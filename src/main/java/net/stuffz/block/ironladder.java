@@ -22,7 +22,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-public class ironladder extends Block implements Waterloggable {
+public class IronLadder extends Block implements Waterloggable {
   public static final DirectionProperty FACING;
   public static final BooleanProperty WATERLOGGED;
   protected static final VoxelShape EAST_SHAPE;
@@ -30,7 +30,7 @@ public class ironladder extends Block implements Waterloggable {
   protected static final VoxelShape SOUTH_SHAPE;
   protected static final VoxelShape NORTH_SHAPE;
 
-  public ironladder(Settings settings) {
+  public IronLadder(Settings settings) {
     super(settings);
     this.setDefaultState(
         (BlockState) ((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH))
