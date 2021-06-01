@@ -18,3 +18,6 @@ Inside the file put for example this:
     "count": 3
 }
 ```
+"item" represents the item you will put on the anvil\
+"result" will be the resulting item\
+"count" is the amount of resulting items
