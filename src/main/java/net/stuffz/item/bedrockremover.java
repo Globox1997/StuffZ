@@ -38,8 +38,8 @@ public class BedrockRemover extends Item {
       if (state.getBlock().equals(Blocks.BEDROCK) && stack.hasTag() && tags.getBoolean("activeruby")) {
         if (!world.isClient) {
           world.breakBlock(context.getBlockPos(), false);
-          tags.putBoolean("activeruby", false);
         }
+        tags.putBoolean("activeruby", false);
         return ActionResult.SUCCESS;
       }
     }
@@ -71,17 +71,17 @@ public class BedrockRemover extends Item {
     ItemStack stack = user.getStackInHand(hand);
     CompoundTag tags = stack.getTag();
     ItemStack ruby = new ItemStack(ItemInit.YELLOWRUBY);
-    if (stack.hasTag()) {
-      if (user.inventory.contains(ruby) && tags.getBoolean("activeruby") == false) {
+    if (user.inventory.contains(ruby)) {
+      if (stack.hasTag() && tags.getBoolean("activeruby") == false) {
         tags.putBoolean("activeruby", true);
         if (!world.isClient && !user.isCreative()) {
           int rubyslot = user.inventory.getSlotWithStack(ruby);
           user.inventory.removeStack(rubyslot, 1);
         }
-        return TypedActionResult.success(user.getStackInHand(hand));
+      } else {
+        tags.putBoolean("activeruby", true);
       }
-    } else {
-      tags.putBoolean("activeruby", false);
+      return TypedActionResult.success(user.getStackInHand(hand));
     }
     return TypedActionResult.pass(user.getStackInHand(hand));
   }
