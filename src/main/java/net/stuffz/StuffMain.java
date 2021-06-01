@@ -11,6 +11,7 @@ public class StuffMain implements ModInitializer {
             BlockInit.init();
             ItemInit.init();
             LootInit.init();
+            RecipeInit.init();
             SoundInit.init();
             TagInit.init();
             FeatureInit.init();

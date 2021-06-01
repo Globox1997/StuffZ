@@ -5,6 +5,7 @@
     "minecraft:diamond_axe",
     "minecraft:iron_axe",
     "minecraft:stone_axe",
-    "minecraft:wooden_axe"
+    "minecraft:wooden_axe",
+    "minecraft:netherite_axe"
   ]
 }
