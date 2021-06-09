@@ -10,6 +10,7 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.ConfigInit;
 
@@ -20,27 +21,27 @@ public class NetherGeyserFeature extends Feature<DefaultFeatureConfig> {
   }
 
   @Override
-  public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos,
-      DefaultFeatureConfig config) {
+  public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
     if (!ConfigInit.CONFIG.generate_geysers) {
       return false;
     }
     Boolean isNetherrack;
     Boolean isAir;
+    BlockPos pos = context.getOrigin();
     for (int k = 0; k < 254; k++) {
-      isNetherrack = world.getBlockState(pos.up(k)).getBlock().equals(Blocks.NETHERRACK);
-      isAir = world.getBlockState(pos.up(k + 1)).isAir();
+      isNetherrack = context.getWorld().getBlockState(pos.up(k)).getBlock().equals(Blocks.NETHERRACK);
+      isAir = context.getWorld().getBlockState(pos.up(k + 1)).isAir();
       if (isNetherrack && isAir) {
         int booleanCount = 0;
         for (int i = -1; i < 2; i++) {
           for (int u = -1; u < 2; u++) {
-            isNetherrack = world.getBlockState(pos.north(i).east(u).up(k)).getBlock().equals(Blocks.NETHERRACK);
-            isAir = world.getBlockState(pos.north(i).east(u).up(k + 1)).isAir();
+            isNetherrack = context.getWorld().getBlockState(pos.north(i).east(u).up(k)).getBlock().equals(Blocks.NETHERRACK);
+            isAir = context.getWorld().getBlockState(pos.north(i).east(u).up(k + 1)).isAir();
             if (isNetherrack && isAir) {
               booleanCount++;
             }
             if (booleanCount == 9) {
-              world.setBlockState(pos.up(k), BlockInit.NETHERGEYSERBLOCK.getDefaultState(), 3);
+              context.getWorld().setBlockState(pos.up(k), BlockInit.NETHERGEYSERBLOCK.getDefaultState(), 3);
               return true;
             }
           }

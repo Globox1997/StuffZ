@@ -43,7 +43,7 @@ public class NetherGeyserBlock extends Block {
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (entity.isAttackable()) {
             if (world.isClient) {
                 entity.setVelocity(0, 1.2D, 0);

@@ -3,6 +3,8 @@ package net.stuffz.block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.util.InputUtil;
@@ -19,6 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stuffz.block.entity.UncraftBlockEntity;
+import net.stuffz.init.BlockInit;
 import net.stuffz.init.RecipeInit;
 
 import java.util.List;
@@ -36,8 +39,14 @@ public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
   }
 
   @Override
-  public BlockEntity createBlockEntity(BlockView view) {
-    return new UncraftBlockEntity();
+  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    return new UncraftBlockEntity(pos, state);
+  }
+
+  @Nullable
+  @Override
+  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    return checkType(type, BlockInit.UNCRAFTBLOCKENTITY, world.isClient ? UncraftBlockEntity::clientTick : UncraftBlockEntity::serverTick);
   }
 
   @Override
@@ -95,6 +104,10 @@ public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
 
       super.onStateReplaced(state, world, pos, newState, moved);
     }
+  }
+
+  protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
+    return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
   }
 
 }

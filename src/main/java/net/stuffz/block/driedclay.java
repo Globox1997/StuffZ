@@ -2,6 +2,7 @@ package net.stuffz.block;
 
 import java.util.List;
 
+import net.minecraft.block.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import net.fabricmc.api.EnvType;
@@ -36,7 +37,7 @@ public class DriedClay extends Block {
   }
 
   @Override
-  public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+  public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
     BlockPos water = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
     if (world.getBlockState(water.north()).getBlock().equals(Blocks.WATER)
         || world.getBlockState(water.east()).getBlock().equals(Blocks.WATER)

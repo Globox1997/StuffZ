@@ -32,7 +32,7 @@ public class HealBlock extends Block {
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         StatusEffectInstance reg = new StatusEffectInstance(StatusEffect.byRawId(10), 20, 0, false, false);
         LivingEntity bob = (LivingEntity) entity;
         if (!world.isClient) {

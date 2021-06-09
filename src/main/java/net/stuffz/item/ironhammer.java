@@ -1,32 +1,24 @@
 package net.stuffz.item;
 
-import java.util.Set;
-
-import com.google.common.collect.ImmutableSet;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.MiningToolItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.stuffz.block.UncraftBlock;
 import net.stuffz.block.entity.UncraftBlockEntity;
-import net.stuffz.init.BlockInit;
 import net.stuffz.init.SoundInit;
 
 public class IronHammer extends MiningToolItem {
-  public static final Set<Block> EFFECTIVE_BLOCKS;
 
-  public IronHammer(float attackDamage, float attackSpeed, ToolMaterial material, Set<Block> effectiveBlocks,
-      Settings settings) {
+  public IronHammer(float attackDamage, float attackSpeed, ToolMaterial material, Tag<Block> effectiveBlocks, Settings settings) {
     super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
   }
+
 
   @Override
   public ActionResult useOnBlock(ItemUsageContext context) {
@@ -47,10 +39,6 @@ public class IronHammer extends MiningToolItem {
     } else {
       return ActionResult.PASS;
     }
-  }
-
-  static {
-    EFFECTIVE_BLOCKS = ImmutableSet.of(Blocks.STONE, BlockInit.UNCRAFTBLOCK);
   }
 
 }

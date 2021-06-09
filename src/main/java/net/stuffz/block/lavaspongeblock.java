@@ -4,11 +4,7 @@ import java.util.Queue;
 
 import com.google.common.collect.Lists;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidBlock;
-import net.minecraft.block.FluidDrainable;
+import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.tag.FluidTags;
@@ -67,7 +63,7 @@ public class LavaSpongeBlock extends Block {
         FluidState fluidState = world.getFluidState(blockPos2);
         if (fluidState.isIn(FluidTags.LAVA)) {
           if (blockState.getBlock() instanceof FluidDrainable
-              && ((FluidDrainable) blockState.getBlock()).tryDrainFluid(world, blockPos2, blockState) != Fluids.EMPTY) {
+              && !((FluidDrainable)blockState.getBlock()).tryDrainFluid(world, blockPos2, blockState).isEmpty()) {
             ++i;
             if (j < 6) {
               queue.add(new Pair<>(blockPos2, j + 1));

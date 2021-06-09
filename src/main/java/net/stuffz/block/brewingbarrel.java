@@ -1,10 +1,10 @@
 package net.stuffz.block;
 
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.MobSpawnerBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.util.InputUtil;
@@ -32,6 +32,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stuffz.block.entity.BrewingBarrelEntity;
+import net.stuffz.init.BlockInit;
 import net.stuffz.init.ItemInit;
 import net.stuffz.init.SoundInit;
 import net.stuffz.init.TagInit;
@@ -42,9 +43,8 @@ import org.jetbrains.annotations.Nullable;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Block;
 
-public class BrewingBarrel extends Block implements BlockEntityProvider {
+public class BrewingBarrel extends Block implements  BlockEntityProvider {
   public static final DirectionProperty FACING;
   private static final VoxelShape X_AXIS_SHAPE;
   private static final VoxelShape Z_AXIS_SHAPE;
@@ -55,9 +55,20 @@ public class BrewingBarrel extends Block implements BlockEntityProvider {
   }
 
   @Override
-  public BlockEntity createBlockEntity(BlockView view) {
-    return new BrewingBarrelEntity();
+  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    return new BrewingBarrelEntity(pos, state);
   }
+
+  @Nullable
+  @Override
+  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    return checkType(type, BlockInit.BREWINGBARRELENTITY, world.isClient ? BrewingBarrelEntity::clientTick : BrewingBarrelEntity::serverTick);
+  }
+
+//  @Override
+//  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+//    return checkType(type, BlockInit.BREWINGBARRELENTITY, (w, p, s, e) -> e.tick());
+//  }
 
   @Override
   @Environment(EnvType.CLIENT)
@@ -123,7 +134,7 @@ public class BrewingBarrel extends Block implements BlockEntityProvider {
       return ActionResult.PASS;
     } else {
       ItemStack heldItem = player.getMainHandStack();
-      if (heldItem.getItem().isIn(TagInit.AXE_ITEMS) && blockEntity.getStack(0).isEmpty()) {
+      if (heldItem.isIn(TagInit.AXE_ITEMS) && blockEntity.getStack(0).isEmpty()) {
         if (!world.isClient) {
           if (!player.isCreative()) {
             blockEntity.setStack(0, heldItem.split(1));
@@ -178,49 +189,92 @@ public class BrewingBarrel extends Block implements BlockEntityProvider {
     dropStacks(state, world, pos, blockEntity, player, stack);
   }
 
+  protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
+    return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
+  }
+
   static {
     FACING = HorizontalFacingBlock.FACING;
-    X_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(5D, 0, 1D, 11D, 1D, 15D),
-        createCuboidShape(5D, 0D, 0D, 11D, 1D, 1D), createCuboidShape(5D, 0D, 15D, 11D, 1D, 16D),
-        createCuboidShape(3D, 1D, 1D, 13D, 3D, 15D), createCuboidShape(3D, 1D, 0D, 4D, 3D, 1D),
-        createCuboidShape(3D, 1D, 15D, 4D, 3D, 16D), createCuboidShape(12D, 1D, 0D, 13D, 3D, 1D),
-        createCuboidShape(12D, 1D, 15D, 13D, 3D, 1D), createCuboidShape(2D, 3D, 1D, 14D, 9D, 15D),
-        createCuboidShape(2D, 3D, 0D, 3D, 9D, 1D), createCuboidShape(2D, 3D, 15D, 3D, 9D, 16D),
-        createCuboidShape(13D, 3D, 0D, 14D, 9D, 1D), createCuboidShape(13D, 3D, 15D, 14D, 9D, 16D),
-        createCuboidShape(3D, 9D, 1D, 13D, 11D, 15D), createCuboidShape(3D, 9D, 0D, 4D, 11D, 1D),
-        createCuboidShape(3D, 9D, 15D, 4D, 11D, 16D), createCuboidShape(12D, 9D, 0D, 13D, 11D, 1D),
-        createCuboidShape(12D, 9D, 15D, 13D, 11D, 16D), createCuboidShape(11D, 10D, 0D, 12D, 11D, 1D),
-        createCuboidShape(11D, 10D, 15D, 12D, 11D, 16D), createCuboidShape(11D, 1D, 0D, 12D, 2D, 1D),
-        createCuboidShape(11D, 1D, 15D, 12D, 2D, 16D), createCuboidShape(4D, 10D, 0D, 5D, 11D, 1D),
-        createCuboidShape(4D, 10D, 15D, 5D, 11D, 16D), createCuboidShape(4D, 1D, 0D, 5D, 2D, 1D),
-        createCuboidShape(4D, 1D, 15D, 5D, 2D, 16D), createCuboidShape(5D, 11D, 1D, 11D, 12D, 15D),
-        createCuboidShape(5D, 11D, 0D, 11D, 12D, 1D), createCuboidShape(5D, 11D, 15D, 11D, 12D, 16D),
-        createCuboidShape(14D, 3D, 3D, 15D, 9D, 13D), createCuboidShape(1D, 3D, 3D, 2D, 9D, 13D),
-        createCuboidShape(2D, 9D, 3D, 3D, 11D, 13D), createCuboidShape(13D, 9D, 3D, 14D, 11D, 13D),
-        createCuboidShape(13D, 1D, 3D, 14D, 3D, 13D), createCuboidShape(2D, 1D, 3D, 3D, 3D, 13D),
-        createCuboidShape(11D, 0D, 3D, 13D, 1D, 13D), createCuboidShape(3D, 0D, 3D, 5D, 1D, 13D),
-        createCuboidShape(3D, 11D, 3D, 5D, 12D, 13D), createCuboidShape(11D, 11D, 3D, 13D, 12D, 13D),
-        createCuboidShape(5D, 12D, 3D, 11D, 13D, 13D), createCuboidShape(6D, 2D, 0D, 10D, 3D, 1D));
-    Z_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(1D, 0D, 5D, 15D, 1D, 11D),
-        createCuboidShape(15D, 0D, 5D, 16D, 1D, 11D), createCuboidShape(0D, 0D, 5D, 1D, 1D, 11D),
-        createCuboidShape(1D, 1D, 3D, 15D, 3D, 13D), createCuboidShape(15D, 1D, 3D, 16D, 3D, 4D),
-        createCuboidShape(0D, 1D, 3D, 1D, 3D, 4D), createCuboidShape(15D, 1D, 12D, 16D, 3D, 13D),
-        createCuboidShape(0D, 1D, 12D, 1D, 3D, 13D), createCuboidShape(1D, 3D, 2D, 15D, 9D, 14D),
-        createCuboidShape(15D, 3D, 2D, 16D, 9D, 3D), createCuboidShape(0D, 3D, 2D, 1D, 9D, 3D),
-        createCuboidShape(15D, 3D, 13D, 16D, 9D, 14D), createCuboidShape(0D, 3D, 13D, 1D, 9D, 14D),
-        createCuboidShape(1D, 9D, 3D, 15D, 11D, 13D), createCuboidShape(15D, 9D, 3D, 16D, 11D, 4D),
-        createCuboidShape(0D, 9D, 3D, 1D, 11D, 4D), createCuboidShape(15D, 9D, 12D, 16D, 11D, 13D),
-        createCuboidShape(0D, 9D, 12D, 1D, 11D, 13D), createCuboidShape(15D, 10D, 11D, 16D, 11D, 12D),
-        createCuboidShape(0D, 10D, 11D, 1D, 11D, 12D), createCuboidShape(15D, 1D, 11D, 16D, 2D, 12D),
-        createCuboidShape(0D, 1D, 11D, 1D, 2D, 12D), createCuboidShape(15D, 10D, 4D, 16D, 11D, 5D),
-        createCuboidShape(0D, 10D, 4D, 1D, 11D, 5D), createCuboidShape(15D, 1D, 4D, 16D, 2D, 5D),
-        createCuboidShape(0D, 1D, 4D, 1D, 2D, 5D), createCuboidShape(1D, 11D, 5D, 15D, 12D, 11D),
-        createCuboidShape(15D, 11D, 5D, 16D, 12D, 11D), createCuboidShape(0D, 11D, 5D, 1D, 12D, 11D),
-        createCuboidShape(3D, 3D, 14D, 13D, 9D, 15D), createCuboidShape(3D, 3D, 1D, 13D, 9D, 2D),
-        createCuboidShape(3D, 9D, 2D, 13D, 11D, 3D), createCuboidShape(3D, 9D, 13D, 13D, 11D, 14D),
-        createCuboidShape(3D, 1D, 13D, 13D, 3D, 14D), createCuboidShape(3D, 1D, 2D, 13D, 3D, 3D),
-        createCuboidShape(3D, 0D, 11D, 13D, 1D, 13D), createCuboidShape(3D, 0D, 3D, 13D, 1D, 5D),
-        createCuboidShape(3D, 11D, 3D, 13D, 12D, 5D), createCuboidShape(3D, 11D, 11D, 13D, 12D, 13D),
-        createCuboidShape(3D, 12D, 5D, 13D, 13D, 11D), createCuboidShape(15D, 2D, 6D, 16D, 3D, 10D));
+
+    X_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(5, 0, 1, 11, 1, 15),
+            createCuboidShape(5, 0, 0, 11, 1, 1),
+            createCuboidShape(5, 0, 15, 11, 1, 16),
+            createCuboidShape(3, 1, 1, 13, 3, 15),
+            createCuboidShape(3, 1, 0, 4, 3, 1),
+            createCuboidShape(3, 1, 15, 4, 3, 16),
+            createCuboidShape(12, 1, 0, 13, 3, 1),
+            createCuboidShape(12, 1, 15, 13, 3, 16),
+            createCuboidShape(2, 3, 1, 14, 9, 15),
+            createCuboidShape(2, 3, 0, 3, 9, 1),
+            createCuboidShape(2, 3, 15, 3, 9, 16),
+            createCuboidShape(13, 3, 0, 14, 9, 1),
+            createCuboidShape(13, 3, 15, 14, 9, 16),
+            createCuboidShape(3, 9, 1, 13, 11, 15),
+            createCuboidShape(3, 9, 0, 4, 11, 1),
+            createCuboidShape(3, 9, 15, 4, 11, 16),
+            createCuboidShape(12, 9, 0, 13, 11, 1),
+            createCuboidShape(12, 9, 15, 13, 11, 16),
+            createCuboidShape(11, 10, 0, 12, 11, 1),
+            createCuboidShape(11, 10, 15, 12, 11, 16),
+            createCuboidShape(11, 1, 0, 12, 2, 1),
+            createCuboidShape(11, 1, 15, 12, 2, 16),
+            createCuboidShape(4, 10, 0, 5, 11, 1),
+            createCuboidShape(4, 10, 15, 5, 11, 16),
+            createCuboidShape(4, 1, 0, 5, 2, 1),
+            createCuboidShape(4, 1, 15, 5, 2, 16),
+            createCuboidShape(5, 11, 1, 11, 12, 15),
+            createCuboidShape(5, 11, 0, 11, 12, 1),
+            createCuboidShape(5, 11, 15, 11, 12, 16),
+            createCuboidShape(14, 3, 3, 15, 9, 13),
+            createCuboidShape(1, 3, 3, 2, 9, 13),
+            createCuboidShape(2, 9, 3, 3, 11, 13),
+            createCuboidShape(13, 9, 3, 14, 11, 13),
+            createCuboidShape(13, 1, 3, 14, 3, 13),
+            createCuboidShape(2, 1, 3, 3, 3, 13),
+            createCuboidShape(11, 0, 3, 13, 1, 13),
+            createCuboidShape(3, 0, 3, 5, 1, 13),
+            createCuboidShape(3, 11, 3, 5, 12, 13),
+            createCuboidShape(11, 11, 3, 13, 12, 13),
+            createCuboidShape(5, 12, 3, 11, 13, 13));
+    Z_AXIS_SHAPE = VoxelShapes.union(createCuboidShape(1, 0, 5, 15, 1, 11),
+            createCuboidShape(15, 0, 5, 16, 1, 11),
+            createCuboidShape(0, 0, 5, 1, 1, 11),
+            createCuboidShape(1, 1, 3, 15, 3, 13),
+            createCuboidShape(15, 1, 3, 16, 3, 4),
+            createCuboidShape(0, 1, 3, 1, 3, 4),
+            createCuboidShape(15, 1, 12, 16, 3, 13),
+            createCuboidShape(0, 1, 12, 1, 3, 13),
+            createCuboidShape(1, 3, 2, 15, 9, 14),
+            createCuboidShape(15, 3, 2, 16, 9, 3),
+            createCuboidShape(0, 3, 2, 1, 9, 3),
+            createCuboidShape(15, 3, 13, 16, 9, 14),
+            createCuboidShape(0, 3, 13, 1, 9, 14),
+            createCuboidShape(1, 9, 3, 15, 11, 13),
+            createCuboidShape(15, 9, 3, 16, 11, 4),
+            createCuboidShape(0, 9, 3, 1, 11, 4),
+            createCuboidShape(15, 9, 12, 16, 11, 13),
+            createCuboidShape(0, 9, 12, 1, 11, 13),
+            createCuboidShape(15, 10, 11, 16, 11, 12),
+            createCuboidShape(0, 10, 11, 1, 11, 12),
+            createCuboidShape(15, 1, 11, 16, 2, 12),
+            createCuboidShape(0, 1, 11, 1, 2, 12),
+            createCuboidShape(15, 10, 4, 16, 11, 5),
+            createCuboidShape(0, 10, 4, 1, 11, 5),
+            createCuboidShape(15, 1, 4, 16, 2, 5),
+            createCuboidShape(0, 1, 4, 1, 2, 5),
+            createCuboidShape(1, 11, 5, 15, 12, 11),
+            createCuboidShape(15, 11, 5, 16, 12, 11),
+            createCuboidShape(0, 11, 5, 1, 12, 11),
+            createCuboidShape(3, 3, 14, 13, 9, 15),
+            createCuboidShape(3, 3, 1, 13, 9, 2),
+            createCuboidShape(3, 9, 2, 13, 11, 3),
+            createCuboidShape(3, 9, 13, 13, 11, 14),
+            createCuboidShape(3, 1, 13, 13, 3, 14),
+            createCuboidShape(3, 1, 2, 13, 3, 3),
+            createCuboidShape(3, 0, 11, 13, 1, 13),
+            createCuboidShape(3, 0, 3, 13, 1, 5),
+            createCuboidShape(3, 11, 3, 13, 12, 5),
+            createCuboidShape(3, 11, 11, 13, 12, 13),
+            createCuboidShape(3, 12, 5, 13, 13, 11));
   }
 }

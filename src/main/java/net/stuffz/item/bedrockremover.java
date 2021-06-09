@@ -11,7 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -33,7 +33,7 @@ public class BedrockRemover extends Item {
     BlockState state = world.getBlockState(context.getBlockPos());
     PlayerEntity player = context.getPlayer();
     ItemStack stack = context.getStack();
-    CompoundTag tags = stack.getTag();
+    NbtCompound tags = stack.getTag();
     if (player.getBlockPos().getY() > 120) {
       if (state.getBlock().equals(Blocks.BEDROCK) && stack.hasTag() && tags.getBoolean("activeruby")) {
         if (!world.isClient) {
@@ -58,9 +58,9 @@ public class BedrockRemover extends Item {
 
   @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-    CompoundTag tags = stack.getTag();
+    NbtCompound tags = stack.getTag();
     if (tags == null) {
-      stack.setTag(new CompoundTag());
+      stack.setTag(new NbtCompound());
       tags = stack.getTag();
     }
     tags.putBoolean("activeruby", false);
@@ -69,14 +69,14 @@ public class BedrockRemover extends Item {
   @Override
   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
     ItemStack stack = user.getStackInHand(hand);
-    CompoundTag tags = stack.getTag();
+    NbtCompound tags = stack.getTag();
     ItemStack ruby = new ItemStack(ItemInit.YELLOWRUBY);
-    if (user.inventory.contains(ruby)) {
+    if (user.getInventory().contains(ruby)) {
       if (stack.hasTag() && tags.getBoolean("activeruby") == false) {
         tags.putBoolean("activeruby", true);
         if (!world.isClient && !user.isCreative()) {
-          int rubyslot = user.inventory.getSlotWithStack(ruby);
-          user.inventory.removeStack(rubyslot, 1);
+          int rubyslot = user.getInventory().getSlotWithStack(ruby);
+          user.getInventory().removeStack(rubyslot, 1);
         }
       } else {
         tags.putBoolean("activeruby", true);

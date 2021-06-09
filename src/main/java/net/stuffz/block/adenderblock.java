@@ -1,5 +1,6 @@
 package net.stuffz.block;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -17,7 +18,7 @@ public class AdenderBlock extends RedstoneBlock {
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         StatusEffectInstance spd = new StatusEffectInstance(StatusEffect.byRawId(1), 15, 0, false, false);
         LivingEntity bob = (LivingEntity) entity;
         if (!world.isClient) {

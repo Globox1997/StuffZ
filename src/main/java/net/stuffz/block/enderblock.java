@@ -1,5 +1,6 @@
 package net.stuffz.block;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.particle.ParticleTypes;
@@ -14,7 +15,7 @@ public class EnderBlock extends RedstoneBlock {
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (world.isClient) {
             Random random1 = new Random();
             Random random2 = new Random();

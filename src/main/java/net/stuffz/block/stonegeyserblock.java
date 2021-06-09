@@ -68,7 +68,7 @@ public class StoneGeyserBlock extends Block {
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (z7 == 1 && world.isClient) {
             entity.setVelocity(0, 1.1D, 0);
         }
