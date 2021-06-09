@@ -1,6 +1,7 @@
 package net.stuffz.init;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -40,16 +41,16 @@ public class BlockInit {
                         .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
         public static final DriedClay DRIEDCLAY = new DriedClay(FabricBlockSettings.copy(Blocks.CLAY));
         public static final UncraftBlock UNCRAFTBLOCK = new UncraftBlock(FabricBlockSettings.copy(Blocks.ANVIL));
-        public static final BlockEntityType<UncraftBlockEntity> UNCRAFTBLOCKENTITY = BlockEntityType.Builder
+        public static final BlockEntityType<UncraftBlockEntity> UNCRAFTBLOCKENTITY = FabricBlockEntityTypeBuilder
                         .create(UncraftBlockEntity::new, UNCRAFTBLOCK).build(null);
         public static final YellowRubyBlock YELLOWRUBYBLOCK = new YellowRubyBlock(
                         FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
         public static final FossilBlock FOSSILBLOCK = new FossilBlock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
-        public static final IronLadder IRONLADDER = new IronLadder(FabricBlockSettings.of(Material.SUPPORTED)
+        public static final IronLadder IRONLADDER = new IronLadder(FabricBlockSettings.of(Material.DECORATION)
                         .strength(0.6F).sounds(SoundInit.IRONLADDER_GROUP).nonOpaque());
         public static final BrewingBarrel BREWINGBARREL = new BrewingBarrel(
-                        FabricBlockSettings.copy(Blocks.SPRUCE_PLANKS));
-        public static final BlockEntityType<BrewingBarrelEntity> BREWINGBARRELENTITY = BlockEntityType.Builder
+                        FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
+        public static final BlockEntityType<BrewingBarrelEntity> BREWINGBARRELENTITY = FabricBlockEntityTypeBuilder
                         .create(BrewingBarrelEntity::new, BREWINGBARREL).build(null);
         public static final YellowRubyOre YELLOWRUBYORE = new YellowRubyOre(
                         FabricBlockSettings.copy(Blocks.DIAMOND_BLOCK));

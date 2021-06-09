@@ -6,9 +6,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -23,22 +23,23 @@ import net.stuffz.feature.StoneGeyserFeature;
 
 public class FeatureInit {
         // Ore Gen
+
+
         public static ConfiguredFeature<?, ?> FOSSIL_ORE = Feature.ORE
-                        .configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-                                        BlockInit.FOSSILBLOCK.getDefaultState(), 4)) // vein size
-                        .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, // bottomoffset
-                                        4, // min y level
-                                        24))) // max y level
-                        .spreadHorizontally().repeat(5); // number of veins per chunk
+                .configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+                        BlockInit.FOSSILBLOCK.getDefaultState(), 4)) // vein size
+                .uniformRange(YOffset.fixed(0), YOffset.fixed(24)) // off set
+                .spreadHorizontally().repeat(3); // number of veins per chunk
+
         public static ConfiguredFeature<?, ?> SULFUR_ORE = Feature.ORE
                         .configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
                                         BlockInit.SULFURBLOCK.getDefaultState(), 5))
-                        .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 12, 32))).spreadHorizontally()
+                .uniformRange(YOffset.fixed(12), YOffset.fixed(32)).spreadHorizontally()
                         .repeat(5);
         public static ConfiguredFeature<?, ?> RUBY_ORE = Feature.ORE
                         .configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
                                         BlockInit.YELLOWRUBYORE.getDefaultState(), 1))
-                        .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 2, 12))).spreadHorizontally()
+                .uniformRange(YOffset.fixed(2), YOffset.fixed(12)).spreadHorizontally()
                         .repeat(2);
 
         // Bushes
@@ -64,28 +65,28 @@ public class FeatureInit {
         public static void init() {
                 // Bushes
                 Registry.register(Registry.FEATURE, new Identifier("stuffz", "gold_bush"), GOLD_BUSH);
-                RegistryKey<ConfiguredFeature<?, ?>> goldBush = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+                RegistryKey<ConfiguredFeature<?, ?>> goldBush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
                                 new Identifier("stuffz", "gold_bush"));
                 Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, goldBush.getValue(), GOLD_BUSH_CONFIGURED);
                 BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.FOREST),
                                 GenerationStep.Feature.RAW_GENERATION, goldBush);
 
                 Registry.register(Registry.FEATURE, new Identifier("stuffz", "iron_bush"), IRON_BUSH);
-                RegistryKey<ConfiguredFeature<?, ?>> ironBush = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+                RegistryKey<ConfiguredFeature<?, ?>> ironBush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
                                 new Identifier("stuffz", "iron_bush"));
                 Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, ironBush.getValue(), IRON_BUSH_CONFIGURED);
                 BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.FOREST),
                                 GenerationStep.Feature.RAW_GENERATION, ironBush);
                 // Geysers
                 Registry.register(Registry.FEATURE, new Identifier("stuffz", "stone_geyser"), STONE_GEYSER);
-                RegistryKey<ConfiguredFeature<?, ?>> stoneGeyser = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+                RegistryKey<ConfiguredFeature<?, ?>> stoneGeyser = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
                                 new Identifier("stuffz", "stone_geyser"));
                 Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, stoneGeyser.getValue(),
                                 STONE_GEYSER_CONFIGURED);
                 BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.EXTREME_HILLS),
                                 GenerationStep.Feature.RAW_GENERATION, stoneGeyser);
                 Registry.register(Registry.FEATURE, new Identifier("stuffz", "nether_geyser"), NETHER_GEYSER);
-                RegistryKey<ConfiguredFeature<?, ?>> netherGeyser = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+                RegistryKey<ConfiguredFeature<?, ?>> netherGeyser = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
                                 new Identifier("stuffz", "nether_geyser"));
                 Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, netherGeyser.getValue(),
                                 NETHER_GEYSER_CONFIGURED);
@@ -95,17 +96,17 @@ public class FeatureInit {
                 // Ore Gen
                 if (ConfigInit.CONFIG.generate_ores) {
                         RegistryKey<ConfiguredFeature<?, ?>> fossilOre = RegistryKey.of(
-                                        Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "fossil_ore"));
+                                        Registry.CONFIGURED_FEATURE_KEY, new Identifier("stuffz", "fossil_ore"));
                         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, fossilOre.getValue(), FOSSIL_ORE);
                         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
                                         GenerationStep.Feature.UNDERGROUND_ORES, fossilOre);
                         RegistryKey<ConfiguredFeature<?, ?>> sulfurOre = RegistryKey.of(
-                                        Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "sulfur_ore"));
+                                        Registry.CONFIGURED_FEATURE_KEY, new Identifier("stuffz", "sulfur_ore"));
                         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, sulfurOre.getValue(), SULFUR_ORE);
                         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP),
                                         GenerationStep.Feature.UNDERGROUND_ORES, sulfurOre);
                         RegistryKey<ConfiguredFeature<?, ?>> rubyOre = RegistryKey
-                                        .of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("stuffz", "ruby_ore"));
+                                        .of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("stuffz", "ruby_ore"));
                         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, rubyOre.getValue(), RUBY_ORE);
                         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.OCEAN),
                                         GenerationStep.Feature.UNDERGROUND_ORES, rubyOre);

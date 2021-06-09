@@ -3,9 +3,9 @@ package net.stuffz.init;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.item.Items;
-import net.minecraft.loot.BinomialLootTableRange;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
 import net.minecraft.util.Identifier;
 
 public class LootInit {
@@ -77,58 +77,58 @@ public class LootInit {
     LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
       if ("minecraft:blocks/grass".equals(id.toString())) {
         FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-            .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.HOP))
-            .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.SPELT))
-            .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.NUTSBUSH))
-            .rolls(BinomialLootTableRange.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.FLAX));
+            .rolls(BinomialLootNumberProvider.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.HOP))
+            .rolls(BinomialLootNumberProvider.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.SPELT))
+            .rolls(BinomialLootNumberProvider.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.NUTSBUSH))
+            .rolls(BinomialLootNumberProvider.create(1, 0.01f)).with(ItemEntry.builder(BlockInit.FLAX));
         supplier.pool(poolBuilder);
       }
       if ("minecraft:blocks/sand".equals(id.toString())) {
         FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-            .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
+            .rolls(BinomialLootNumberProvider.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
         supplier.pool(poolBuilder);
       }
       if ("minecraft:blocks/red_sand".equals(id.toString())) {
         FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-            .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
+            .rolls(BinomialLootNumberProvider.create(1, 0.001f)).with(ItemEntry.builder(Items.GOLD_NUGGET));
         supplier.pool(poolBuilder);
       }
       if ("minecraft:blocks/gravel".equals(id.toString())) {
         FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-            .rolls(BinomialLootTableRange.create(1, 0.001f)).with(ItemEntry.builder(Items.IRON_NUGGET));
+            .rolls(BinomialLootNumberProvider.create(1, 0.001f)).with(ItemEntry.builder(Items.IRON_NUGGET));
         supplier.pool(poolBuilder);
       }
       if (isOne(id)) {
-        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(5, 0.3f))
-            .with(ItemEntry.builder(BlockInit.FLAX)).rolls(new BinomialLootTableRange(3, 0.3f))
-            .with(ItemEntry.builder(BlockInit.HOP)).rolls(new BinomialLootTableRange(5, 0.5f))
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(BinomialLootNumberProvider.create(5, 0.3f))
+            .with(ItemEntry.builder(BlockInit.FLAX)).rolls(BinomialLootNumberProvider.create(3, 0.3f))
+            .with(ItemEntry.builder(BlockInit.HOP)).rolls(BinomialLootNumberProvider.create(5, 0.5f))
             .with(ItemEntry.builder(BlockInit.SPELT));
         supplier.pool(poolBuilder);
       }
       if (isTwo(id)) {
-        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(1, 0.02f))
-            .with(ItemEntry.builder(ItemInit.SHINYDIAMOND)).rolls(new BinomialLootTableRange(5, 0.15f))
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(BinomialLootNumberProvider.create(1, 0.02f))
+            .with(ItemEntry.builder(ItemInit.SHINYDIAMOND)).rolls(BinomialLootNumberProvider.create(5, 0.15f))
             .with(ItemEntry.builder(ItemInit.CHAINMAILPLATE));
         supplier.pool(poolBuilder);
       }
       if (isThree(id)) {
-        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(4, 0.4f))
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(BinomialLootNumberProvider.create(4, 0.4f))
             .with(ItemEntry.builder(ItemInit.SPELTWHEAT));
 
         supplier.pool(poolBuilder);
       }
       if (isFour(id)) {
-        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(1, 0.2f))
-            .with(ItemEntry.builder(ItemInit.CARROTPIE)).rolls(new BinomialLootTableRange(4, 0.35f))
-            .with(ItemEntry.builder(ItemInit.SPELTBREAD)).rolls(new BinomialLootTableRange(1, 0.1f))
-            .with(ItemEntry.builder(ItemInit.VELVET)).rolls(new BinomialLootTableRange(1, 0.3f))
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(BinomialLootNumberProvider.create(1, 0.2f))
+            .with(ItemEntry.builder(ItemInit.CARROTPIE)).rolls(BinomialLootNumberProvider.create(4, 0.35f))
+            .with(ItemEntry.builder(ItemInit.SPELTBREAD)).rolls(BinomialLootNumberProvider.create(1, 0.1f))
+            .with(ItemEntry.builder(ItemInit.VELVET)).rolls(BinomialLootNumberProvider.create(1, 0.3f))
             .with(ItemEntry.builder(ItemInit.MELONSTEW));
         supplier.pool(poolBuilder);
       }
       if (isFive(id)) {
-        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(new BinomialLootTableRange(1, 0.2f))
-            .with(ItemEntry.builder(ItemInit.FIRESTEW)).rolls(new BinomialLootTableRange(1, 0.2f))
-            .with(ItemEntry.builder(ItemInit.NETHERSTEW)).rolls(new BinomialLootTableRange(1, 0.1f))
+        FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder().rolls(BinomialLootNumberProvider.create(1, 0.2f))
+            .with(ItemEntry.builder(ItemInit.FIRESTEW)).rolls(BinomialLootNumberProvider.create(1, 0.2f))
+            .with(ItemEntry.builder(ItemInit.NETHERSTEW)).rolls(BinomialLootNumberProvider.create(1, 0.1f))
             .with(ItemEntry.builder(BlockInit.LAVASPONGEBLOCK));
         supplier.pool(poolBuilder);
       }

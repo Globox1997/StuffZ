@@ -7,38 +7,41 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.stuffz.init.BlockInit;
 import net.stuffz.init.RecipeInit;
-import net.minecraft.util.Tickable;
 
-public class UncraftBlockEntity extends BlockEntity implements Tickable, Inventory, BlockEntityClientSerializable {
+public class UncraftBlockEntity extends BlockEntity implements Inventory, BlockEntityClientSerializable {
   private DefaultedList<ItemStack> inventory;
   public int unCraftHit;
 
-  public UncraftBlockEntity() {
-    super(BlockInit.UNCRAFTBLOCKENTITY);
+  public UncraftBlockEntity(BlockPos pos, BlockState state) {
+    super(BlockInit.UNCRAFTBLOCKENTITY,pos,state);
     this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
   }
 
   @Override
-  public void fromTag(BlockState state, CompoundTag tag) {
-    super.fromTag(state, tag);
+  public void readNbt(NbtCompound nbt) {
+    super.readNbt(nbt);
     inventory.clear();
-    Inventories.fromTag(tag, inventory);
+    Inventories.readNbt(nbt, inventory);
+  }
+  @Override
+  public NbtCompound writeNbt(NbtCompound nbt) {
+    super.writeNbt(nbt);
+    Inventories.writeNbt(nbt, inventory);
+    return nbt;
   }
 
-  @Override
-  public CompoundTag toTag(CompoundTag tag) {
-    super.toTag(tag);
-    Inventories.toTag(tag, inventory);
-    return tag;
+  public static void clientTick(World world, BlockPos pos, BlockState state, UncraftBlockEntity blockEntity) {
+    blockEntity.update();
   }
 
-  @Override
-  public void tick() {
-    this.update();
+  public static void serverTick(World world, BlockPos pos, BlockState state, UncraftBlockEntity blockEntity) {
+    blockEntity.update();
   }
 
   private void update() {
@@ -123,15 +126,14 @@ public class UncraftBlockEntity extends BlockEntity implements Tickable, Invento
   }
 
   @Override
-  public void fromClientTag(CompoundTag tag) {
+  public void fromClientTag(NbtCompound tag) {
     inventory.clear();
-    Inventories.fromTag(tag, inventory);
+    Inventories.readNbt(tag,inventory);
   }
 
   @Override
-  public CompoundTag toClientTag(CompoundTag tag) {
-    super.toTag(tag);
-    Inventories.toTag(tag, inventory);
+  public NbtCompound toClientTag(NbtCompound tag) {
+    Inventories.writeNbt(tag, inventory);
     return tag;
   }
 

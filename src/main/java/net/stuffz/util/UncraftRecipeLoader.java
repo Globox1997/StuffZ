@@ -25,7 +25,7 @@ public class UncraftRecipeLoader implements SimpleSynchronousResourceReloadListe
     }
 
     @Override
-    public void apply(ResourceManager manager) {
+    public void reload(ResourceManager manager) {
         for (Identifier id : manager.findResources("uncraft_recipes", path -> path.endsWith(".json"))) {
             try {
                 InputStream stream = manager.getResource(id).getInputStream();
@@ -41,5 +41,4 @@ public class UncraftRecipeLoader implements SimpleSynchronousResourceReloadListe
             }
         }
     }
-
 }

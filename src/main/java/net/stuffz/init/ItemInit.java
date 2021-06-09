@@ -6,6 +6,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.stuffz.drink.*;
@@ -39,7 +40,7 @@ public class ItemInit {
   public static final YellowRuby YELLOWRUBY = new YellowRuby(new Item.Settings().group(ItemGroup.MISC));
   public static final BedrockRemover BEDROCKREMOVER = new BedrockRemover(new Item.Settings().group(ItemGroup.TOOLS));
 
-  public static final IronHammer IRONHAMMER = new IronHammer(1F, -2.8F, ToolMaterials.IRON, IronHammer.EFFECTIVE_BLOCKS,
+  public static final IronHammer IRONHAMMER = new IronHammer(1F, -2.8F, ToolMaterials.IRON, BlockTags.ANVIL,
       new Item.Settings().group(ItemGroup.TOOLS).maxDamage(461));
 
   public static void registerCompostableItem(ItemConvertible item, float chance) {
