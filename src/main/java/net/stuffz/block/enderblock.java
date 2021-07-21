@@ -35,8 +35,7 @@ public class EnderBlock extends RedstoneBlock {
             if (z6 < 0) {
                 z6 = z6 * (-1);
             }
-            world.addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + z2, pos.getY() + z4 + 1D, pos.getZ() + z6, 0.0D,
-                    0.0D, 0.0D);
+            world.addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + z2, pos.getY() + z4 + 1D, pos.getZ() + z6, 0.0D, 0.0D, 0.0D);
         }
     }
 

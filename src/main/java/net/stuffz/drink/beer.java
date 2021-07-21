@@ -17,61 +17,61 @@ import net.minecraft.world.World;
 
 public class Beer extends Item {
 
-  public Beer(Settings settings) {
-    super(settings);
-  }
-
-  @Override
-  public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
-
-    StatusEffectInstance nausea = new StatusEffectInstance(StatusEffect.byRawId(9), 200, 0, true, false);
-    StatusEffectInstance nauseastrong = new StatusEffectInstance(StatusEffect.byRawId(9), 600, 2, true, false);
-    StatusEffectInstance slowness = new StatusEffectInstance(StatusEffect.byRawId(2), 200, 0, true, false);
-    StatusEffectInstance blindness = new StatusEffectInstance(StatusEffect.byRawId(15), 80, 0, true, false);
-    StatusEffectInstance luck = new StatusEffectInstance(StatusEffect.byRawId(26), 400, 0, true, false);
-
-    Random random = new Random();
-    int randomNumber = random.nextInt() % 6;
-    if (randomNumber < 0) {
-      randomNumber = randomNumber * (-1);
+    public Beer(Settings settings) {
+        super(settings);
     }
-    if (!world.isClient) {
-      switch (randomNumber) {
-        case 0:
-          entity.addStatusEffect(nausea);
-          entity.addStatusEffect(slowness);
-        case 1:
-          entity.addStatusEffect(slowness);
-          entity.addStatusEffect(blindness);
-        case 2:
-          entity.addStatusEffect(luck);
-        case 3:
-          entity.addStatusEffect(blindness);
-        case 4:
-          entity.addStatusEffect(nausea);
-        case 5:
-          entity.addStatusEffect(nauseastrong);
-        default:
-          entity.addStatusEffect(nausea);
-      }
+
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity entity) {
+
+        StatusEffectInstance nausea = new StatusEffectInstance(StatusEffect.byRawId(9), 200, 0, true, false);
+        StatusEffectInstance nauseastrong = new StatusEffectInstance(StatusEffect.byRawId(9), 600, 2, true, false);
+        StatusEffectInstance slowness = new StatusEffectInstance(StatusEffect.byRawId(2), 200, 0, true, false);
+        StatusEffectInstance blindness = new StatusEffectInstance(StatusEffect.byRawId(15), 80, 0, true, false);
+        StatusEffectInstance luck = new StatusEffectInstance(StatusEffect.byRawId(26), 400, 0, true, false);
+
+        Random random = new Random();
+        int randomNumber = random.nextInt() % 6;
+        if (randomNumber < 0) {
+            randomNumber = randomNumber * (-1);
+        }
+        if (!world.isClient) {
+            switch (randomNumber) {
+            case 0:
+                entity.addStatusEffect(nausea);
+                entity.addStatusEffect(slowness);
+            case 1:
+                entity.addStatusEffect(slowness);
+                entity.addStatusEffect(blindness);
+            case 2:
+                entity.addStatusEffect(luck);
+            case 3:
+                entity.addStatusEffect(blindness);
+            case 4:
+                entity.addStatusEffect(nausea);
+            case 5:
+                entity.addStatusEffect(nauseastrong);
+            default:
+                entity.addStatusEffect(nausea);
+            }
+        }
+        return new ItemStack(Items.GLASS_BOTTLE);
     }
-    return new ItemStack(Items.GLASS_BOTTLE);
-  }
 
-  @Override
-  public int getMaxUseTime(ItemStack itemStack_1) {
-    return 32;
-  }
+    @Override
+    public int getMaxUseTime(ItemStack itemStack_1) {
+        return 32;
+    }
 
-  @Override
-  public UseAction getUseAction(ItemStack itemStack_1) {
-    return UseAction.DRINK;
-  }
+    @Override
+    public UseAction getUseAction(ItemStack itemStack_1) {
+        return UseAction.DRINK;
+    }
 
-  @Override
-  public TypedActionResult<ItemStack> use(World world_1, PlayerEntity playerEntity_1, Hand hand_1) {
-    playerEntity_1.setCurrentHand(hand_1);
-    return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));
-  }
+    @Override
+    public TypedActionResult<ItemStack> use(World world_1, PlayerEntity playerEntity_1, Hand hand_1) {
+        playerEntity_1.setCurrentHand(hand_1);
+        return new TypedActionResult<>(ActionResult.SUCCESS, playerEntity_1.getStackInHand(hand_1));
+    }
 
 }

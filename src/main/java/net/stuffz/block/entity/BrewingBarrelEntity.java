@@ -3,9 +3,7 @@ package net.stuffz.block.entity;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.LadderBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.MobSpawnerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
@@ -13,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
@@ -34,7 +31,6 @@ public class BrewingBarrelEntity extends BlockEntity implements Inventory, Block
         super(BlockInit.BREWINGBARRELENTITY, pos, state);
         this.inventory = DefaultedList.ofSize(5, ItemStack.EMPTY);
     }
-
 
     // slot 0 = axeslot
     // slot 1 = bottleslot
@@ -65,8 +61,7 @@ public class BrewingBarrelEntity extends BlockEntity implements Inventory, Block
     }
 
     public void update() {
-        if (!this.getStack(0).isEmpty() && !this.getStack(1).isEmpty() && !this.getStack(2).isEmpty()
-                && !this.getStack(3).isEmpty() && this.getStack(4).isEmpty()) {
+        if (!this.getStack(0).isEmpty() && !this.getStack(1).isEmpty() && !this.getStack(2).isEmpty() && !this.getStack(3).isEmpty() && this.getStack(4).isEmpty()) {
             if (this.brewing > 0) {
                 this.brewing--;
             }
@@ -86,27 +81,23 @@ public class BrewingBarrelEntity extends BlockEntity implements Inventory, Block
         }
         BlockState state = this.getWorld().getBlockState(this.getPos());
         Direction blockDirection = state.get(HorizontalFacingBlock.FACING);
-        if (!getStack(0).isEmpty() && getStack(1).isEmpty() && getStack(4).isEmpty()) {
+        if (world.isClient && !getStack(0).isEmpty() && getStack(1).isEmpty() && getStack(4).isEmpty()) {
             this.waterdrip++;
-            if (waterdrip == 20 && world.isClient) {
+            if (waterdrip == 20) {
                 if (blockDirection.equals(Direction.NORTH)) {
-                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.98D, pos.getY() + 0.37D, pos.getZ() + 0.5D,
-                            0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.98D, pos.getY() + 0.37D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
                     waterdrip = 0;
                 }
                 if (blockDirection.equals(Direction.SOUTH)) {
-                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.02D, pos.getY() + 0.37D, pos.getZ() + 0.5D,
-                            0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.02D, pos.getY() + 0.37D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
                     waterdrip = 0;
                 }
                 if (blockDirection.equals(Direction.EAST)) {
-                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.5D, pos.getY() + 0.37D, pos.getZ() + 0.98D,
-                            0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.5D, pos.getY() + 0.37D, pos.getZ() + 0.98D, 0.0D, 0.0D, 0.0D);
                     waterdrip = 0;
                 }
                 if (blockDirection.equals(Direction.WEST)) {
-                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.5D, pos.getY() + +0.37D, pos.getZ() + 0.02D,
-                            0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + 0.5D, pos.getY() + +0.37D, pos.getZ() + 0.02D, 0.0D, 0.0D, 0.0D);
                     waterdrip = 0;
                 }
             }

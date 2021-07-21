@@ -4,8 +4,8 @@ import net.minecraft.item.Item;
 
 public class YellowRuby extends Item {
 
-  public YellowRuby(Settings settings) {
-    super(settings);
-  }
+    public YellowRuby(Settings settings) {
+        super(settings);
+    }
 
 }

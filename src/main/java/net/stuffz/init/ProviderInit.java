@@ -5,16 +5,16 @@ import net.minecraft.util.Identifier;
 
 public class ProviderInit {
 
-  public static void init() {
+    public static void init() {
 
-    FabricModelPredicateProviderRegistry.register(new Identifier("active"), (stack, world, entity, seed) -> {
-      if (stack.hasTag()) {
-        if (stack.getTag().getBoolean("activeruby")) {
-          return 1F;
-        }
-      }
-      return 0F;
-    });
-  }
+        FabricModelPredicateProviderRegistry.register(new Identifier("active"), (stack, world, entity, seed) -> {
+            if (stack.hasNbt()) {
+                if (stack.getNbt().getBoolean("activeruby")) {
+                    return 1F;
+                }
+            }
+            return 0F;
+        });
+    }
 
 }

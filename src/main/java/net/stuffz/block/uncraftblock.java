@@ -34,80 +34,80 @@ import net.minecraft.block.AnvilBlock;
 
 public class UncraftBlock extends AnvilBlock implements BlockEntityProvider {
 
-  public UncraftBlock(Settings settings) {
-    super(settings);
-  }
-
-  @Override
-  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    return new UncraftBlockEntity(pos, state);
-  }
-
-  @Nullable
-  @Override
-  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    return checkType(type, BlockInit.UNCRAFTBLOCKENTITY, world.isClient ? UncraftBlockEntity::clientTick : UncraftBlockEntity::serverTick);
-  }
-
-  @Override
-  @Environment(EnvType.CLIENT)
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-    tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
-    if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
-      tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
-      tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip"));
-      tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip2"));
+    public UncraftBlock(Settings settings) {
+        super(settings);
     }
-  }
 
-  @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-      BlockHitResult hit) {
-    Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
-    ItemStack stack = blockEntity.getStack(0);
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new UncraftBlockEntity(pos, state);
+    }
 
-    if (!stack.isEmpty()) {
-      if (!RecipeInit.UNCRAFT_ITEM_LIST.contains(stack.getItem())) {
-        if (!world.isClient) {
-          player.giveItemStack(stack);
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, BlockInit.UNCRAFTBLOCKENTITY, world.isClient ? UncraftBlockEntity::clientTick : UncraftBlockEntity::serverTick);
+    }
+
+    @Override
+    @Environment(EnvType.CLIENT)
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+        if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
+            tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+            tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip"));
+            tooltip.add(new TranslatableText("block.stuffz.uncraftblock.tooltip2"));
         }
-        blockEntity.clear();
-        return ActionResult.SUCCESS;
-      }
-      return ActionResult.PASS;
-    } else {
-      ItemStack heldItem = player.getMainHandStack();
-      if (RecipeInit.UNCRAFT_ITEM_LIST.contains(heldItem.getItem()) && !heldItem.isDamaged()) {
-        if (!world.isClient) {
-          if (!player.isCreative()) {
-            blockEntity.setStack(0, heldItem.split(1));
-          } else {
-            blockEntity.setStack(0, heldItem.copy());
-          }
-          return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
+        ItemStack stack = blockEntity.getStack(0);
+
+        if (!stack.isEmpty()) {
+            if (!RecipeInit.UNCRAFT_ITEM_LIST.contains(stack.getItem())) {
+                if (!world.isClient) {
+                    player.giveItemStack(stack);
+                }
+                blockEntity.clear();
+                return ActionResult.SUCCESS;
+            }
+            return ActionResult.PASS;
         } else {
-          return ActionResult.SUCCESS;
+            ItemStack heldItem = player.getMainHandStack();
+            if (RecipeInit.UNCRAFT_ITEM_LIST.contains(heldItem.getItem()) && !heldItem.isDamaged()) {
+                if (!world.isClient) {
+                    if (!player.isCreative()) {
+                        blockEntity.setStack(0, heldItem.split(1));
+                    } else {
+                        blockEntity.setStack(0, heldItem.copy());
+                    }
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.SUCCESS;
+                }
+            } else
+                return ActionResult.PASS;
         }
-      } else
-        return ActionResult.PASS;
     }
-  }
 
-  @Override
-  public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-    if (!state.isOf(newState.getBlock())) {
-      BlockEntity blockEntity = world.getBlockEntity(pos);
-      if (blockEntity instanceof Inventory) {
-        ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
-        world.updateComparators(pos, this);
-      }
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.isOf(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof Inventory) {
+                ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
+                world.updateComparators(pos, this);
+            }
 
-      super.onStateReplaced(state, world, pos, newState, moved);
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
     }
-  }
 
-  protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
-    return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-  }
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType,
+            BlockEntityTicker<? super E> ticker) {
+        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
+    }
 
 }

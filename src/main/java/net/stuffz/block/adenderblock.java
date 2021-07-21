@@ -33,8 +33,7 @@ public class AdenderBlock extends RedstoneBlock {
             double z4 = z3 / 100;
             double z5 = random3.nextInt() % 4;
             double z6 = z5 / 10;
-            world.addParticle(ParticleTypes.DRAGON_BREATH, entity.getX() + z2, entity.getY() + z4, entity.getZ() + z6,
-                    0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.DRAGON_BREATH, entity.getX() + z2, entity.getY() + z4, entity.getZ() + z6, 0.0D, 0.0D, 0.0D);
         }
     }
 

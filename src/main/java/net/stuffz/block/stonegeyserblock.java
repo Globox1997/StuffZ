@@ -45,18 +45,15 @@ public class StoneGeyserBlock extends Block {
         z7 = (random5.nextInt() % 30);
 
         if (z6 % 2 == 0) {
-            world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5F + z2, pos.getY() + 1F, pos.getZ() + 0.5F + z6,
-                    0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5F + z2, pos.getY() + 1F, pos.getZ() + 0.5F + z6, 0.0D, 0.0D, 0.0D);
         }
 
         if (z7 == 1) {
-            world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F, 1F,
-                    true);
+            world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F, 1F, true);
             while (count4 < 50) {
                 count5 = count4 / 10D;
 
-                world.addParticle(ParticleTypes.CLOUD, pos.getX() + 0.5D, pos.getY() + count5 + 1D, pos.getZ() + 0.5D,
-                        0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleTypes.CLOUD, pos.getX() + 0.5D, pos.getY() + count5 + 1D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
                 count4++;
             }
         }

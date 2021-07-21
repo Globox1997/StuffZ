@@ -20,8 +20,7 @@ public class AnvilBlockMixin {
     @Inject(method = "getLandingState", at = @At("HEAD"), cancellable = true)
     private static void getLandingStateMixin(BlockState fallingState, CallbackInfoReturnable<BlockState> info) {
         if (fallingState.isOf(BlockInit.UNCRAFTBLOCK)) {
-            info.setReturnValue(
-                    (BlockState) BlockInit.UNCRAFTBLOCK.getDefaultState().with(FACING, fallingState.get(FACING)));
+            info.setReturnValue((BlockState) BlockInit.UNCRAFTBLOCK.getDefaultState().with(FACING, fallingState.get(FACING)));
         }
 
     }

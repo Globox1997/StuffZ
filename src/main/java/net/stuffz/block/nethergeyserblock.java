@@ -36,8 +36,7 @@ public class NetherGeyserBlock extends Block {
         double z6 = z5 / 70;
 
         if (z6 % 2 == 0 && world.isClient) {
-            world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5D + z2, pos.getY() + 1D, pos.getZ() + 0.5D + z6,
-                    0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5D + z2, pos.getY() + 1D, pos.getZ() + 0.5D + z6, 0.0D, 0.0D, 0.0D);
         }
 
     }
@@ -47,8 +46,7 @@ public class NetherGeyserBlock extends Block {
         if (entity.isAttackable()) {
             if (world.isClient) {
                 entity.setVelocity(0, 1.2D, 0);
-                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F,
-                        1F, true);
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.GEYSER_EVENT, SoundCategory.AMBIENT, 1F, 1F, true);
                 while (count2 < 60) {
                     Random random1 = new Random();
                     Random random2 = new Random();
@@ -76,15 +74,12 @@ public class NetherGeyserBlock extends Block {
                     }
 
                     count3 = count2 / 10D;
-                    world.addParticle(ParticleTypes.CLOUD, pos.getX() + 0.5D, pos.getY() + count3 + 1D,
-                            pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.CLOUD, pos.getX() + 0.5D, pos.getY() + count3 + 1D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
                     if (count2 < 10) {
-                        world.addParticle(ParticleTypes.FLAME, pos.getX() + 0.3D + z2, pos.getY() + 1D,
-                                pos.getZ() + 0.3D + z4, 0.0D, 0.0D, 0.0D);
+                        world.addParticle(ParticleTypes.FLAME, pos.getX() + 0.3D + z2, pos.getY() + 1D, pos.getZ() + 0.3D + z4, 0.0D, 0.0D, 0.0D);
                     }
                     if (count2 < 25) {
-                        world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.3D + z8, pos.getY() + count3 + 1D,
-                                pos.getZ() + 0.3D + z6, 0.0D, 0.0D, 0.0D);
+                        world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.3D + z8, pos.getY() + count3 + 1D, pos.getZ() + 0.3D + z6, 0.0D, 0.0D, 0.0D);
                     }
                     count2++;
                 }

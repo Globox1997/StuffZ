@@ -22,33 +22,29 @@ import net.minecraft.world.World;
 
 public class DriedClay extends Block {
 
-  public DriedClay(Settings settings) {
-    super(settings);
-  }
-
-  @Override
-  @Environment(EnvType.CLIENT)
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-    tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
-    if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
-      tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
-      tooltip.add(new TranslatableText("block.stuffz.driedclay.tooltip"));
+    public DriedClay(Settings settings) {
+        super(settings);
     }
-  }
 
-  @Override
-  public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-    BlockPos water = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
-    if (world.getBlockState(water.north()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.east()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.south()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.west()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.north().east()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.north().west()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.south().east()).getBlock().equals(Blocks.WATER)
-        || world.getBlockState(water.south().west()).getBlock().equals(Blocks.WATER) && !world.isClient) {
-      world.removeBlock(pos, true);
-      world.setBlockState(pos, Blocks.CLAY.getDefaultState(), 3);
+    @Override
+    @Environment(EnvType.CLIENT)
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+        if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), 340)) {
+            tooltip.remove(new TranslatableText("item.stuffz.moreinfo.tooltip"));
+            tooltip.add(new TranslatableText("block.stuffz.driedclay.tooltip"));
+        }
     }
-  }
+
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        BlockPos water = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
+        if (world.getBlockState(water.north()).getBlock().equals(Blocks.WATER) || world.getBlockState(water.east()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(water.south()).getBlock().equals(Blocks.WATER) || world.getBlockState(water.west()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(water.north().east()).getBlock().equals(Blocks.WATER) || world.getBlockState(water.north().west()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(water.south().east()).getBlock().equals(Blocks.WATER) || world.getBlockState(water.south().west()).getBlock().equals(Blocks.WATER) && !world.isClient) {
+            world.removeBlock(pos, true);
+            world.setBlockState(pos, Blocks.CLAY.getDefaultState(), 3);
+        }
+    }
 }

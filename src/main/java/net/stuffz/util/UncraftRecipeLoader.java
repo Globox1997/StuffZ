@@ -30,10 +30,8 @@ public class UncraftRecipeLoader implements SimpleSynchronousResourceReloadListe
             try {
                 InputStream stream = manager.getResource(id).getInputStream();
                 JsonObject data = new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject();
-                RecipeInit.UNCRAFT_ITEM_LIST
-                        .add((Item) Registry.ITEM.get(new Identifier(data.get("item").getAsString())));
-                RecipeInit.UNCRAFT_RESULT_ITEM_LIST
-                        .add((Item) Registry.ITEM.get(new Identifier(data.get("result").getAsString())));
+                RecipeInit.UNCRAFT_ITEM_LIST.add((Item) Registry.ITEM.get(new Identifier(data.get("item").getAsString())));
+                RecipeInit.UNCRAFT_RESULT_ITEM_LIST.add((Item) Registry.ITEM.get(new Identifier(data.get("result").getAsString())));
                 RecipeInit.UNCRAFT_RESULT_COUNT_LIST.add(data.get("count").getAsInt());
 
             } catch (Exception e) {

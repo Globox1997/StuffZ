@@ -26,8 +26,7 @@ public class HealBlock extends Block {
         double z5 = random3.nextInt() % 10;
         double z6 = z5 / 70;
 
-        world.addParticle(ParticleTypes.EFFECT, pos.getX() + z2 + 0.5D, pos.getY() + 1D, pos.getZ() + z6 + 0.5D, 0.0D,
-                0.0D, 0.0D);
+        world.addParticle(ParticleTypes.EFFECT, pos.getX() + z2 + 0.5D, pos.getY() + 1D, pos.getZ() + z6 + 0.5D, 0.0D, 0.0D, 0.0D);
 
     }
 
@@ -56,8 +55,7 @@ public class HealBlock extends Block {
             if (z6 < 0) {
                 z6 = z6 * (-1);
             }
-            world.addParticle(ParticleTypes.END_ROD, pos.getX() + z2, pos.getY() + z4 + 1D, pos.getZ() + z6, 0.0D, 0.0D,
-                    0.0D);
+            world.addParticle(ParticleTypes.END_ROD, pos.getX() + z2, pos.getY() + z4 + 1D, pos.getZ() + z6, 0.0D, 0.0D, 0.0D);
         }
     }
 
