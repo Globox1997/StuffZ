@@ -24,7 +24,6 @@ public class BlockInit {
     public static final Flax FLAX = new Flax(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
     public static final EnderBlock ENDERBLOCK = new EnderBlock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
     public static final AdenderBlock ADENDERBLOCK = new AdenderBlock(FabricBlockSettings.copy(Blocks.REDSTONE_BLOCK));
-    public static final HealBlock HEALBLOCK = new HealBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN));
     public static final NetherGeyserBlock NETHERGEYSERBLOCK = new NetherGeyserBlock(FabricBlockSettings.copy(Blocks.STONE));
     public static final StoneGeyserBlock STONEGEYSERBLOCK = new StoneGeyserBlock(FabricBlockSettings.copy(Blocks.STONE));
     public static final SulfurBlock SULFURBLOCK = new SulfurBlock(FabricBlockSettings.copy(Blocks.DIAMOND_ORE));
@@ -56,8 +55,6 @@ public class BlockInit {
         Registry.register(Registry.BLOCK, new Identifier("stuffz", "enderblock"), ENDERBLOCK);
         Registry.register(Registry.ITEM, new Identifier("stuffz", "adenderblock"), new BlockItem(ADENDERBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         Registry.register(Registry.BLOCK, new Identifier("stuffz", "adenderblock"), ADENDERBLOCK);
-        Registry.register(Registry.ITEM, new Identifier("stuffz", "healblock"), new BlockItem(HEALBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        Registry.register(Registry.BLOCK, new Identifier("stuffz", "healblock"), HEALBLOCK);
         Registry.register(Registry.ITEM, new Identifier("stuffz", "nethergeyserblock"), new BlockItem(NETHERGEYSERBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         Registry.register(Registry.BLOCK, new Identifier("stuffz", "nethergeyserblock"), NETHERGEYSERBLOCK);
         Registry.register(Registry.ITEM, new Identifier("stuffz", "stonegeyserblock"), new BlockItem(STONEGEYSERBLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));

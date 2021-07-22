@@ -14,7 +14,6 @@ public class RenderInit {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.FLAX, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.ENDERBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.ADENDERBLOCK, RenderLayer.getSolid());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.HEALBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.NETHERGEYSERBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.STONEGEYSERBLOCK, RenderLayer.getSolid());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.SULFURBLOCK, RenderLayer.getSolid());
